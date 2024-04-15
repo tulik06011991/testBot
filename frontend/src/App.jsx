@@ -13,6 +13,9 @@ function App() {
 
   return (
     <>
+
+
+   
     <Navbar/>
     
     <Routes>
@@ -24,6 +27,7 @@ function App() {
     <Routes>
       <Route path='/menu' element = {<Menu/>}/>
     </Routes>
+   
        
     </>
   )

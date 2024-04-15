@@ -1,89 +1,50 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const Navbar = () => {
-  const [profile , setProfile] = useState(false)
-  const [navbarOpen, setNavbarOpen] = useState(false)
+  const [navbarOpen, setNavbarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+ 
+
+ 
+
   return (
-    <div><nav className="bg-gray-800">
-    <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div className="relative flex h-16 items-center justify-between">
-        <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-        
-          <button type="button"  onClick={() =>setNavbarOpen(!navbarOpen)} className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-            <span className="absolute -inset-0.5"></span>
-            <span className="sr-only">Open main menu</span>
-          
-            <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-        
-            <svg className="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+    
+
+
+  
+    <div className='bg-gray-500'>
+      <nav className='fixed top-0 left-0 bg-gray-200 w-full shadow'>
+        <div className='container m-auto flex justify-between items-center text-gray-700'>
+          <h1 className='pl-8 py-4 text-xl font-bold'>salom Tolqin</h1>
+          <ul className='hidden md:flex items-center pr-10 text-base font-semibold cursor-pointer'>
+            <li className='hover:bg-gray-400 rounded py-3 px-6 my-2 mr-3'>Home</li>
+            <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Contact</li>
+            <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Servise</li>
+            <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>About</li>
+          </ul>
+          <button onClick={() => setNavbarOpen(!navbarOpen)} className='block md:hidden py-3 px-4 mx-2 rounded focus:outline-none hover:bg-blue-300 group'>
+            <div className='w-5 h-1 bg-gray-700 mb-1'></div>
+            <div className='w-5 h-1 bg-gray-700 mb-1'></div>
+            <div className='w-5 h-1 bg-gray-700 mb-1'></div>
+            <div className= {`${navbarOpen ? 'absolute -right-0 top-0 h-screen w-6/12 bg-gray-200 ' : 'hidden'}  `}>
+              <ul className='flex flex-col items-center  w-full text-base cursor-pointer pt-12'>
+                <div>
+
+              <i class="fa-sharp fa-solid fa-circle-xmark fa-2xl -left-0 absolute  text-gray-800"><button className='hover:bg-blue-400 rounded w-full'></button></i>
+                </div>
+                <br /><br /><br /><br />
+                <li className='hover:bg-gray-300 mt-12 hover:bg-gray-400 rounded py-4 px-6 font-bold hover:text-white tracking-widest w-full'>Home</li>
+                <li className='hover:bg-gray-300 py-4 hover:bg-gray-400 rounded px-6  font-bold hover:text-white tracking-widest w-full'>Contact</li>
+                <li className='hover:bg-gray-300 py-4 hover:bg-gray-400 rounded px-6  font-bold hover:text-white tracking-widest w-full'>Servise</li>
+                <li className='hover:bg-gray-300 py-4 hover:bg-gray-400 rounded px-6  font-bold hover:text-white tracking-widest w-full'>About</li>
+              </ul>
+            </div>
           </button>
         </div>
-        <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-          <div className="flex flex-shrink-0 items-center">
-            <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company"/>
-          </div>
-          <div className="hidden sm:ml-6 sm:block">
-            <div className="flex space-x-4">
-           
-              <a href="#" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
-              <a href="/menu" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Menu</a>
-              <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
-              <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
-            </div>
-          </div>
-        </div>
-        <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <button type="button" className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-            <span className="absolute -inset-1.5"></span>
-            <span className="sr-only">View notifications</span>
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-            </svg>
-          </button>
-  
-         
-          <div className="relative ml-3">
-            <div>
-              <button type="button" onClick={() =>setProfile(!profile)} className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                <span className="absolute -inset-1.5"></span>
-                <span className="sr-only">Open user menu</span>
-                <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
-              </button>
-            </div>
-  
-            {profile && (
-
-            <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-            
-              <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-              <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-              <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-            </div>
-            )}
-          </div>
-        </div>
-      </div>
+      </nav>
     </div>
-  
-    { navbarOpen && (
-
-    <div className="sm:hidden" id="mobile-menu">
-      <div className="space-y-1 px-2 pb-3 pt-2">
-  
-        <a href="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-        <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
-        <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-        <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
-      </div>
-    </div>
-              )}
-  </nav>
-  </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
