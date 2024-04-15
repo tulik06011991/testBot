@@ -16,7 +16,7 @@ const Navbar = () => {
     <div className='bg-gray-500'>
       <nav className='fixed top-0 left-0 bg-gray-200 w-full shadow'>
         <div className='container m-auto flex justify-between items-center text-gray-700'>
-          <ul className='hidden md:flex items-center pr-10 text-base font-semibold cursor-pointer'>
+          <ul className='hidden md:flex items-center pr-10  text-base font-semibold cursor-pointer'>
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2 mr-3'>Home</li>
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Contact</li>
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Servise</li>
@@ -46,7 +46,12 @@ const Navbar = () => {
             </div>
             
           </button>
-          <h1 className='pr-8 py-4 text-xl font-bold'>salom Tolqin</h1>
+          <h1 className=' relative pr-12 py-4 text-xl font-bold'>salom Tolqin</h1>
+
+        
+
+              <button className='relative mx-6 hidden md:block'>Sign-out<i class="fa-sharp fa-solid fa-right-from-bracket ml-3"></i></button>
+              
         </div>
       </nav>
     </div>
