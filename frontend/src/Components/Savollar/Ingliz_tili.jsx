@@ -72,7 +72,7 @@ const RadioButtons = () => {
     <div className='flex justify-center'>
 
 
-    <button type="submit" className='px-8 py-2 mr-8 rounded bg-gray-500 text-xl font-bold text-blue-900'>Keyingisi</button>
+    <button type="submit" className='px-8 py-2 mr-8 rounded bg-gray-500 text-xl font-bold'>Keyingisi</button>
     </div>
     </form>
     </div>
