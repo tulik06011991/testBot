@@ -10,12 +10,16 @@ const RadioButtons = () => {
   };
 
   return (
-    <div className=''>
+    <div >
+      
       <form action="/" method="post">
       <br /><br /><br /><br />
+      <div className='text-gray-900 flex justify-center font-bold'>
+        <h1 className='text-gray text-xl '>Savollar ro'yxati</h1>
+      </div>
     <div className="flex flex-col items-start py-12 ">
       {/* Radio Button 1 */}
-      <label className="radio-container pl-8 w-full hover:bg-blue-200  py-8 shadow">
+      <label className="radio-container pl-8 text-xl tracking-tight w-full hover:bg-blue-200  py-8 shadow">
        
         <input
           type="radio"
@@ -41,7 +45,7 @@ const RadioButtons = () => {
       </label>
 
       {/* Radio Button 3 */}
-      <label className="radio-container pl-8 w-full hover:bg-blue-200 py-8 shadow">
+      <label className="radio-container  text-xl pl-8 w-full tracking-tight hover:bg-blue-200 py-8 shadow">
         
         <input
           type="radio"
@@ -54,8 +58,8 @@ const RadioButtons = () => {
       </label>
 
       {/* Radio Button 4 */}
-      <label className="radio-container pl-8 w-full hover:bg-blue-200 py-8 shadow">
-        <input
+      <label className="radio-container pl-8 w-full text-xl tracking-tight hover:bg-blue-200 py-8 shadow">
+        <input className='text-xl'
           type="radio"
           value="option4"
           checked={selectedOption === "option4"}
@@ -65,10 +69,10 @@ const RadioButtons = () => {
           Option 4
       </label>
     </div>
-    <div className='flex justify-end'>
+    <div className='flex justify-center'>
 
 
-    <button type="submit" className='px-8 py-4 mr-8 bg-gray-500'>saqlash</button>
+    <button type="submit" className='px-8 py-2 mr-8 rounded bg-gray-500 text-xl font-bold text-blue-900'>Keyingisi</button>
     </div>
     </form>
     </div>
