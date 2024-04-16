@@ -15,22 +15,23 @@ const Navbar = () => {
   
     <div className='bg-gray-500'>
       <nav className='fixed top-0 left-0 bg-gray-200 w-full shadow'>
-        <div className='container m-auto flex justify-between items-center text-gray-700'>
+        <div className='container m-auto flex justify-between tracking-widest  items-center text-gray-700'>
           <ul className='hidden md:flex items-center pr-10  text-base font-semibold cursor-pointer'>
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2 mr-3'>Home</li>
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Contact</li>
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Servise</li>
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>About</li>
           </ul>
-          <button onClick={() => setNavbarOpen(!navbarOpen)} className='block md:hidden py-3 px-4 mx-2 rounded focus:outline-none  group'>
+          <h1 className='font-bold tracking-widest ml-8  md:left-0 '>Quiz bot</h1>
+          <button onClick={() => setNavbarOpen(!navbarOpen)} className='block md:hidden py-3 px-4 mx-2 right-5 rounded focus:outline-none hover:bg-gray-400  group'>
             <div className='w-5 h-1 bg-gray-700 mb-1'></div>
             <div className='w-5 h-1 bg-gray-700 mb-1'></div>
             <div className='w-5 h-1 bg-gray-700 mb-1'></div>
-            <div className= {`${navbarOpen ? 'absolute -left-0 top-0 h-screen w-5/12 bg-gray-200 ' : 'hidden'}  `}>
+            <div className= {`${navbarOpen ? 'absolute -right-0 top-0 h-screen w-5/12 bg-gray-200 ' : 'hidden'}  `}>
               <ul className='flex flex-col items-center  w-full text-base cursor-pointer pt-12'>
                 <div>
 
-              <i class="fa-sharp fa-solid fa-circle-xmark fa-2xl -right-5 absolute  text-gray-500 border-solid"><button className='hover:bg-blue-500  rounded w-full'></button></i>
+              <i class="fa-sharp fa-solid fa-circle-xmark fa-2xl -left-5 absolute  text-gray-500 border-solid"><button className='hover:bg-blue-500  rounded w-full'></button></i>
               <br /><br />
                 <div className='font-bold text-gray'>______________________________</div>
                 </div>
@@ -48,7 +49,7 @@ const Navbar = () => {
             </div>
             
           </button>
-          <h1 className=' relative pr-12 py-4 text-xl font-bold'>salom Tolqin</h1>
+         
 
         
 
