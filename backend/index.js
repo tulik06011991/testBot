@@ -12,10 +12,6 @@ mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log('MongoDBga muvaffaqiyatli ulanish'))
   .catch((error) => console.error('MongoDBga ulanishda xatolik:', error));
 
-  mongoose.connection(process.env.MONGO_URL)
-  .then(() => console.log('MongoDBga muvaffaqiyatli ulanish'))
-  .catch((error) => console.error('MongoDBga ulanishda xatolik:', error));
-
 
 
 
