@@ -1,14 +1,23 @@
-const express  = require("express")
-const app = express()
-const mongoose = require('mongoose')
-require('dotenv').config()
+// app.js
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors')
+
+
+const app = express();
+app.use(express.json());
+app.use(cors())
+
+mongoose.connect(process.env.MONGO_URL)
+  .then(() => console.log('MongoDBga muvaffaqiyatli ulanish'))
+  .catch((error) => console.error('MongoDBga ulanishda xatolik:', error));
 
 
 
-mongoose.connect(process.env.MONGO_URL).then(() =>console.log(`serverga ulandi: `)).catch((error) =>{
-    console.log(error)
-})
 
-PORT  = process.env.PORT 
 
-app.listen(PORT, console.log(` server running on ${PORT}`))
+
+
+
+
+app.listen(3000, () => console.log('Server 3000 portda eshitishni boshladi'));
