@@ -28,7 +28,7 @@ const RadioButtons = () => {
       </label>
 
       {/* Radio Button 2 */}
-      <label className="radio-container w-full hover:bg-blue-200 py-8 shadow tracking-tight text-xl">
+      <label className="radio-container text-xl ml-8 tracking-tight  w-full hover:bg-blue-200 py-8 shadow ">
    
         <input 
           type="radio"
