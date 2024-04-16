@@ -15,7 +15,7 @@ const RadioButtons = () => {
       <br /><br /><br /><br />
     <div className="flex flex-col items-start py-12 ">
       {/* Radio Button 1 */}
-      <label className="radio-container  w-full hover:bg-blue-200  py-8 shadow">
+      <label className="radio-container pl-8 w-full hover:bg-blue-200  py-8 shadow">
        
         <input
           type="radio"
@@ -28,7 +28,7 @@ const RadioButtons = () => {
       </label>
 
       {/* Radio Button 2 */}
-      <label className="radio-container text-xl ml-8 tracking-tight  w-full hover:bg-blue-200 py-8 shadow ">
+      <label className="radio-container text-xl pl-8 tracking-tight  w-full hover:bg-blue-200 py-8 shadow ">
    
         <input 
           type="radio"
@@ -41,7 +41,7 @@ const RadioButtons = () => {
       </label>
 
       {/* Radio Button 3 */}
-      <label className="radio-container w-full hover:bg-blue-200 py-8 shadow">
+      <label className="radio-container pl-8 w-full hover:bg-blue-200 py-8 shadow">
         
         <input
           type="radio"
@@ -54,7 +54,7 @@ const RadioButtons = () => {
       </label>
 
       {/* Radio Button 4 */}
-      <label className="radio-container w-full hover:bg-blue-200 py-8 shadow">
+      <label className="radio-container pl-8 w-full hover:bg-blue-200 py-8 shadow">
         <input
           type="radio"
           value="option4"
