@@ -11,7 +11,7 @@ const RadioButtons = () => {
 
   return (
     <div className=''>
-      <form action="" method="post">
+      <form action="/" method="post">
       <br /><br /><br /><br />
     <div className="flex flex-col items-start py-12 ">
       {/* Radio Button 1 */}
@@ -28,13 +28,13 @@ const RadioButtons = () => {
       </label>
 
       {/* Radio Button 2 */}
-      <label className="radio-container w-full hover:bg-blue-200 py-8 shadow">
+      <label className="radio-container w-full hover:bg-blue-200 py-8 shadow tracking-tight text-xl">
    
-        <input
+        <input 
           type="radio"
           value="option2"
           checked={selectedOption === "option2"}
-          onChange={handleOptionChange}
+          onChange={handleOptionChange} 
         />
         <span className="checkmark ml-8"></span>
         Option 2
