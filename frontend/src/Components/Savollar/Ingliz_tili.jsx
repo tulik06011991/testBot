@@ -3,77 +3,87 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function App() {
-  const [token, setToken] = useState('');
+function QuestionManager() {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answer, setAnswer] = useState('');
-  const [options, setOptions] = useState([]);
-
+  const [userAnswers, setUserAnswers] = useState({});
+  const [submittedAnswers, setSubmittedAnswers] = useState({});
+  
   useEffect(() => {
-    // Serverdan token olish
-    axios.post('/api/login', { username: 'your_username', password: 'your_password' })
-      .then(response => {
-        setToken(response.data.token);
-        loadQuestions(response.data.token);
-      })
-      .catch(error => console.error('Login error:', error));
-  }, []);
-
-  const loadQuestions = (token) => {
-    // Serverdan savollar olish
-    axios.get('/api/questions', { headers: { Authorization: `Bearer ${token}` } })
+    // Saytdan savollar olish
+    axios.get('/api/questions')
       .then(response => {
         setQuestions(response.data);
-        setCurrentQuestionIndex(0);
-        setOptions(response.data[0].options);
       })
-      .catch(error => console.error('Load questions error:', error));
+      .catch(error => console.error('Savollar yuklanishda xatolik:', error));
+  }, []);
+
+  const handleAnswerSubmit = () => {
+    const currentQuestion = questions[currentQuestionIndex];
+    setUserAnswers(prevState => ({
+      ...prevState,
+      [currentQuestion._id]: currentQuestion.options[userAnswers[currentQuestion._id]]
+    }));
+
+    if (currentQuestionIndex === questions.length - 1) {
+      // Agar bu so'nggi savol bo'lsa, backendga javoblar yuboriladi
+      axios.post('/api/answers', userAnswers)
+        .then(response => {
+          setSubmittedAnswers(response.data);
+        })
+        .catch(error => console.error('Javoblar yuborishda xatolik:', error));
+    } else {
+      // Boshqa savolga o'tish
+      setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+    }
   };
 
-  const handleSubmit = () => {
-    // Serverga javob yuborish
-    axios.post('/api/answer', { token, answer: { questionId: questions[currentQuestionIndex]._id, answer } })
-      .then(response => {
-        if (currentQuestionIndex + 1 < questions.length) {
-          setCurrentQuestionIndex(currentQuestionIndex + 1);
-          setOptions(questions[currentQuestionIndex + 1].options);
-        } else {
-          setCurrentQuestionIndex(0);
-          setOptions([]);
-        }
-        setAnswer('');
-      })
-      .catch(error => console.error('Submit answer error:', error));
+  const handleOptionSelect = (questionId, optionIndex) => {
+    setUserAnswers(prevState => ({
+      ...prevState,
+      [questionId]: optionIndex
+    }));
   };
 
   return (
-    <div className="App">
-      <h1>Quiz App</h1>
-      {questions.length > 0 && (
+    <div>
+      {questions.length > 0 && currentQuestionIndex < questions.length ? (
         <div>
-          <h2>{questions[currentQuestionIndex].text}</h2>
+          <h2>Savol {currentQuestionIndex + 1}:</h2>
+          <h3>{questions[currentQuestionIndex].text}</h3>
           <ul>
-            {options.map((option, index) => (
+            {questions[currentQuestionIndex].options.map((option, index) => (
               <li key={index}>
-                <input 
-                  type="radio" 
-                  value={option} 
-                  checked={answer === option}
-                  onChange={() => setAnswer(option)} 
-                />
-                <label>{option}</label>
+                <label>
+                  <input
+                    type="radio"
+                    checked={userAnswers[questions[currentQuestionIndex]._id] === index}
+                    onChange={() => handleOptionSelect(questions[currentQuestionIndex]._id, index)}
+                  />
+                  {option}
+                </label>
               </li>
             ))}
           </ul>
-          <button onClick={handleSubmit}>Javob berish</button>
+          <button onClick={handleAnswerSubmit}>Javob berish</button>
+        </div>
+      ) : (
+        <div>
+          <h2>Javoblar yuborildi!</h2>
+          <ul>
+            {Object.keys(submittedAnswers).map(questionId => (
+              <li key={questionId}>
+                <strong>{questions.find(question => question._id === questionId).text}</strong>: {submittedAnswers[questionId]}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
   );
 }
 
-export default App;
+export default QuestionManager;
 
 
 
