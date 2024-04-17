@@ -8,6 +8,6 @@ const {
 
 
 router.get("/adminGet", adminSavollarGet);
-router.post('/adminPost', adminSavollarPost)
+router.post('/adminPost', adminSavollarPost);
 
 module.exports = router

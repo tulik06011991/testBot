@@ -4,10 +4,10 @@ const {loginUser, registerUser, logout} = require('../Controller/Auth')
 
 
 
-router.post("/register" , registerUser )
+router.post("/register" , registerUser );
 
-router.post("/login" , loginUser )
-router.get("/logout", logout)
+router.post("/login" , loginUser );
+router.get("/logout", logout);
 
 
 
