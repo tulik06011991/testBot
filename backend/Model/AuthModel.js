@@ -1,25 +1,34 @@
-// models/Question.js
-const mongoose = require('mongoose');
+const mongoose  = require('mongoose')
 
-const AuthSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    unique: true
-  },
-  email: {
-    type: String,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  isAdmin: {
-    type: Boolean, // Foydalanuvchining bergan javobning indeksi
-    default: false // Agar foydalanuvchi hali javob bermagan bo'lsa, -1 qilib belgilaymiz
-  }
-});
 
-const Auth = mongoose.model('Authorizatsiya', AuthSchema);
 
-module.exports = Auth;
+const userSchema = new mongoose.Schema({
+    username: {
+        type: String, 
+        required: true,
+        unique: true
+
+    },
+    email: {
+        type: String, 
+        required: true,
+        unique: true
+
+    },
+   
+    password: {
+        type: String, 
+        required: true
+
+    },
+   
+    isAdmin: {
+        type: Boolean ,
+        default : false
+
+    },
+   
+},{timestamps: true}) 
+
+ const hotelModel =  mongoose.model('Users', userSchema)
+ module.exports = hotelModel
