@@ -17,24 +17,25 @@ const QuestionGet  = async (req, res) => {
   
   const UserAnswerPost =  async (req, res) => {
     try {
-      const { token, answer } = req.body;
-      const decodedToken = jwt.verify(token, 'secret_key');
-      const user = await User.findById(decodedToken.userId);
+      const { id, answer } = req.body;
+      // const decodedToken = jwt.verify(token, 'secret_key');
+      const user = await User.findById(req.params);
       if (!user) {
         return res.status(401).json({ message: 'Foydalanuvchi topilmadi' });
       }
-  
-      const question = await Question.findById(answer.questionId);
+       const questions = await Question.find()
+      const question = await Question.findById(id);
       if (!question) {
         return res.status(404).json({ message: 'Savol topilmadi' });
       }
   
-      if (answer.answer === question.options[question.correctOptionIndex]) {
+      if (answer === question.options[question.correctOptionIndex]) {
         user.score += 1;
         await user.save();
       }
   
-      currentQuestionIndex++;
+      user.currentQuestionIndex += 1;
+
       if (currentQuestionIndex >= questions.length) {
         currentQuestionIndex = 0;
       }
