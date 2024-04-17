@@ -15,7 +15,7 @@ const questionSchema = new mongoose.Schema({
     required: true
   },
   userAnswerIndex: {
-    type: Number, // Foydalanuvchining bergan javobning indeksi
+    type: Number, // Foydalanuvchining bergan javobning indeksiu
     default: -1 // Agar foydalanuvchi hali javob bermagan bo'lsa, -1 qilib belgilaymiz
   }
 });
