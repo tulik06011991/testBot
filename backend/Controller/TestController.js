@@ -17,7 +17,7 @@ const QuestionGet  = async (req, res) => {
   
 
   const express = require('express');
-const router = express.Router();
+
 const calculateScoreAndResult = require('./path/to/calculateScoreAndResult');
 const Question = require('./path/to/Question');
 const UserResult = require('./path/to/UserResult');
