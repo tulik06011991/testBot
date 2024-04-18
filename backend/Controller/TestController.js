@@ -1,6 +1,6 @@
 const Question = require('../Model/TestModel');
 const express = require('express')
-const User = require('../Model/UserModel');
+const  UserResult = require('../Model/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -15,12 +15,6 @@ const QuestionGet  = async (req, res) => {
     }
   };
   
-
-  const express = require('express');
-
-const calculateScoreAndResult = require('./path/to/calculateScoreAndResult');
-const Question = require('./path/to/Question');
-const UserResult = require('./path/to/UserResult');
 
 // POST so'rovi orqali foydalanuvchi natijalari va bali hisoblanadi
 const  UserAnswerPost =  async (req, res) => {
