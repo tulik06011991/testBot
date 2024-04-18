@@ -1,26 +1,22 @@
 // models/Question.js
+
+
 const mongoose = require('mongoose');
 
-const questionSchema = new mongoose.Schema({
-  text: {
-    type: String,
-    required: true
+const userResultSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User' // Foydalanuvchi identifikatori (referensiya)
   },
-  options: {
-    type: [String],
-    required: true
+  questionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Question' // Savol identifikatori (referensiya)
   },
-  correctOptionIndex: {
-    type: Number,
-    required: true
-  },
-  userAnswerIndex: {
-    type: Number, // Foydalanuvchining bergan javobning indeksiu
-    default: -1 // Agar foydalanuvchi hali javob bermagan bo'lsa, -1 qilib belgilaymiz
-  }
+  userAnswer: String, // Foydalanuvchi javobi
+  correct: Boolean // To'g'ri javobni tekshirish
 });
 
-const Question = mongoose.model('Question', questionSchema);
+const Question = mongoose.model('UserResult', userResultSchema);
 
 module.exports = Question;
 

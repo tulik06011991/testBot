@@ -2,22 +2,19 @@ const mongoose  = require('mongoose')
 
 
 
-const userSchema = new mongoose.Schema({
-    user: {
-        type: String, 
-        required: true,
-        unique: true
 
-    },
-    score: {
-        type: Number, 
-        
+const userResultSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User' // Foydalanuvchi identifikatori (referensiya)
+  },
+  questionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Question' // Savol identifikatori (referensiya)
+  },
+  userAnswer: String, // Foydalanuvchi javobi
+  correct: Boolean // To'g'ri javobni tekshirish
+});
 
-    },
-   
-  
-   
-},{timestamps: true}) 
-
- const TestModel =  mongoose.model('UsersTest', userSchema)
+const TestModel  = mongoose.model('UserResult', userResultSchema);
  module.exports = TestModel

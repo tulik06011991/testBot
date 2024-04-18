@@ -1,84 +1,95 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function QuestionManager() {
-  const [questions, setQuestions] = useState([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState({});
-  const [submittedAnswers, setSubmittedAnswers] = useState({});
+function YourComponent() {
+  const [userId, setUserId] = useState(''); // Foydalanuvchi ID sini saqlash uchun holat
+  const [questions, setQuestions] = useState([]); // Savollar uchun holat
+  const [userAnswers, setUserAnswers] = useState([]); // Foydalanuvchi javoblari uchun holat
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Joriy savol indeksi
   
+  // useEffect orqali savollar olinadi
   useEffect(() => {
-    // Saytdan savollar olish
-    axios.get('/api/questions')
-      .then(response => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await axios.get('/api/questions');
         setQuestions(response.data);
-      })
-      .catch(error => console.error('Savollar yuklanishda xatolik:', error));
+      } catch (error) {
+        console.error('Savollar olishda xato:', error);
+      }
+    };
+    fetchQuestions();
   }, []);
 
-  const handleAnswerSubmit = () => {
-    const currentQuestion = questions[currentQuestionIndex];
-    setUserAnswers(prevState => ({
-      ...prevState,
-      [currentQuestion._id]: currentQuestion.options[userAnswers[currentQuestion._id]]
-    }));
-
-    if (currentQuestionIndex === questions.length - 1) {
-      // Agar bu so'nggi savol bo'lsa, backendga javoblar yuboriladi
-      axios.post('/api/answers', userAnswers)
-        .then(response => {
-          setSubmittedAnswers(response.data);
-        })
-        .catch(error => console.error('Javoblar yuborishda xatolik:', error));
-    } else {
-      // Boshqa savolga o'tish
+  // POST so'rovi yuborish
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+      // Javoblar obyekti yaratish
+      const answers = { userId, userAnswers };
+      
+      // POST so'rovini yuborish
+      const response = await axios.post('/api/submit', answers);
+      console.log('Natijalar:', response.data);
+      
+      // Keyingi savolni yuklash
       setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+    } catch (error) {
+      console.error('Xato:', error);
     }
   };
-
-  const handleOptionSelect = (questionId, optionIndex) => {
-    setUserAnswers(prevState => ({
-      ...prevState,
-      [questionId]: optionIndex
-    }));
+  
+  // Foydalanuvchi javoblarni saqlash
+  const handleAnswerSelection = (selectedOption) => {
+    setUserAnswers(prevAnswers => [...prevAnswers, selectedOption]);
   };
 
   return (
     <div>
-      {questions.length > 0 && currentQuestionIndex < questions.length ? (
-        <div>
-          <h2>Savol {currentQuestionIndex + 1}:</h2>
-          <h3>{questions[currentQuestionIndex].text}</h3>
-          <ul>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="userId">Foydalanuvchi ID:</label>
+        <input 
+          type="text" 
+          id="userId" 
+          value={userId} 
+          onChange={(e) => setUserId(e.target.value)} 
+        />
+        
+        {/* Ketma-ket savollar */}
+        {currentQuestionIndex < questions.length ? (
+          <div>
+            <p>{questions[currentQuestionIndex].text}</p>
+            {/* Variantlar */}
             {questions[currentQuestionIndex].options.map((option, index) => (
-              <li key={index}>
-                <label>
-                  <input
-                    type="radio"
-                    checked={userAnswers[questions[currentQuestionIndex]._id] === index}
-                    onChange={() => handleOptionSelect(questions[currentQuestionIndex]._id, index)}
-                  />
-                  {option}
-                </label>
-              </li>
+              <div key={index}>
+                <input 
+                  type="radio" 
+                  id={`option-${index}`} 
+                  name="option" 
+                  value={option} 
+                  onChange={() => handleAnswerSelection(option)} 
+                />
+                <label htmlFor={`option-${index}`}>{option}</label>
+              </div>
             ))}
-          </ul>
-          <button onClick={handleAnswerSubmit}>Javob berish</button>
-        </div>
-      ) : (
-        <div>
-          <h2>Javoblar yuborildi!</h2>
-          <ul>
-            {Object.keys(submittedAnswers).map(questionId => (
-              <li key={questionId}>
-                <strong>{questions.find(question => question._id === questionId).text}</strong>: {submittedAnswers[questionId]}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+            <button type="submit">Keyingisi</button>
+          </div>
+        ) : (
+          <p>Savollar tugadi!</p>
+        )}
+      </form>
     </div>
   );
 }
 
-export default QuestionManager;
+export default YourComponent;
+
+
+// {
+//   "userId": "foydalanuvchiId",
+//   "userAnswers": [
+//     { "questionIndex": 0, "answer": "Option A" },
+//     { "questionIndex": 1, "answer": "Option B" }
+//     // Boshqa javoblar ...
+//   ]
+// }
