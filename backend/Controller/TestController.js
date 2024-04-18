@@ -4,7 +4,7 @@ const  UserResult = require('../Model/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-let currentQuestionIndex = 0; 
+
 
 const QuestionGet  = async (req, res) => {
     try {
