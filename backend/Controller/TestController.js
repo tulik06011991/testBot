@@ -1,6 +1,6 @@
 const Question = require('../Model/TestModel');
 const express = require('express')
-const  UserResult = require('../Model/UserModel');
+const  TestModel = require('../Model/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -16,47 +16,52 @@ const QuestionGet  = async (req, res) => {
   };
   
 
-// POST so'rovi orqali foydalanuvchi natijalari va bali hisoblanadi
-const  UserAnswerPost =  async (req, res) => {
+
+
+// Foydalanuvchi savolga javob berish va natijalarni hisoblash
+const    UserAnswerPost =  async (req, res) => {
   try {
-    const { userId } = req.body;
+    const { userId, questionId, userAnswer } = req.body;
 
-    // Foydalanuvchi natijalari ma'lumotlar bazasidan olinadi
-    const userResults = await UserResult.find({ userId }).populate('questionId');
+    // Savolni ma'lumotlar bazasidan olish
+    const question = await Question.findById(questionId);
 
-    if (!userResults || userResults.length === 0) {
-      return res.status(404).json({ error: 'Foydalanuvchi toʻplagan natijalar topilmadi' });
+    if (!question) {
+      return res.status(404).json({ error: 'Savol topilmadi' });
     }
 
-    // Savollar olinadi
-    const questions = await Question.find();
+    // Foydalanuvchi javobini tekshirish
+    const isCorrect = userAnswer !== null && userAnswer === question.correctAnswer;
 
-    let totalScore = 0;
+    // Natijani saqlash
+    await TestModel.create({
+      userId,
+      questionId,
+      userAnswer,
+      correct: isCorrect
+    });
 
-    // Foydalanuvchi toʻplagan barcha natijalarni tekshirish
-    for (const result of userResults) {
-      const question = result.questionId;
-      if (!question) continue; // Savol topilmagan bo'lsa davom etamiz
-      if (result.userAnswer === question.correctAnswer) {
-        totalScore += 1; // Foydalanuvchi toʻgʻri javob berdi
-        result.correct = true; // Natija toʻgʻri
-      } else {
-        result.correct = false; // Natija notoʻgʻri
-      }
+    // Barcha savollarga to'g'ri javob berilganda, tekshirish natijasini qaytarish
+    const userResults = await TestModel.find({ userId });
+    const correctCount = userResults.filter(result => result.correct).length;
+
+    // Agar foydalanuvchi barcha savollarga to'g'ri javob bermagan bo'lsa, 404 HTTP status kodi bilan foydalanuvchiga xabar berish
+    if (correctCount === 0) {
+      return res.status(404).json({ error: 'Foydalanuvchi hech bir savolga to\'g\'ri javob bermagan' });
     }
 
-    // Foydalanuvchi balini hisoblash
-    const totalQuestions = questions.length;
-    const userScore = (totalScore / totalQuestions) * 100;
+    // Foydalanuvchi barcha savollarga to'g'ri javob berib bo'lsa, umumiy ballar hisoblash
+    const totalQuestions = userResults.length;
+    const userScore = (correctCount / totalQuestions) * 100;
 
-    // Natijalarni saqlash
-    await Promise.all(userResults.map(result => result.save()));
-
-    res.json({ totalScore: userScore, userResults });
+    // Natijalarni qaytarish
+    res.json({ totalQuestions, correctCount, userScore });
   } catch (error) {
+    console.error('Xatolik:', error);
     res.status(500).json({ error: error.message });
   }
 };
+
 
 
 

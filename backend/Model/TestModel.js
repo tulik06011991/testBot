@@ -1,24 +1,23 @@
 // models/Question.js
-
-
 const mongoose = require('mongoose');
 
-const userResultSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User' // Foydalanuvchi identifikatori (referensiya)
+const questionSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true
   },
-  questionId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Question' // Savol identifikatori (referensiya)
+  options: {
+    type: [String],
+    required: true
   },
-  userAnswer: String, // Foydalanuvchi javobi
-  correct: Boolean // To'g'ri javobni tekshirish
+  correctAnswer: {
+    type: String,
+    required: true
+  }
 });
 
-const Question = mongoose.model('UserResult', userResultSchema);
+const Question = mongoose.model('Question', questionSchema);
 
 module.exports = Question;
 
-// models/Question.js
 
