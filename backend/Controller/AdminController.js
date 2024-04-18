@@ -12,17 +12,23 @@ const adminSavollarGet =  async (req, res) => {
   }
 };
 
+
+
 // Savol qo'shish
 const adminSavollarPost =  async (req, res) => {
   try {
-    const { text, options, correctOptionIndex } = req.body;
-    const question = new Question({ text, options, correctOptionIndex });
+    const { title, options, correctAnswer } = req.body;
+    const question = new Question({ title, options, correctAnswer });
     await question.save();
-    res.status(201).json({ message: 'Savol qo\'shildi', question });
+    res.json({ message: 'Savol muvaffaqiyatli qo\'shildi' });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Xatolik:', error);
+    res.status(500).json({ error: 'Savol qo\'shishda xatolik yuz berdi' });
   }
 };
+
+
+
 
 module.exports = {
     adminSavollarGet,
