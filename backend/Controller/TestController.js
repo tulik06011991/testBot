@@ -1,10 +1,11 @@
 const Question = require('../Model/TestModel');
 const express = require('express')
 const User = require('../Model/UserModel');
+const test = require('../Model/UserModel')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-let currentQuestionIndex = 0; 
+ 
 
 const QuestionGet  = async (req, res) => {
     try {
@@ -23,18 +24,31 @@ const QuestionGet  = async (req, res) => {
       if (!user) {
         return res.status(401).json({ message: 'Foydalanuvchi topilmadi' });
       }
+      const name = user.username
+      const time = Date.now()
   
       const questions = await Question.find();
       const question = await Question.findById(id);
+
+
       if (!question) {
         return res.status(404).json({ message: 'Savol topilmadi' });
       }
   
       // Foydalanuvchining bergan javobni tekshirish va baho qo'shish
+      let score = 0
       if (answer === question.options[question.correctOptionIndex]) {
-        user.score += 1;
-        await user.save();
+        
+        score += 1;
+       
       }
+
+      const data = await test.create({
+        user: name ,
+        score: score,
+        price: productPrice,
+        purchaseDate: daqiqa
+    });
   
       // Foydalanuvchining joriy savol indeksini o'zgartirish
       user.currentQuestionIndex += 1;

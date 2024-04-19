@@ -5,15 +5,17 @@ const mongoose  = require('mongoose')
 const userSchema = new mongoose.Schema({
     user: {
         type: String, 
-        required: true,
-        unique: true
-
     },
     score: {
         type: Number, 
-        
-
     },
+    time:{
+        type: Date,
+        default: Date.now
+    },
+    currentQuestionIndex:{
+        type: Number
+    }
    
   
    
