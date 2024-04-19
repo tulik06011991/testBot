@@ -1,77 +1,75 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-function QuestionManager() {
+const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState({});
-  const [submittedAnswers, setSubmittedAnswers] = useState({});
-  
-  useEffect(() => {
-    // Saytdan savollar olish
-    axios.get('/api/questions')
-      .then(response => {
-        setQuestions(response.data);
-      })
-      .catch(error => console.error('Savollar yuklanishda xatolik:', error));
-  }, []);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [userId, setUserId] = useState('');
+  const [results, setResults] = useState([]);
 
-  const handleAnswerSubmit = () => {
-    const currentQuestion = questions[currentQuestionIndex];
-    setUserAnswers(prevState => ({
-      ...prevState,
-      [currentQuestion._id]: currentQuestion.options[userAnswers[currentQuestion._id]]
-    }));
-
-    if (currentQuestionIndex === questions.length - 1) {
-      // Agar bu so'nggi savol bo'lsa, backendga javoblar yuboriladi
-      axios.post('/api/answers', userAnswers)
-        .then(response => {
-          setSubmittedAnswers(response.data);
-        })
-        .catch(error => console.error('Javoblar yuborishda xatolik:', error));
-    } else {
-      // Boshqa savolga o'tish
-      setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+  const fetchQuestions = async () => {
+    try {
+      const response = await axios.get('/api/questions');
+      setQuestions(response.data);
+    } catch (error) {
+      console.error('Xatolik:', error);
     }
   };
 
-  const handleOptionSelect = (questionId, optionIndex) => {
-    setUserAnswers(prevState => ({
-      ...prevState,
-      [questionId]: optionIndex
-    }));
+  const handleSubmitAnswer = async () => {
+    try {
+      const questionId = questions[currentQuestionIndex].id;
+      const response = await axios.post('/api/submit-answer', {
+        userId,
+        questionId,
+        userAnswer: selectedOption
+      });
+      const result = response.data;
+      setResults([...results, result]);
+      setSelectedOption('');
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } catch (error) {
+      console.error('Xatolik:', error);
+    }
+  };
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
   return (
     <div>
-      {questions.length > 0 && currentQuestionIndex < questions.length ? (
+      <h1>Imtihon</h1>
+      {currentQuestionIndex < questions.length ? (
         <div>
           <h2>Savol {currentQuestionIndex + 1}:</h2>
-          <h3>{questions[currentQuestionIndex].text}</h3>
-          <ul>
+          <p>{questions[currentQuestionIndex].text}</p>
+          <form>
             {questions[currentQuestionIndex].options.map((option, index) => (
-              <li key={index}>
-                <label>
-                  <input
-                    type="radio"
-                    checked={userAnswers[questions[currentQuestionIndex]._id] === index}
-                    onChange={() => handleOptionSelect(questions[currentQuestionIndex]._id, index)}
-                  />
-                  {option}
-                </label>
-              </li>
+              <div key={index}>
+                <input
+                  type="radio"
+                  id={`option-${index}`}
+                  name="option"
+                  value={option}
+                  checked={selectedOption === option}
+                  onChange={handleOptionChange}
+                />
+                <label htmlFor={`option-${index}`}>{option}</label>
+              </div>
             ))}
-          </ul>
-          <button onClick={handleAnswerSubmit}>Javob berish</button>
+            <button type="button" onClick={handleSubmitAnswer}>Javob bering</button>
+          </form>
         </div>
       ) : (
         <div>
-          <h2>Javoblar yuborildi!</h2>
+          <h2>Imtihon tugadi!</h2>
+          <h3>Natijalar:</h3>
           <ul>
-            {Object.keys(submittedAnswers).map(questionId => (
-              <li key={questionId}>
-                <strong>{questions.find(question => question._id === questionId).text}</strong>: {submittedAnswers[questionId]}
+            {results.map((result, index) => (
+              <li key={index}>
+                Savol {index + 1}: {result.message}
               </li>
             ))}
           </ul>
@@ -79,6 +77,6 @@ function QuestionManager() {
       )}
     </div>
   );
-}
+};
 
-export default QuestionManager;
+export default Quiz;
