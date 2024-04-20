@@ -15,7 +15,7 @@ const createUser = async (req, res) => {
 const getUsers = async (req, res) => {
   try {
     const users = await AuthModel.find();
-    if(!newUser){
+    if(!users){
         res.status(400).send(`foydalanuvchilar topilmadi`)
     }
     res.status(200).json(users);
