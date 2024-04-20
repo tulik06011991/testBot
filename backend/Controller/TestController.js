@@ -19,16 +19,6 @@ const QuestionGet  = async (req, res) => {
 
 
 
-// Foydalanuvchi savolga javob berish va natijalarni hisoblash
-// MongoDB ni ulash
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/quiz_bot', { useNewUrlParser: true, useUnifiedTopology: true });
-
-// Savol modelini import qilish
-const Question = require('./models/Question');
-
-// Foydalanuvchi javoblarini saqlash uchun TestModel ni import qilish
-const TestModel = require('./models/TestModel');
 
 // Foydalanuvchi savolga javob berish va natijalarni hisoblash
 const   UserAnswerPost =  async (req, res) => {
