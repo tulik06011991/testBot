@@ -30,8 +30,10 @@ const getUserId = async (req, res) => {
         const user = await AuthModel.findById(id);
         if(!user){
           res.status(400).send(`bunday  foydalanuvchi topilmadi`)
+      }else{
+
+          res.status(200).json(user);
       }
-      res.status(200).json(user);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
