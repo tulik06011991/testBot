@@ -4,6 +4,7 @@ const AuthModel = require('../Model/AuthModel');
 const createUser = async (req, res) => {
   try {
     const newUser = await AuthModel.create(req.body);
+   
     res.status(201).json(newUser);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -14,6 +15,9 @@ const createUser = async (req, res) => {
 const getUsers = async (req, res) => {
   try {
     const users = await AuthModel.find();
+    if(!newUser){
+        res.status(400).send(`foydalanuvchilar topilmadi`)
+    }
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -22,7 +26,11 @@ const getUsers = async (req, res) => {
 
 const getUserId = async (req, res) => {
     try {
-      const user = await AuthModel.findById(req.params.id);
+        const { id } = req.params;
+      const user = await AuthModel.findById(id);
+      if(!user){
+        res.status(400).send(`bunday ${id} foydalanuvchi topilmadi`)
+    }
       res.status(200).json(user);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -35,6 +43,9 @@ const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
     const updatedUser = await AuthModel.findByIdAndUpdate(id, req.body, { new: true });
+    if(!updatedUser){
+        res.status(400).send(` bunday ${id} foydalanuvchilar topilmadi`)
+    }
     res.status(200).json(updatedUser);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -46,6 +57,9 @@ const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
     await AuthModel.findByIdAndDelete(id);
+    if(!id){
+        res.status(400).send(` bunday ${id} foydalanuvchilar topilmadi`)
+    }
     res.status(204).send();
   } catch (error) {
     res.status(500).json({ error: error.message });
