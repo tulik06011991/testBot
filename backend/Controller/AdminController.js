@@ -20,7 +20,7 @@ const adminSavollarPost =  async (req, res) => {
     const { title, options, correctAnswer } = req.body;
     const question = new Question({ title, options, correctAnswer });
     await question.save();
-    res.json({ message: 'Savol muvaffaqiyatli qo\'shildi' });
+    res.json(question);
   } catch (error) {
     console.error('Xatolik:', error);
     res.status(500).json({ error: 'Savol qo\'shishda xatolik yuz berdi' });
@@ -33,4 +33,4 @@ const adminSavollarPost =  async (req, res) => {
 module.exports = {
     adminSavollarGet,
     adminSavollarPost
-}
+};

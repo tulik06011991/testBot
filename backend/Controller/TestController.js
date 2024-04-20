@@ -1,12 +1,12 @@
 const Question = require('../Model/TestModel');
-const  TestModel = require('../Model/UserModel');
+const TestModel = require('../Model/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 
 
 
-const QuestionGet  = async (req, res) => {
+const QuestionGet = async (req, res) => {
   try {
     const questions = await Question.find();
     res.json(questions);
@@ -21,7 +21,7 @@ const QuestionGet  = async (req, res) => {
 
 
 // Foydalanuvchi savolga javob berish va natijalarni hisoblash
-const   UserAnswerPost =  async (req, res) => {
+const UserAnswerPost = async (req, res) => {
   try {
     const { userId, questionId, userAnswer } = req.body;
 
@@ -33,12 +33,13 @@ const   UserAnswerPost =  async (req, res) => {
     }
 
     // Foydalanuvchi javobini tekshirish
-    const isCorrect = userAnswer !== null && userAnswer === question.correctAnswer;
 
     // Agar foydalanuvchi savol variantlaridan birini tanlamagan bo'lsa, 404 HTTP status kodi bilan foydalanuvchiga xabar berish
-    if (!isCorrect) {
+    if (userAnswer === null || userAnswer.length === 0) {
       return res.status(404).json({ error: 'Foydalanuvchi hech bir variantni tanlamagan' });
     }
+
+
 
     // Natijani saqlash
     await TestModel.create({

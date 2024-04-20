@@ -4,7 +4,7 @@ const {QuestionGet,
     UserAnswerPost} = require('../Controller/TestController')
 
 router.post('/answer/post', UserAnswerPost);
-router.get('/answer/get', QuestionGet)
+router.get('/answer/get', QuestionGet);
 
 
 module.exports = router

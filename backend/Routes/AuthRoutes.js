@@ -13,4 +13,4 @@ router.get("/logout", logout);
 
 
 
-module.exports = router
+module.exports = router;

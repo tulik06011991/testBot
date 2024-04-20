@@ -15,7 +15,7 @@ app.use(cors());
 app.use('/auth', auth);
 app.use('/ques', adminQueistion)
 app.use('/test', testUser);
-app.use('/foydalanuvchi', users)
+app.use('/foydalanuvchi', users);
 
 
 mongoose.connect(process.env.MONGO_URL)
