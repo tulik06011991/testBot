@@ -26,11 +26,9 @@ const getUsers = async (req, res) => {
 
 const getUserId = async (req, res) => {
     try {
-        const { id } = req.params;
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(400).json({ error: 'Invalid user ID' });
-          }
-        const user = await AuthModel.findById(id);
+        const { _id } = req.params;
+       
+        const user = await AuthModel.findById(_id);
         if(!user){
           res.status(400).send(`bunday  foydalanuvchi topilmadi`)
       }
