@@ -16,7 +16,7 @@ const getUsers = async (req, res) => {
   try {
     const users = await AuthModel.find();
     if(!users){
-        res.status(400).send(`foydalanuvchilar topilmadi`)
+        res.status(404).send(`foydalanuvchilar topilmadi`)
     }
     res.status(200).json(users);
   } catch (error) {
@@ -26,18 +26,21 @@ const getUsers = async (req, res) => {
 
 const getUserId = async (req, res) => {
     try {
-        const { id } = req.params;
-        const user = await AuthModel.findById(id);
-        if(!user){
-          res.status(400).send(`bunday  foydalanuvchi topilmadi`)
-      }else{
-
-          res.status(200).json(user);
+      const { id } = req.params;
+      // Mongoose to'g'ri ID ni olish uchun findById funksiyasini ishlatamiz
+      const user = await AuthModel.findById(id);
+      // Agar foydalanuvchi topilmagan bo'lsa 404 qaytarib chiqamiz
+      if (!user) {
+        return res.status(404).send(`Bunday foydalanuvchi topilmadi`);
       }
+      // Foydalanuvchi topilsa, uni 200 status kodi bilan JSON shaklida qaytarib beramiz
+      res.status(200).json(user);
     } catch (error) {
+      // Agar xato yuz berib qolsa, 500 status kodi bilan xato haqida xabar qaytarib beramiz
       res.status(500).json({ error: error.message });
     }
   };
+  
   
 
 // UPDATE - Foydalanuvchi ma'lumotlarini yangilash
@@ -46,7 +49,7 @@ const updateUser = async (req, res) => {
     const { id } = req.params;
     const updatedUser = await AuthModel.findByIdAndUpdate(id, req.body, { new: true });
     if(!updatedUser){
-        res.status(400).send(` bunday ${id} foydalanuvchilar topilmadi`)
+        res.status(404).send(` bunday ${id} foydalanuvchilar topilmadi`)
     }
     res.status(200).json(updatedUser);
   } catch (error) {
@@ -59,7 +62,7 @@ const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
     if(!id){
-        res.status(400).send(` bunday ${id} foydalanuvchilar topilmadi`)
+        res.status(404).send(` bunday ${id} foydalanuvchilar topilmadi`)
     }
     await AuthModel.findByIdAndDelete(id);
     res.status(204).send();
