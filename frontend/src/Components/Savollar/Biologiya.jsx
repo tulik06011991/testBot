@@ -11,7 +11,7 @@ const Quiz = () => {
     // Savollarni serverdan olish
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get('/api/questions');
+        const response = await axios.get('http://localhost:3000/test/answer/post');
         setQuestions(response.data.questions);
         // Foydalanuvchi javoblari uchun bo'sh massivni yaratish
         setUserAnswers(Array(response.data.questions.length).fill(''));
