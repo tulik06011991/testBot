@@ -22,11 +22,11 @@ const Login = () => {
           withCredentials: true
         },
       );
-      console.log(response.data)
+      console.log(email)
       if (response.data.isAdmin) {
         navigate('/dashboard');
       } else {
-        navigate('/userMain');
+        navigate('/menu');
       }
     } catch (error) {
       console.log(error);
