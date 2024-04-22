@@ -33,7 +33,7 @@ const Quiz = () => {
     e.preventDefault();
     try {
       // Foydalanuvchi javoblarni serverga yuborish
-      const response = await axios.post('/api/submit-answer', {
+      const response = await axios.post('http://localhost:3000/test/answer/post', {
         userId: 'user_id', // Foydalanuvchi identifikatori
         questionId: questions[currentQuestionIndex]._id,
         userAnswer: userAnswers[currentQuestionIndex]

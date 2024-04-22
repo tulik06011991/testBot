@@ -23,29 +23,29 @@ const Quiz = () => {
     fetchQuestions();
   }, []);
   
-  const handleAnswerChange = (e) => {
-    const updatedUserAnswers = [...userAnswers];
-    updatedUserAnswers[currentQuestionIndex] = e.target.value;
-    setUserAnswers(updatedUserAnswers);
-  };
+  // const handleAnswerChange = (e) => {
+  //   const updatedUserAnswers = [...userAnswers];
+  //   updatedUserAnswers[currentQuestionIndex] = e.target.value;
+  //   setUserAnswers(updatedUserAnswers);
+  // };
   
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // Foydalanuvchi javoblarni serverga yuborish
-      const response = await axios.post('/api/submit-answer', {
-        userId: 'user_id', // Foydalanuvchi identifikatori
-        questionId: questions[currentQuestionIndex]._id,
-        userAnswer: userAnswers[currentQuestionIndex]
-      });
-      setMessage(response.data.message);
-      // Keyingi savolga o'tish
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } catch (error) {
-      console.error('Xatolik:', error);
-      setMessage('Javobni yuborishda xatolik yuz berdi');
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     // Foydalanuvchi javoblarni serverga yuborish
+  //     const response = await axios.post('/api/submit-answer', {
+  //       userId: 'user_id', // Foydalanuvchi identifikatori
+  //       questionId: questions[currentQuestionIndex]._id,
+  //       userAnswer: userAnswers[currentQuestionIndex]
+  //     });
+  //     setMessage(response.data.message);
+  //     // Keyingi savolga o'tish
+  //     setCurrentQuestionIndex(currentQuestionIndex + 1);
+  //   } catch (error) {
+  //     console.error('Xatolik:', error);
+  //     setMessage('Javobni yuborishda xatolik yuz berdi');
+  //   }
+  // };
 
   return (
     <div>
