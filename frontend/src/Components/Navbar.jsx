@@ -36,7 +36,7 @@ const Navbar = () => {
 
               <i className="fa-sharp fa-solid fa-circle-xmark fa-2xl -left-5 absolute  text-gray-500 border-solid"><button className='hover:bg-blue-500  rounded w-full'></button></i>
               <br /><br />
-                <div className='font-bold text-gray'>_________________________</div>
+                <div className='font-bold text-gray'>_____________________</div>
                 </div>
                 <br /><br /><br /><br />
                 <li className=' mt-12 hover:bg-gray-400 rounded py-4 px-6 font-bold hover:text-white tracking-widest w-full'>Home<i className="fa-sharp fa-solid fa-house absolute left-12 py-1 items-center"></i></li>
