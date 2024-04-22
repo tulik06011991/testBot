@@ -9,7 +9,7 @@ import Biologiya from './Components/Savollar/Biologiya';
 import Tarix from './Components/Savollar/Tarix';
 import Ingliz_tili from './Components/Savollar/Ingliz_tili'
 import Javob from './Components/Savollar/Javob'
-
+import Logout from './Components/Logout'
 
 
 function App() {
@@ -42,6 +42,9 @@ function App() {
     </Routes>
     <Routes>
       <Route path='/javob' element = {<Javob/>}/>
+    </Routes>
+    <Routes>
+      <Route path='/logout' element = {<Logout/>}/>
     </Routes>
    
        
