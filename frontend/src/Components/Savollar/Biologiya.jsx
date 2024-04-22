@@ -29,7 +29,16 @@ fetchData()
 },[])
 console.log(Data)
   return (
-    <div>Biologiya</div>
+    <div className='ml-8'>
+      <br /><br /><br /><br />{Data.map((d , index) =>(
+      <div key={index}><br /><br />
+
+      <h1>{d.title} </h1>
+      <h2> {d.options.map((variant, index) =>(
+        <h3> {variant} </h3>
+      ))} </h2>
+      </div>
+    ))}</div>
   )
 }
 
