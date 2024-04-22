@@ -47,7 +47,7 @@ const Navbar = () => {
               <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
               <div className=' py-4 hover:bg-gray-400 rounded px-6  font-bold hover:text-white tracking-widest w-full'>
            
-              <button className='relative mx-6'>Sign-out<i className="fa-sharp fa-solid fa-right-from-bracket ml-3"><Link to={'/logout'} ></Link></i></button>
+              <button className='relative mx-6'><Link to={'/logout'}>Sign-out</Link><i className="fa-sharp fa-solid fa-right-from-bracket ml-3"></i></button>
               
               </div>
             </div>
