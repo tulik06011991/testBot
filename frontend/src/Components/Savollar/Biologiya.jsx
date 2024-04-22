@@ -34,8 +34,22 @@ console.log(Data)
       <div key={index}><br /><br />
 
       <h1>{d.title} </h1>
+      
       <h2> {d.options.map((variant, index) =>(
-        <h3> {variant} </h3>
+        <div>
+          
+          <input
+                type="radio"
+                id={variant}
+                name="answer"
+                value={variant}
+            
+              />
+                <label htmlFor={variant}>{variant}</label>
+         
+
+
+        </div>
       ))} </h2>
       </div>
     ))}</div>
