@@ -23,10 +23,10 @@ function App() {
     <Navbar/>
     
     <Routes>
-      <Route path='/' element = {<Register/>}/>
+      <Route path='/' element = {<Login/>}/>
     </Routes>
     <Routes>
-      <Route path='/login' element = {<Login/>}/>
+      <Route path='/register' element = {<Register/>}/>
     </Routes>
     <Routes>
       <Route path='/menu' element = {<Menu/>}/>

@@ -17,7 +17,7 @@ const Logout = () => {
               });
               const token = response.headers.get('access_token')
               if(!token){
-                  navigate('/login')
+                  navigate('/')
               }
               // Ekranga chiqaramiz
             } catch (error) {
