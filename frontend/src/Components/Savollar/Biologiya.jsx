@@ -45,7 +45,7 @@ console.log(Data)
                 value={variant}
             
               />
-                <label htmlFor={variant}>{variant}</label>
+                <label >{variant}</label>
          
 
 
