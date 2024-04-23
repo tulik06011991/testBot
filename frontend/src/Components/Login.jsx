@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {useNavigate } from 'react-router-dom';
 
+
 const Login = () => {
 
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const[Data, setData] = useState([])
   
   const handleSubmitt = async (e) => {
     e.preventDefault();
@@ -22,12 +24,18 @@ const Login = () => {
           withCredentials: true
         },
       );
-      console.log(email)
+     
+      setData(response.data._id);
+      
+      
+      
       if (response.data.isAdmin) {
-        navigate('/dashboard');
-      } else {
-        navigate('/menu');
-      }
+         navigate('/menu');
+       } else {
+         navigate('/menu');
+       }
+
+     
     } catch (error) {
       console.log(error);
     }
@@ -41,17 +49,18 @@ const Login = () => {
             <h1 className="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Login</h1>
             
             <div>
-              <label className="text-gray-800 font-semibold block my-3 text-md" for="email">Email</label>
+              <label className="text-gray-800 font-semibold block my-3 text-md" htmlFor="email">Email</label>
               <input   onChange={(e) => setEmail(e.target.value)} className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="email" id="email" placeholder="@email" />
             </div>
             <div>
-              <label className="text-gray-800 font-semibold block my-3 text-md" for="password">Password</label>
+              <label className="text-gray-800 font-semibold block my-3 text-md" htmlFor="password">Password</label>
               <input   onChange={(e) => setPassword(e.target.value)} className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="password" id="password" placeholder="password" />
             </div>
             
             <button type="submit" className="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Login</button>
             
           </form>
+          {Data}
         </div>
       </div>
     </div>
