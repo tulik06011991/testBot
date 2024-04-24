@@ -8,7 +8,7 @@ const Biologiya = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
   const [message, setMessage] = useState('');
-  const [natija, setNatija] = useState(0)
+  const [results, setResults] = useState(null); // Natijalar
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -34,13 +34,16 @@ const Biologiya = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:3000/test/answer/post', {
-        userId: user,
+        userId: user, // Foydalanuvchi identifikatori
         questionId: questions[currentQuestionIndex]._id,
         userAnswer: userAnswers[currentQuestionIndex]
       });
       setMessage(response.data.message);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setNatija(response.data)
+
+      // Natijalarni olish
+      const resultResponse = await axios.get(`http://localhost:3000/test/result/${user}`);
+      setResults(resultResponse.data);
     } catch (error) {
       console.error('Xatolik:', error);
       setMessage('Javobni yuborishda xatolik yuz berdi');
@@ -76,6 +79,17 @@ const Biologiya = () => {
       ) : (
         <p>Savollar yuklanmoqda...</p>
       )}
+
+      {/* Natijalarni ko'rsatish */}
+      {results && (
+        <div>
+          <p>Sizning natijalaringiz:</p>
+          <p>Umumiy savollar soni: {results.totalQuestions}</p>
+          <p>To'g'ri javoblar soni: {results.correctCount}</p>
+          <p>Sizning ballaringiz: {results.userScore}</p>
+        </div>
+      )}
+      
       {message && <p>{message}</p>}
     </div>
   );
