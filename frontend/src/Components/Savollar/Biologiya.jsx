@@ -1,10 +1,10 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-
+import React, { useContext, useEffect, useState } from 'react'
+import UserContext from '../userContext'
 
 
 const Biologiya = () => {
-
+const {user} = useContext(UserContext)
 const [Data, setdata] = useState([])
 
 useEffect(() =>{
@@ -53,6 +53,7 @@ console.log(Data)
 
         </div>
       ))} </h2>
+      <h2>{user}</h2>
       </div>
     ))}</div>
   )
