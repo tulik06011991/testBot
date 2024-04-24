@@ -8,6 +8,7 @@ const Biologiya = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
   const [message, setMessage] = useState('');
+  const [natija, setNatija] = useState(0)
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -39,11 +40,13 @@ const Biologiya = () => {
       });
       setMessage(response.data.message);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setNatija(response.data)
     } catch (error) {
       console.error('Xatolik:', error);
       setMessage('Javobni yuborishda xatolik yuz berdi');
     }
   };
+  
 
   return (
     <div>
@@ -66,6 +69,7 @@ const Biologiya = () => {
           ))}
           <button type="submit">Keyingi savol</button>
         </form>
+        
       ) : (
         <p>Savollar yuklanmoqda...</p>
       )}
