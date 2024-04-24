@@ -31,7 +31,7 @@ const Login = () => {
       
       if (response.data.isAdmin) {
         console.log(Data)
-        //  navigate('/menu');
+         navigate('/menu');
        } else {
          navigate('/menu');
        }
