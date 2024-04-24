@@ -8,7 +8,7 @@ const Biologiya = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
   const [message, setMessage] = useState('');
-  const [natija , setnatija] = useState(0)
+  const [natija , setNatija] = useState(0)
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -40,6 +40,7 @@ const Biologiya = () => {
       });
       setMessage(response.data.message);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      console.log(response.data.userScore)
     } catch (error) {
       console.error('Xatolik:', error);
       setMessage('Javobni yuborishda xatolik yuz berdi');
