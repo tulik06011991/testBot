@@ -17,10 +17,10 @@ const userResultSchema = new mongoose.Schema({
   correct: Boolean // To'g'ri javobni tekshirish
 });
 
-userResultSchema.statics.getUserResultsById = async function(userId) {
-  return await this.find({ userId }).populate('questionId');
+const getUserResultsByUserId = async (userId) => {
+  return await TestModel.find({ userId }).populate('questionId');
 };
 
 
 const TestModel  = mongoose.model('UserResult', userResultSchema);
- module.exports = TestModel
+ module.exports ={ TestModel, getUserResultsByUserId}
