@@ -21,6 +21,7 @@ const AddQuestionForm = () => {
         options,
         correctAnswer
       });
+      console.log(response)
       setMessage(response.data.message);
     } catch (error) {
       console.error('Xatolik:', error);
