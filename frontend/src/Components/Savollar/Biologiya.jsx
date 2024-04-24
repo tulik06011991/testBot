@@ -52,7 +52,8 @@ const Biologiya = () => {
   console.log(message)
 
   return (
-    <div>
+    <div className='bg-gray-300 h-screen'>
+    <div className='w-full ml-8 '>
       <br /><br /><br /><br />
       {questions.length > 0 ? (
         <form onSubmit={handleSubmit}>
@@ -81,6 +82,7 @@ const Biologiya = () => {
         <p>Savollar yuklanmoqda...</p>
       )}
       {message && <p>{message}</p>}
+    </div>
     </div>
   );
 }
