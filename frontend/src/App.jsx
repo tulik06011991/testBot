@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+
 import './index.css'
 import Navbar from './Components/Navbar'
 import Register from './Components/Register'
@@ -26,9 +26,15 @@ function App() {
    
     <Navbar/>
     
+
     
+
     <Routes>
-      <Route path='/login' element = {<Login/>}/>
+      <Route path='/' element = {<Login/>}/>
+    </Routes>
+
+    <Routes>
+      <Route path='/register' element = {<Register/>}/>
     </Routes>
     <Routes>
       <Route path='/menu' element = {<Menu/>}/>

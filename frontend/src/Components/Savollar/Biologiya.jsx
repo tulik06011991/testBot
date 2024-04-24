@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
+
+
 const Biologiya = () => {
 
 const [Data, setdata] = useState([])
@@ -45,7 +47,7 @@ console.log(Data)
                 value={variant}
             
               />
-                <label htmlFor={variant}>{variant}</label>
+                <label >{variant}</label>
          
 
 
