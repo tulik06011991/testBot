@@ -60,14 +60,14 @@ const Biologiya = () => {
           <h2 className='font-bold text-xl'>{questions[currentQuestionIndex].title}</h2>
           <br /><br />
           {questions[currentQuestionIndex].options.map((option, index) => (
-            <div key={index} className='bg-blue-350 shadow  my-8 text-xl hover:bg-blue-500 py-6 rounded'>
+            <div key={index} className='bg-blue-350 shadow  my-4 text-xl hover:bg-blue-500 py-6 rounded'>
               <input
                 type="radio"
                 id={option}
                 name="answer"
                 value={option}
                 onChange={handleAnswerChange}
-                checked={userAnswers[currentQuestionIndex] === option}
+                checked={userAnswers[currentQuestionIndex] === option} className='mx-2'
               />
               <label htmlFor={option}>{option}</label>
             </div>
