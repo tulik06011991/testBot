@@ -6,6 +6,7 @@ const AddQuestionForm = () => {
   const [options, setOptions] = useState(['', '', '', '']);
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [message, setMessage] = useState('');
+  const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
 
   const handleChange = (index, value) => {
     const newOptions = [...options];
@@ -21,6 +22,10 @@ const AddQuestionForm = () => {
         options,
         correctAnswer
       });
+      if(response){
+
+        setUserAnswers(Array(response.data.length).fill(''))
+      }
       console.log(response)
       setMessage(response.data.message);
     } catch (error) {
