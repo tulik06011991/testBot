@@ -32,7 +32,7 @@ const Login = () => {
       
       setUser(response.data._id)
       if (response.data.isAdmin) {
-<<<<<<< HEAD
+
         console.log(Data)
          navigate('/menu');
        } else {
@@ -40,13 +40,7 @@ const Login = () => {
        }
 
      
-=======
-        navigate('/dashboard');
-      } else {
-        navigate('/menu');
-        
-      }
->>>>>>> 4eb634d7ee2954ba415f9a7b99ba59d166a45a72
+
     } catch (error) {
       console.log(error);
     }
