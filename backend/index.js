@@ -18,7 +18,7 @@ app.use(cors(
   }
 ))
 app.use('/auth', auth);
-app.use('/ques', adminQueistion)
+app.use('/questions', adminQueistion)
 app.use('/test', testUser);
 app.use('/foydalanuvchi', users);
 

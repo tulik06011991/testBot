@@ -10,6 +10,7 @@ import Tarix from './Components/Savollar/Tarix';
 import Ingliz_tili from './Components/Savollar/Ingliz_tili'
 import Javob from './Components/Savollar/Javob'
 import Logout from './Components/Logout'
+import AdminSavol from './Components/admin/adminSavol'
 import UserContextProvider from './Components/userContextProvider'
 
 
@@ -45,6 +46,9 @@ function App() {
     </Routes>
     <Routes>
       <Route path='/logout' element = {<Logout/>}/>
+    </Routes>
+    <Routes>
+      <Route path='/adminSavol' element = {<AdminSavol/>}/>
     </Routes>
    
     </UserContextProvider>

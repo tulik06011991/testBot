@@ -16,7 +16,7 @@ const AddQuestionForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/api/questions', {
+      const response = await axios.post('http://localhost:3000/questions/adminPost', {
         title,
         options,
         correctAnswer
@@ -30,6 +30,7 @@ const AddQuestionForm = () => {
 
   return (
     <div>
+      <br /><br /> <br /><br />
       <h2>Savol qo'shish</h2>
       <form onSubmit={handleSubmit}>
         <label>Savol:</label>

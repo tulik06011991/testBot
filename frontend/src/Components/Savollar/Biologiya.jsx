@@ -49,7 +49,7 @@ const Biologiya = () => {
       setMessage('Javobni yuborishda xatolik yuz berdi');
     }
   };
-  console.log(message)
+  console.log(message);
 
   return (
     <div className='bg-gray-300 h-screen'>
