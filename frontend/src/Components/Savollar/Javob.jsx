@@ -2,7 +2,7 @@ import React from 'react'
 
 const Javob = () => {
   return (
-    <div>Javob</div>
+    <div><br /><br /><br /><br /><h1 className='text-xl'>tamom</h1></div>
   )
 }
 
