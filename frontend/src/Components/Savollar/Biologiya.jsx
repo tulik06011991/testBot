@@ -8,7 +8,6 @@ const Biologiya = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
   const [message, setMessage] = useState('');
-  const [natija, setNatija] = useState(0)
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -40,22 +39,19 @@ const Biologiya = () => {
       });
       setMessage(response.data.message);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setNatija(response.data)
     } catch (error) {
       console.error('Xatolik:', error);
       setMessage('Javobni yuborishda xatolik yuz berdi');
     }
   };
-  
+  console.log(message)
 
   return (
     <div>
       <br /><br /><br /><br />
-      
       {questions.length > 0 ? (
         <form onSubmit={handleSubmit}>
-          <h2 className='font-bold text-xl'>{questions[currentQuestionIndex].title}</h2>
-          <br /><br />
+          <h2>{questions[currentQuestionIndex].title}</h2>
           {questions[currentQuestionIndex].options.map((option, index) => (
             <div key={index}>
               <input
@@ -69,10 +65,8 @@ const Biologiya = () => {
               <label htmlFor={option}>{option}</label>
             </div>
           ))}
-          <br /><br />
-          <button type="submit" className='bg-gray-500 px-4 py-2 rounded'>Keyingi savol</button>
+          <button type="submit">Keyingi savol</button>
         </form>
-        
       ) : (
         <p>Savollar yuklanmoqda...</p>
       )}

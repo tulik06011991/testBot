@@ -17,10 +17,13 @@ const userResultSchema = new mongoose.Schema({
   correct: Boolean // To'g'ri javobni tekshirish
 });
 
-const getUserResultsByUserId = async (userId) => {
-  return await TestModel.find({ userId }).populate('questionId');
-};
 
 
 const TestModel  = mongoose.model('UserResult', userResultSchema);
- module.exports ={ TestModel, getUserResultsByUserId}
+
+module.exports = TestModel
+// module.exports ={ TestModel, getUserResultsByUserId}
+
+// const getUserResultsByUserId = async (userId) => {
+//   return await TestModel.find({ userId }).populate('questionId');
+// };

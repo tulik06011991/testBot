@@ -1,7 +1,11 @@
 const Question = require('../Model/TestModel');
-const TestModel = require('../Model/UserModel');
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const TestModel = require('../Model/UserModel');
+console.log(TestModel)
+
+
 
 
 
