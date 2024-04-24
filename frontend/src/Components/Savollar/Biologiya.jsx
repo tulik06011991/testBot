@@ -70,7 +70,7 @@ const Biologiya = () => {
               <label htmlFor={option}>{option}</label>
             </div>
           ))}
-          <button type="submit">Keyingi savol</button>
+          <button type="submit" className='px-4 py-2 bg-blue-500'>Keyingi savol</button>
           {currentQuestionIndex === questions.length - 1 && (
             navigate('/javob') // "to" atributiga o'tish kerakli URL ni kiritish
           )}
