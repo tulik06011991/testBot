@@ -19,6 +19,11 @@ const userResultSchema = new mongoose.Schema({
 
 
 
-
 const TestModel  = mongoose.model('UserResult', userResultSchema);
- module.exports = TestModel
+
+module.exports = TestModel
+// module.exports ={ TestModel, getUserResultsByUserId}
+
+// const getUserResultsByUserId = async (userId) => {
+//   return await TestModel.find({ userId }).populate('questionId');
+// };

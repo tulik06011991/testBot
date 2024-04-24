@@ -1,4 +1,5 @@
 const AuthModel = require('../Model/AuthModel');
+const {TestModel, getUserResultsByUserId} = require('../Model/UserModel');
 
 // CREATE - Foydalanuvchi qo'shish
 const createUser = async (req, res) => {
@@ -10,6 +11,9 @@ const createUser = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+
 
 // READ - Barcha foydalanuvchilarni olish
 const getUsers = async (req, res) => {
@@ -23,6 +27,25 @@ const getUsers = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const getJavobId = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    // getUserResultsByUserId funksiyasini ishlatish
+    const userResults = await getUserResultsByUserId(userId);
+    // Agar foydalanuvchi topilmagan bo'lsa 404 qaytarib chiqamiz
+    if (!userResults) {
+      return res.status(404).send(`Bunday foydalanuvchi topilmadi`);
+    }
+    // Foydalanuvchi topilsa, uni 200 status kodi bilan JSON shaklida qaytarib beramiz
+    res.status(200).json(userResults);
+  } catch (error) {
+    // Agar xato yuz berib qolsa, 500 status kodi bilan xato haqida xabar qaytarib beramiz
+    res.status(500).json({ error: error.message });
+  }
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const getUserId = async (req, res) => {
     try {
@@ -76,6 +99,7 @@ module.exports = {
   getUsers,
   updateUser,
   deleteUser,
-  getUserId
+  getUserId,
+  getJavobId
 };
 

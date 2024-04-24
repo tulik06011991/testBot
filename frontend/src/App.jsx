@@ -10,21 +10,21 @@ import Tarix from './Components/Savollar/Tarix';
 import Ingliz_tili from './Components/Savollar/Ingliz_tili'
 import Javob from './Components/Savollar/Javob'
 import Logout from './Components/Logout'
+import UserContextProvider from './Components/userContextProvider'
 
 
 function App() {
- 
-
   return (
-    <>
-
-
-   
-    <Navbar/>
     
+    <>
+    <UserContextProvider>
+
+
+    <Navbar/>
     <Routes>
       <Route path='/' element = {<Login/>}/>
     </Routes>
+
     <Routes>
       <Route path='/register' element = {<Register/>}/>
     </Routes>
@@ -47,6 +47,7 @@ function App() {
       <Route path='/logout' element = {<Logout/>}/>
     </Routes>
    
+    </UserContextProvider>
        
     </>
   )

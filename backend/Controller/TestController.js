@@ -1,7 +1,11 @@
 const Question = require('../Model/TestModel');
-const TestModel = require('../Model/UserModel');
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const TestModel = require('../Model/UserModel');
+console.log(TestModel)
+
+
 
 
 
@@ -39,6 +43,7 @@ const UserAnswerPost = async (req, res) => {
       return res.status(404).json({ error: 'Foydalanuvchi hech bir variantni tanlamagan' });
     }
 
+    const isCorrect = userAnswer === question.correctAnswer;
 
 
     // Natijani saqlash

@@ -1,15 +1,20 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import {useNavigate } from 'react-router-dom';
-
+import UserContext from './userContext';
 
 const Login = () => {
 
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const[Data, setData] = useState([])
+  const [userData, setUserData] = useState(null)
+
+  const {setUser} = useContext(UserContext)
+
+
+ 
   
   const handleSubmitt = async (e) => {
     e.preventDefault();
@@ -24,12 +29,10 @@ const Login = () => {
           withCredentials: true
         },
       );
-     
-      setData(response.data._id);
       
-      
-      
+      setUser(response.data._id)
       if (response.data.isAdmin) {
+<<<<<<< HEAD
         console.log(Data)
          navigate('/menu');
        } else {
@@ -37,10 +40,20 @@ const Login = () => {
        }
 
      
+=======
+        navigate('/dashboard');
+      } else {
+        navigate('/menu');
+        
+      }
+>>>>>>> 4eb634d7ee2954ba415f9a7b99ba59d166a45a72
     } catch (error) {
       console.log(error);
     }
   };
+
+console.log()
+
   return (
     <div>
       
@@ -50,18 +63,17 @@ const Login = () => {
             <h1 className="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Login</h1>
             
             <div>
-              <label className="text-gray-800 font-semibold block my-3 text-md" htmlFor="email">Email</label>
+              <label className="text-gray-800 font-semibold block my-3 text-md" for="email">Email</label>
               <input   onChange={(e) => setEmail(e.target.value)} className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="email" id="email" placeholder="@email" />
             </div>
             <div>
-              <label className="text-gray-800 font-semibold block my-3 text-md" htmlFor="password">Password</label>
+              <label className="text-gray-800 font-semibold block my-3 text-md" for="password">Password</label>
               <input   onChange={(e) => setPassword(e.target.value)} className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="password" id="password" placeholder="password" />
             </div>
             
             <button type="submit" className="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Login</button>
             
           </form>
-          {Data}
         </div>
       </div>
     </div>
