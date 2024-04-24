@@ -33,7 +33,7 @@ const Login = () => {
       setUser(response.data._id)
       if (response.data.isAdmin) {
 
-        console.log(Data)
+        
          navigate('/menu');
        } else {
          navigate('/menu');
