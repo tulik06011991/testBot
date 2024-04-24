@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Biologiya = () => {
   const { user } = useContext(UserContext);
+  const { setNatija } = useContext(UserContext);
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
@@ -43,7 +44,9 @@ const Biologiya = () => {
       });
       setMessage(response.data.message);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      console.log(response.data)
+
+      
+      setNatija(response.data)
     } catch (error) {
       console.error('Xatolik:', error);
       setMessage('Javobni yuborishda xatolik yuz berdi');
