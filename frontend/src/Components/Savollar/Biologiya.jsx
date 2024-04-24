@@ -51,9 +51,11 @@ const Biologiya = () => {
   return (
     <div>
       <br /><br /><br /><br />
+      
       {questions.length > 0 ? (
         <form onSubmit={handleSubmit}>
-          <h2>{questions[currentQuestionIndex].title}</h2>
+          <h2 className='font-bold'>{questions[currentQuestionIndex].title}</h2>
+          <br /><br />
           {questions[currentQuestionIndex].options.map((option, index) => (
             <div key={index}>
               <input
@@ -67,7 +69,8 @@ const Biologiya = () => {
               <label htmlFor={option}>{option}</label>
             </div>
           ))}
-          <button type="submit">Keyingi savol</button>
+          <br /><br />
+          <button type="submit" className='bg-gray-500 px-4 py-2 rounded'>Keyingi savol</button>
         </form>
         
       ) : (
