@@ -56,7 +56,7 @@ const Biologiya = () => {
       <br /><br /><br /><br />
       {questions.length > 0 ? (
         <form onSubmit={handleSubmit}>
-          <h2>{questions[currentQuestionIndex].title}</h2>
+          <h2 className='font-bold text-xl'>{questions[currentQuestionIndex].title}</h2>
           {questions[currentQuestionIndex].options.map((option, index) => (
             <div key={index}>
               <input
@@ -70,7 +70,8 @@ const Biologiya = () => {
               <label htmlFor={option}>{option}</label>
             </div>
           ))}
-          <button type="submit" className='px-4 py-2 bg-blue-500'>Keyingi savol</button>
+          <br /><br />
+          <button type="submit" className='px-4 py-2 rounded bg-blue-500'>Keyingi savol</button>
           {currentQuestionIndex === questions.length - 1 && (
             navigate('/javob') // "to" atributiga o'tish kerakli URL ni kiritish
           )}
