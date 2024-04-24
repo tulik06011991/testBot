@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Quiz = () => {
+const Ingliz_tili = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
@@ -75,4 +75,4 @@ const Quiz = () => {
   );
 };
 
-export default Quiz;
+export default Ingliz_tili;
