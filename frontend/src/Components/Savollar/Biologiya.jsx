@@ -68,6 +68,9 @@ const Biologiya = () => {
             </div>
           ))}
           <button type="submit">Keyingi savol</button>
+          {currentQuestionIndex === questions.length - 1 && (
+            <Link to="/javob">Boshqa sahifaga o'tish</Link> // "to" atributiga o'tish kerakli URL ni kiritish
+          )}
         </form>
       ) : (
         <p>Savollar yuklanmoqda...</p>
