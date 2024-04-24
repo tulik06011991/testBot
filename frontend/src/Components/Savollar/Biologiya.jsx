@@ -54,7 +54,7 @@ const Biologiya = () => {
       
       {questions.length > 0 ? (
         <form onSubmit={handleSubmit}>
-          <h2 className='font-bold'>{questions[currentQuestionIndex].title}</h2>
+          <h2 className='font-bold text-xl'>{questions[currentQuestionIndex].title}</h2>
           <br /><br />
           {questions[currentQuestionIndex].options.map((option, index) => (
             <div key={index}>
