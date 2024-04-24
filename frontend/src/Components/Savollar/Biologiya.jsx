@@ -8,6 +8,7 @@ const Biologiya = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
   const [message, setMessage] = useState('');
+  const [natija , setnatija] = useState(0)
 
   useEffect(() => {
     const fetchQuestions = async () => {
