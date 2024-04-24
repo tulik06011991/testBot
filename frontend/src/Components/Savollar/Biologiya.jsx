@@ -1,23 +1,19 @@
-import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
-import UserContext from '../userContext'
-
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import UserContext from '../userContext';
 
 const Biologiya = () => {
-const {user} = useContext(UserContext)
-const [Data, setdata] = useState([])
-const [questions, setQuestions] = useState([]);
+  const { user } = useContext(UserContext);
+  const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
+  const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
   const [message, setMessage] = useState('');
-  
+
   useEffect(() => {
-    // Savollarni serverdan olish
     const fetchQuestions = async () => {
       try {
         const response = await axios.get('http://localhost:3000/test/answer/get');
         setQuestions(response.data);
-        // Foydalanuvchi javoblari uchun bo'sh massivni yaratish
         setUserAnswers(Array(response.data.length).fill(''));
       } catch (error) {
         console.error('Xatolik:', error);
@@ -26,25 +22,22 @@ const [questions, setQuestions] = useState([]);
     };
     fetchQuestions();
   }, []);
-  console.log(questions)
-  
+
   const handleAnswerChange = (e) => {
     const updatedUserAnswers = [...userAnswers];
     updatedUserAnswers[currentQuestionIndex] = e.target.value;
     setUserAnswers(updatedUserAnswers);
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Foydalanuvchi javoblarni serverga yuborish
       const response = await axios.post('http://localhost:3000/test/answer/post', {
-        userId: {user}, // Foydalanuvchi identifikatori
+        userId: user,
         questionId: questions[currentQuestionIndex]._id,
         userAnswer: userAnswers[currentQuestionIndex]
       });
       setMessage(response.data.message);
-      // Keyingi savolga o'tish
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } catch (error) {
       console.error('Xatolik:', error);
@@ -81,4 +74,4 @@ const [questions, setQuestions] = useState([]);
   );
 }
 
-export default Biologiya
+export default Biologiya;
