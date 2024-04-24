@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {useNavigate } from 'react-router-dom';
 
@@ -8,6 +8,10 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userData, setUserData] = useState(null)
+
+
+ 
   
   const handleSubmitt = async (e) => {
     e.preventDefault();
@@ -22,16 +26,21 @@ const Login = () => {
           withCredentials: true
         },
       );
-      console.log(email)
+      
       if (response.data.isAdmin) {
         navigate('/dashboard');
       } else {
         navigate('/menu');
+        
       }
+      setUserData(response.data)
     } catch (error) {
       console.log(error);
     }
   };
+
+
+
   return (
     <div>
       
