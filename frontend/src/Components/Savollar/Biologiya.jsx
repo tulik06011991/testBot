@@ -60,7 +60,7 @@ const Biologiya = () => {
           <h2 className='font-bold text-xl'>{questions[currentQuestionIndex].title}</h2>
           <br /><br />
           {questions[currentQuestionIndex].options.map((option, index) => (
-            <div key={index}>
+            <div key={index} className='bg-blue-350 shadow  my-8 text-xl hover:bg-blue-500 '>
               <input
                 type="radio"
                 id={option}
