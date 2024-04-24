@@ -17,6 +17,9 @@ function App() {
   return (
     
     <>
+    <UserContextProvider>
+
+
     <Navbar/>
     <Routes>
       <Route path='/' element = {<Login/>}/>
@@ -44,6 +47,7 @@ function App() {
       <Route path='/logout' element = {<Logout/>}/>
     </Routes>
    
+    </UserContextProvider>
        
     </>
   )
