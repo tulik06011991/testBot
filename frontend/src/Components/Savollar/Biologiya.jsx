@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import UserContext from '../userContext';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Biologiya = () => {
   const { user } = useContext(UserContext);
@@ -8,7 +11,7 @@ const Biologiya = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
   const [message, setMessage] = useState('');
-  const [natija , setNatija] = useState(0)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -69,7 +72,7 @@ const Biologiya = () => {
           ))}
           <button type="submit">Keyingi savol</button>
           {currentQuestionIndex === questions.length - 1 && (
-            <Link to="/javob">Boshqa sahifaga o'tish</Link> // "to" atributiga o'tish kerakli URL ni kiritish
+            navigate('/javob') // "to" atributiga o'tish kerakli URL ni kiritish
           )}
         </form>
       ) : (
