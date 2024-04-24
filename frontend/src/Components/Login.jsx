@@ -1,7 +1,8 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import {useNavigate } from 'react-router-dom';
+import UserContext from './userContext';
 
 const Login = () => {
 
@@ -9,6 +10,8 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userData, setUserData] = useState(null)
+
+  const {setUser} = useContext(UserContext)
 
 
  
@@ -27,13 +30,13 @@ const Login = () => {
         },
       );
       
+      setUser(response.data._id)
       if (response.data.isAdmin) {
         navigate('/dashboard');
       } else {
         navigate('/menu');
         
       }
-      setUserData(response.data)
     } catch (error) {
       console.log(error);
     }
