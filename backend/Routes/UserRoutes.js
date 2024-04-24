@@ -12,6 +12,6 @@ router.get('/user', getUsers );
 router.get('/user/:id', getUserId );
 router.put('/user/:id', updateUser );
 router.delete('/user/:id', deleteUser );
-router.get('/javob/:id', getJavobId );
+router.get('/javob/:userId', getJavobId );
 
 module.exports = router

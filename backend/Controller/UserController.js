@@ -30,11 +30,12 @@ const getUsers = async (req, res) => {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const getJavobId = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { userId } = req.params;
     // Mongoose to'g'ri ID ni olish uchun findById funksiyasini ishlatamiz
-    const user = await TestModel.findById(id);
+    const userResults = await TestModel.getUserResultsById(userId);
+
     // Agar foydalanuvchi topilmagan bo'lsa 404 qaytarib chiqamiz
-    if (!user) {
+    if (!userResults) {
       return res.status(404).send(`Bunday foydalanuvchi topilmadi`);
     }
     // Foydalanuvchi topilsa, uni 200 status kodi bilan JSON shaklida qaytarib beramiz
