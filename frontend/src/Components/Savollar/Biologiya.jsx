@@ -40,7 +40,7 @@ const Biologiya = () => {
       });
       setMessage(response.data.message);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      console.log(response.data.userScore)
+      console.log(response.data.correctCount)
     } catch (error) {
       console.error('Xatolik:', error);
       setMessage('Javobni yuborishda xatolik yuz berdi');
