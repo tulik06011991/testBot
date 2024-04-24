@@ -42,7 +42,7 @@ const Biologiya = () => {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
 
       // Natijalarni olish
-      const resultResponse = await axios.get(`http://localhost:3000/test/result/${user}`);
+      const resultResponse = await axios.get(`http://localhost:3000/foydalanuvchi/javob/${user}`);
       setResults(resultResponse.data);
     } catch (error) {
       console.error('Xatolik:', error);
