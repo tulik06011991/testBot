@@ -9,13 +9,15 @@ const Javob = () => {
   console.log(data)
   return (
     <>
-      <div>
         <br /><br /><br /><br />
+      <div className='flex-col justify-center items-center w-8/12'>
         <h2 className='text-xl font-bold'> Savollarning umumiy soni:  {data.totalQuestions}</h2>
+        <br /><br />
         <h1 className='text-xl font-bold'>
 
           To'g'ri javoblar soni: {data.totalQuestions}
         </h1>
+        <br /><br />
         <h2 className='text-xl font-bold'> Umumiy balingiz : {data.userScore
         }</h2>
 
