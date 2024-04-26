@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import UserContext from '../userContext';
 
-
+// Alloh o'zinga ming qadar shukr!   oxiri uddaladim
 const Javob = () => {
   const { natija } = useContext(UserContext);
 
