@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { useContext, useState } from 'react';
 import UserContext from '../userContext';
+
 
 const Javob = () => {
   const { natija } = useContext(UserContext);
-  console.log(natija)
+  
+  const [data, setData] = useState({natija})
+  console.log(data)
   return (
-    <><br /><br /><br /><br /><div className='text-2xl font-bold'>Tamomladingiz : natija
-      <h3></h3>
+    <>
+    <div>
+    <br /><br /><br /><br />
+    <h1 className='text-xl font-bold'>
+      Javoblar soni: 
+    </h1>
+
+
+    </div>
 
     
-      
-     </div></>
+    
+    </>
+   
   )
 }
 

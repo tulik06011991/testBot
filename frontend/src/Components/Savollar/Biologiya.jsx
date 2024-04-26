@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Biologiya = () => {
   const { user } = useContext(UserContext);
-  const { setNatija } = useContext(UserContext);
+  const {setNatija } = useContext(UserContext); 
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
