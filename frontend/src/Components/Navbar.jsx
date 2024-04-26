@@ -18,10 +18,10 @@ const Navbar = () => {
       <nav className='fixed top-0 left-0 bg-gray-200 w-full shadow'>
         <div className='container m-auto flex justify-between tracking-widest  items-center text-gray-700'>
           <ul className='hidden md:flex items-center pr-10  text-base font-semibold cursor-pointer'>
-            <li className='hover:bg-gray-400 rounded py-3 px-6 my-2 mr-3'>Home</li>
+            <li className='hover:bg-gray-400 rounded py-3 px-6 my-2 mr-3'>Admin<Link to={'/adminSavol'}></Link></li>
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Contact</li>
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Servise</li>
-            <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>About</li>
+            <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Fan<Link to={'/menu'}></Link></li>
           </ul>
           <h1 className='font-bold tracking-widest ml-8  md:left-0 '>Quiz bot</h1>
 
@@ -39,10 +39,10 @@ const Navbar = () => {
                 <div className='font-bold text-gray'>_____________________</div>
                 </div>
                 <br /><br /><br /><br />
-                <li className=' mt-12 hover:bg-gray-400 rounded py-4 px-6 font-bold hover:text-white tracking-widest w-full'>Home<i className="fa-sharp fa-solid fa-house absolute left-12 py-1 items-center"></i></li>
+                <li className=' mt-12 hover:bg-gray-400 rounded py-4 px-6 font-bold hover:text-white tracking-widest w-full'>Admin<Link to={'/adminSavol'}></Link><i className="fa-sharp fa-solid fa-house absolute left-12 py-1 items-center"></i></li>
                 <li className=' py-4 hover:bg-gray-400 rounded px-6  font-bold hover:text-white tracking-widest w-full'>Contact<i className="fa-solid fa-phone-volume absolute left-12 py-1 items-center"></i></li>
                 <li className=' py-4 hover:bg-gray-400 rounded px-6  font-bold hover:text-white tracking-widest w-full'>Servise<i className="fa-solid fa-taxi absolute left-12 py-1 items-center"></i></li>
-                <li className=' py-4 hover:bg-gray-400 rounded px-6  font-bold hover:text-white tracking-widest w-full'>About<i className="fa-solid fa-address-card absolute left-12 py-1 items-center"></i></li>
+                <li className=' py-4 hover:bg-gray-400 rounded px-6  font-bold hover:text-white tracking-widest w-full'>Fan<Link to={'/menu'}></Link><i className="fa-solid fa-address-card absolute left-12 py-1 items-center"></i></li>
               </ul>
               <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
               <div className=' py-4 hover:bg-gray-400 rounded px-6  font-bold hover:text-white tracking-widest w-full'>
