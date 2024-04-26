@@ -19,7 +19,7 @@ const Javob = () => {
         <br /><br />
         <h1 className='text-xl font-bold'>
 
-          To'g'ri javoblar soni: {data.totalQuestions}
+          To'g'ri javoblar soni: {data.correctCount}
         </h1>
         <br /><br />
         <h2 className='text-xl font-bold'> Umumiy balingiz : {data.userScore
