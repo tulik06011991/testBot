@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const AddQuestionForm = () => {
@@ -14,6 +14,8 @@ const AddQuestionForm = () => {
     setOptions(newOptions);
   };
 
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -24,7 +26,7 @@ const AddQuestionForm = () => {
       });
       if(response){
 
-        setUserAnswers(Array(response.data.length).fill(''))
+        // setUserAnswers(Array(response.data.length).fill(''))
       }
       console.log(response)
       setMessage(response.data.message);
@@ -34,27 +36,28 @@ const AddQuestionForm = () => {
     }
   };
 
+
   return (
-    <div>
+    <div className='bg-gray-300 w-full h-screen'>
       <br /><br /> <br /><br />
-      <h2>Savol qo'shish</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Savol:</label>
+      <h2 className='d-flex items-center'>Savol qo'shish</h2>
+      <form onSubmit={handleSubmit} >
+        <label className='ml-8 font-bold py-2 px-2 mx-auto text-xl'>Savol:</label>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-        />
+         className='w-10/12 mx-auto px-2 py-2 my-4  mr-2 rounded'/>
         {options.map((option, index) => (
-          <div key={index}>
-            <label>{`Variant ${index + 1}:`}</label>
+          <div key={index} >
+            <label className='ml-8'>{`Variant ${index + 1}:`}</label>
             <input
               type="text"
               value={option}
               onChange={(e) => handleChange(index, e.target.value)}
               required
-            />
+             className=' ml-8 my-4 mx-auto w-2/4 py-2 rounded'/>
           </div>
         ))}
         <label>To'g'ri javob:</label>
