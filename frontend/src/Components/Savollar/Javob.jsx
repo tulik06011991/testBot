@@ -23,7 +23,7 @@ const Javob = () => {
 
   return (
     <>
-      <br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br /><br />
       <div className=' flex-col justify-center items-center  text-center mx-auto w-8/12'>
         <h2 className='text-xl font-bold '> Savollarning umumiy soni: {data.totalQuestions}</h2>
         <br /><br />
