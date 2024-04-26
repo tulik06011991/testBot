@@ -73,7 +73,41 @@ const UserAnswerPost = async (req, res) => {
 
 
 
+// Barcha ma'lumotlarni o'chirish
+const deleteAnswers =  (req, res) => {
+  TestModel .deleteMany({})
+    .then(() => {
+      console.log('Barcha ma\'lumotlar muvaffaqiyatli o\'chirildi');
+      res.status(200).json({ message: 'Barcha ma\'lumotlar muvaffaqiyatli o\'chirildi' });
+    })
+    .catch((err) => {
+      console.error('Ma\'lumotlarni o\'chirishda xatolik:', err);
+      res.status(500).json({ error: 'Server xatosi, ma\'lumotlar o\'chirilmadi' });
+    });
+};
+
+
+const deleteQuestions =  (req, res) => {
+  Question.deleteMany({})
+    .then(() => {
+      console.log('Barcha ma\'lumotlar muvaffaqiyatli o\'chirildi');
+      res.status(200).json({ message: 'Barcha ma\'lumotlar muvaffaqiyatli o\'chirildi' });
+    })
+    .catch((err) => {
+      console.error('Ma\'lumotlarni o\'chirishda xatolik:', err);
+      res.status(500).json({ error: 'Server xatosi, ma\'lumotlar o\'chirilmadi' });
+    });
+};
+
+
+
+
+
+
+
 module.exports = {
   QuestionGet,
-  UserAnswerPost
+  UserAnswerPost,
+  deleteAnswers,
+  deleteQuestions
 };
