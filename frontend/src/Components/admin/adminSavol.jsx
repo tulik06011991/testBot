@@ -24,7 +24,11 @@ const AddQuestionForm = () => {
         options,
         correctAnswer
       });
-      if(response){
+      if (response) {
+        // Input qiymatlari va to'g'ri javobni tozalash
+        setTitle('');
+        setOptions(['', '', '', '']);
+        setCorrectAnswer('');
 
         // setUserAnswers(Array(response.data.length).fill(''))
       }
@@ -48,7 +52,7 @@ const AddQuestionForm = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-         className='w-10/12 mx-auto px-2 py-2 my-4  mr-2 ml-2 rounded'/>
+          className='w-10/12 mx-auto px-2 py-2 my-4  mr-2 ml-2 rounded' />
         {options.map((option, index) => (
           <div key={index} >
             <label className='ml-8'>{`Variant ${index + 1}:`}</label>
@@ -57,11 +61,11 @@ const AddQuestionForm = () => {
               value={option}
               onChange={(e) => handleChange(index, e.target.value)}
               required
-             className=' ml-8 my-4 mx-auto w-2/4 py-2 rounded'/>
+              className=' ml-8 my-4 mx-auto w-2/4 py-2 rounded' />
           </div>
         ))}
         <label className='mr-4 font-bold ml-8'>To'g'ri javob:</label>
-        <select value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} required  className='my-4 mr-8 py-2 px-2 '>
+        <select value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} required className='my-4 mr-8 py-2 px-2 '>
           <option className='text-center m-4' value="">Tanlang</option>
           {options.map((option, index) => (
             <option key={index} value={option}>{option}</option>
