@@ -40,7 +40,7 @@ const AddQuestionForm = () => {
   return (
     <div className='bg-gray-300 w-full h-screen'>
       <br /><br /> <br /><br />
-      <h2 className='d-flex items-center text-2xl font-bold '>Savol qo'shish</h2>
+      <h2 className='d-flex items-center text-2xl font-bold ml-4'>Savol qo'shish</h2>
       <form onSubmit={handleSubmit} >
         <label className='ml-8 font-bold py-2 px-2 mx-auto text-xl'>Savol:</label>
         <input
@@ -60,7 +60,7 @@ const AddQuestionForm = () => {
              className=' ml-8 my-4 mx-auto w-2/4 py-2 rounded'/>
           </div>
         ))}
-        <label className='mr-4 font-bold'>To'g'ri javob:</label>
+        <label className='mr-4 font-bold ml-8'>To'g'ri javob:</label>
         <select value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} required  className='my-4 mr-8 py-2 px-2 '>
           <option className='text-center m-4' value="">Tanlang</option>
           {options.map((option, index) => (
