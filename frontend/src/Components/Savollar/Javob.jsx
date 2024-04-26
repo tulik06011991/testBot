@@ -4,24 +4,28 @@ import UserContext from '../userContext';
 
 const Javob = () => {
   const { natija } = useContext(UserContext);
-  
+
   const [data] = useState(natija);
   console.log(data)
   return (
     <>
-    <div>
-    <br /><br /><br /><br />
-    <h1 className='text-xl font-bold'>
-      Javoblar soni: {data.totalQuestions}
-    </h1>
+      <div>
+        <br /><br /><br /><br />
+        <h2 className='text-xl font-bold'> Savollarning umumiy soni:  {data.totalQuestions}</h2>
+        <h1 className='text-xl font-bold'>
+
+          To'g'ri javoblar soni: {data.totalQuestions}
+        </h1>
+        <h2 className='text-xl font-bold'> Umumiy balingiz : {data.userScore
+        }</h2>
 
 
-    </div>
+      </div>
 
-    
-    
+
+
     </>
-   
+
   )
 }
 
