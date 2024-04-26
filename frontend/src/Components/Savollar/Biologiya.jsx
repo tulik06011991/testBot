@@ -78,7 +78,7 @@ const Biologiya = () => {
           <br /><br />
           <button type="submit" className='px-4 py-2 rounded bg-blue-500'>Keyingi savol</button>
           {currentQuestionIndex === questions.length - 1 && (
-            navigate('/javob') // "to" atributiga o'tish kerakli URL ni kiritish
+            window.location.href = '/javob' // "to" atributiga o'tish kerakli URL ni kiritish
           )}
         </form>
       ) : (
