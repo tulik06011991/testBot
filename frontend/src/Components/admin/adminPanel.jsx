@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const adminPanel = () => {
+  const [sidebar, setSidebar] = useState(false)
   console.log(`salom`)
   return (
     <>
@@ -11,7 +12,7 @@ const adminPanel = () => {
         <div class="flex justify-between items-center px-9">
           
           
-            <button id="menuBtn">
+            <button onClick={() =>setSidebar(!sidebar)} id="menuBtn">
                 <i class="fas fa-bars text-cyan-500 text-lg"></i>
             </button>
 
@@ -35,7 +36,7 @@ const adminPanel = () => {
     </nav>
 
 
-    <div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none">
+    <div id="sideNav" className={`${sidebar ? 'lg:block' : 'hidden'} lg:block bg-white w-64 h-screen fixed rounded-none border-none`}>
        
         <div class="p-4 space-y-4">
           
@@ -118,7 +119,7 @@ const adminPanel = () => {
         </div>
 
     
-        <div class="bg-white rounded-lg p-4 shadow-md my-4">
+        {/* <div class="bg-white rounded-lg p-4 shadow-md my-4">
             <table class="table-auto w-full">
                 <thead>
                     <tr>
@@ -163,7 +164,7 @@ const adminPanel = () => {
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> */}
     </div>
 
 
