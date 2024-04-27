@@ -75,7 +75,7 @@ const UserAnswerPost = async (req, res) => {
 
 // Barcha ma'lumotlarni o'chirish
 const deleteAnswers =  (req, res) => {
-  TestModel .deleteMany({})
+  TestModel.deleteMany({})
     .then(() => {
       console.log('Barcha ma\'lumotlar muvaffaqiyatli o\'chirildi');
       res.status(200).json({ message: 'Barcha ma\'lumotlar muvaffaqiyatli o\'chirildi' });
