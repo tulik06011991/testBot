@@ -20,6 +20,7 @@ const [Users, setUsers] = useState([])
           }
         );
         setUsers(response);
+        console.log(response)
       } catch (error) {
         console.log(error);
       }
@@ -151,17 +152,14 @@ const [Users, setUsers] = useState([])
                 <div class="overflow-hidden w-full">
                   <table class="min-w-full">
                     <thead class="bg-white border-b">
-                     
+                      
                       <tr>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                           #
                         </th>
-                        {Users.map((userName, index) =>{
-                        <th key={index} scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                          {userName.username}
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          
                         </th>
-                        
-                      } )}
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                           Last
                         </th>
