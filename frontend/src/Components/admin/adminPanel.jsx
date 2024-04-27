@@ -118,53 +118,93 @@ const adminPanel = () => {
             </div>
         </div>
 
-    
-        {/* <div class="bg-white rounded-lg p-4 shadow-md my-4">
-            <table class="table-auto w-full">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-2 text-left border-b-2 w-full">
-                            <h2 class="text-ml font-bold text-gray-600">Transacciones</h2>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>24/07/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>150$</span></p>
-                        </td>
-                    </tr>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>24/06/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>15$</span></p>
-                        </td>
-                    </tr>
-                    <tr class="border-b w-full">
-                        <td class="px-4 py-2 text-left align-top w-1/2">
-                            <div>
-                                <h2>Comercio</h2>
-                                <p>02/05/2023</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-2 text-right text-cyan-500 w-1/2">
-                            <p><span>50$</span></p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> */}
+      
+<div class="flex   flex-col ">
+  <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5 w-full  ">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8 w-full ">
+      <div class="overflow-hidden w-full">
+        <table class="min-w-full">
+          <thead class="bg-white border-b">
+            <tr>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                #
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                First
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Last
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Handle
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-gray-100 border-b">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                Mark
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                Otto
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                @mdo
+              </td>
+            </tr>
+            <tr class="bg-white border-b">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                Jacob
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                Dillan
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                @fat
+              </td>
+            </tr>
+            <tr class="bg-gray-100 border-b">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                Mark
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                Twen
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                @twitter
+              </td>
+            </tr>    
+            <tr class="bg-white border-b">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">4</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                Bob
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                Dillan
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                @fat
+              </td>
+            </tr>
+            <tr class="bg-gray-100 border-b">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">5</td>
+              <td colspan="2" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                Larry the Bird
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                @twitter
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+        
     </div>
 
 
