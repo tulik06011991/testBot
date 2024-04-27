@@ -34,7 +34,7 @@ const Login = () => {
       if (response.data.isAdmin) {
 
         
-         navigate('/menu');
+         navigate('/adminpanel');
        } else {
          navigate('/menu');
        }

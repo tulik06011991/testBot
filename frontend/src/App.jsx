@@ -11,6 +11,7 @@ import Ingliz_tili from './Components/Savollar/Ingliz_tili'
 import Javob from './Components/Savollar/Javob'
 import Logout from './Components/Logout'
 import AdminSavol from './Components/admin/adminSavol'
+import AdminPanel from './Components/admin/adminPanel'
 import UserContextProvider from './Components/userContextProvider'
 
 
@@ -48,7 +49,10 @@ function App() {
       <Route path='/logout' element = {<Logout/>}/>
     </Routes>
     <Routes>
-      <Route path='/adminSavol' element = {<AdminSavol/>}/>
+      <Route path='/adminsavol' element = {<AdminSavol/>}/>
+    </Routes>
+    <Routes>
+      <Route path='/adminpanel' element = {<AdminPanel/>}/>
     </Routes>
    
     </UserContextProvider>
