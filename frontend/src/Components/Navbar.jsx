@@ -23,7 +23,7 @@ const Navbar = () => {
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Servise</li>
             <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Fan<Link to={'/menu'}></Link></li>
           </ul>
-          <h1 className='font-bold tracking-widest ml-8  md:left-0 '>Quiz bot</h1>
+       
 
           
           <button onClick={() => setNavbarOpen(!navbarOpen)} className='block md:hidden py-3 px-4 mx-2 right-5 rounded focus:outline-none hover:bg-gray-400  group'>
