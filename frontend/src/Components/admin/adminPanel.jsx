@@ -1,8 +1,34 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+
 
 const adminPanel = () => {
+
+const [Users, setUsers] = useState([])
   const [sidebar, setSidebar] = useState(false)
-  console.log(`salom`)
+  
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await axios.get(
+          'http://localhost:3000/foydalanuvchi/users',
+          {
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            withCredentials: true
+          }
+        );
+        setUsers(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    getUser();
+  }, []);
+  
+
   return (
     <>
       <br />
@@ -125,13 +151,17 @@ const adminPanel = () => {
                 <div class="overflow-hidden w-full">
                   <table class="min-w-full">
                     <thead class="bg-white border-b">
+                     
                       <tr>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                           #
                         </th>
-                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                          First
+                        {Users.map((userName, index) =>{
+                        <th key={index} scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          {userName.username}
                         </th>
+                        
+                      } )}
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                           Last
                         </th>

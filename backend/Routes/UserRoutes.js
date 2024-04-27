@@ -8,7 +8,7 @@ const {createUser,
 
 
 router.post('/user', createUser );
-router.get('/user', getUsers );
+router.get('/users', getUsers );
 router.get('/user/:id', getUserId );
 router.put('/user/:id', updateUser );
 router.delete('/user/:id', deleteUser );
