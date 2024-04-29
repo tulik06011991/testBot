@@ -58,7 +58,7 @@ const AddQuestionForm = () => {
 
   return (
     <>
-   {!localStorage.getItem('token') && <div>Token yok</div>}
+   {!localStorage.getItem('token') && <div></div>}
    {localStorage.getItem('token') && (
     <div className='bg-gray-300 w-full h-screen'>
       <br /><br /> <br /><br />

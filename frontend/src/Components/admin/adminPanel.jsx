@@ -45,7 +45,7 @@ const [Users, setUsers] = useState([])
     <>
       <br />
       <br />
-      {!localStorage.getItem('token') && <div>Token yok</div>}
+      {!localStorage.getItem('token') && <div></div>}
       {localStorage.getItem('token') && (
         <div className="bg-gray-200 -ml-3">
           <nav className="bg-white border-b border-gray-300">
