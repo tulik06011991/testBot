@@ -3,9 +3,11 @@ import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import {useNavigate } from 'react-router-dom';
 import UserContext from './userContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
-
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,9 +15,6 @@ const Login = () => {
 
   const {setUser} = useContext(UserContext)
 
-
- 
-  
   const handleSubmitt = async (e) => {
     e.preventDefault();
     try {
@@ -33,23 +32,18 @@ const Login = () => {
       localStorage.setItem('token', response.data.token);
       console.log(response.data)
       setUser(response.data._id)
+      
       if (response.data.isAdmin) {
-
-        
-         navigate('/adminpanel');
+        navigate('/adminpanel');
        } else {
          navigate('/menu');
        }
 
-     
-
     } catch (error) {
-      console.log(error);
+      toast.error(`login yoki parol xato`)
+      }
     }
-  };
-
-console.log()
-
+  
   return (
     <div>
       
@@ -66,10 +60,9 @@ console.log()
               <label className="text-gray-800 font-semibold block my-3 text-md" for="password">Password</label>
               <input   onChange={(e) => setPassword(e.target.value)} className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="password" id="password" placeholder="password" />
             </div>
-            
             <button type="submit" className="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Login</button>
-            
           </form>
+          <ToastContainer />
         </div>
       </div>
     </div>
