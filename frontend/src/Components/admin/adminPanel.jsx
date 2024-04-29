@@ -42,16 +42,11 @@ const [Users, setUsers] = useState([])
   
     getUser();
   }, []);
-   // If error state is not null, render an error message
-  //  if (error) {
-  //   return <div>Serverdan ma'lumotlarni yuklashda xatolik yuz berdi</div>;
-  // }
- // If error state is not null, render an error message
+ 
   return (
     <>
       <br />
       <br />
-    
       {localStorage.getItem('token')  ? (
         <div className="bg-gray-200 -ml-3">
           <nav className="bg-white border-b border-gray-300">

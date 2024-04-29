@@ -6,13 +6,6 @@ const AddQuestionForm = () => {
   const [options, setOptions] = useState(['', '', '', '']);
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [message, setMessage] = useState('');
-  const [userAnswers, setUserAnswers] = useState(Array(0).fill(''));
-
-  const handleChange = (index, value) => {
-    const newOptions = [...options];
-    newOptions[index] = value;
-    setOptions(newOptions);
-  };
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -20,12 +13,16 @@ const AddQuestionForm = () => {
       window.location.href = '/'; // Foydalanuvchi Login sahifasiga yo'naltiriladi
     }
   }, []);
+  const handleChange = (index, value) => {
+    const newOptions = [...options];
+    newOptions[index] = value;
+    setOptions(newOptions);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const token = localStorage.getItem('token')
-
       const response = await axios.post('http://localhost:3000/questions/adminPost', {
         title,
         options,
@@ -44,8 +41,6 @@ const AddQuestionForm = () => {
         setTitle('');
         setOptions(['', '', '', '']);
         setCorrectAnswer('');
-
-        // setUserAnswers(Array(response.data.length).fill(''))
       }
       console.log(response)
       setMessage(response.data.message);
@@ -55,10 +50,8 @@ const AddQuestionForm = () => {
     }
   };
 
-
   return (
     <>
-   {!localStorage.getItem('token') && <div></div>}
    {localStorage.getItem('token') && (
     <div className='bg-gray-300 w-full h-screen'>
       <br /><br /> <br /><br />
