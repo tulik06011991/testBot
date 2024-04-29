@@ -14,7 +14,12 @@ const AddQuestionForm = () => {
     setOptions(newOptions);
   };
 
-
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/'; // Foydalanuvchi Login sahifasiga yo'naltiriladi
+    }
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -52,6 +57,9 @@ const AddQuestionForm = () => {
 
 
   return (
+    <>
+   {!localStorage.getItem('token') && <div>Token yok</div>}
+   {localStorage.getItem('token') && (
     <div className='bg-gray-300 w-full h-screen'>
       <br /><br /> <br /><br />
       <h2 className='d-flex items-center text-2xl font-bold ml-4'>Savol qo'shish</h2>
@@ -85,6 +93,8 @@ const AddQuestionForm = () => {
       </form>
       {message && <p>{message}</p>}
     </div>
+     )}
+    </>
   );
 };
 
