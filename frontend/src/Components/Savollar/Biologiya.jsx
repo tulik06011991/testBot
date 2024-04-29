@@ -18,7 +18,7 @@ const Biologiya = () => {
         setQuestions(response.data);
         setUserAnswers(Array(response.data.length).fill(''));
       } catch (error) {
-        console.error('Xatolik:', error);
+        console.error('Savollarni yuklashda xatolik:', error);
         setMessage('Savollarni yuklashda xatolik yuz berdi');
       }
     };
@@ -47,16 +47,18 @@ const Biologiya = () => {
         navigate('/javob');
       }
     } catch (error) {
-      console.error('Xatolik:', error);
+      console.error('Javobni yuborishda xatolik:', error);
       setMessage('Javobni yuborishda xatolik yuz berdi');
     }
   };
 
   return (
+    <>
+    {localStorage.getItem('token') && (
     <div className='bg-gray-300 h-screen'>
       <div className='w-full ml-8'>
         <br /><br /><br /><br />
-        {questions.length > 0 ? (
+        { questions.length > 0 ? (
           <form onSubmit={handleSubmit}>
             <h2 className='font-bold text-xl'>{questions[currentQuestionIndex].title}</h2>
             <br /><br />
@@ -82,6 +84,8 @@ const Biologiya = () => {
         {message && <p>{message}</p>}
       </div>
     </div>
+    )}
+     </>
   );
 }
 
