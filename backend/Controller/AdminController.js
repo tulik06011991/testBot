@@ -47,11 +47,18 @@ const getUsersInfo = async (req, res) => {
     for (const user of users) {
       const userId = user._id;
       const userResults = await Question.find({ userId }).populate('questionId');
+      
+      // Har bir foydalanuvchining bergan javoblari uchun to'g'ri yoki noto'g'ri javoblarini hisoblash
+      const resultsWithCorrectness = userResults.map(result => ({
+        ...result.toObject(),
+        correct: result.userAnswer === result.questionId.correct // Berilgan javob to'g'ri bo'lsa true, aks holda false
+      }));
+      
       usersInfo.push({
         userId: userId,
         username: user.username,
         email: user.email,
-        results: userResults
+        results: resultsWithCorrectness // Berilgan javoblar bilan birgalikda to'g'ri yoki noto'g'ri javoblarni qo'shamiz
       });
     }
 
@@ -61,6 +68,7 @@ const getUsersInfo = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 
 
