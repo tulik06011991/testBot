@@ -57,7 +57,7 @@ const Navbar = () => {
 
         
 
-              <button className='relative mx-6 hidden md:block'>  <Link to={'/logout'}>Sign-out     </Link>  <i className="fa-sharp fa-solid fa-right-from-bracket ml-3"> </i></button>
+              <button className='relative mx-6 hidden md:block'>  <Link to={'/logout'}>chiqish </Link>  <i className="fa-sharp fa-solid fa-right-from-bracket ml-3"> </i></button>
          
            
         </div>
