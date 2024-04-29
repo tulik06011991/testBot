@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import {useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 import UserContext from './userContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -48,7 +48,7 @@ const Login = () => {
     <div>
       
       <div className="h-screen bg-indigo-100 flex justify-center items-center">
-        <div className="lg:w-2/5 md:w-1/2 w-2/3">
+        <div className="lg:w-2/5 md:w-1/2 w-2/3 ">
           <form  onSubmit={handleSubmitt} className="bg-white p-10 rounded-lg shadow-lg min-w-full">
             <h1 className="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Login</h1>
             
@@ -62,7 +62,8 @@ const Login = () => {
             </div>
             <button type="submit" className="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Login</button>
           </form>
-          <ToastContainer />
+         
+          <ToastContainer position="top-center"  />
         </div>
       </div>
     </div>
