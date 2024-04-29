@@ -10,6 +10,7 @@ const Logout = () => {
     useEffect(() =>{
       
         const handleLogout = async () => {
+          localStorage.removeItem('token')
             try {
               const response = await axios.get('http://localhost:3000/auth/logout', {
                 
