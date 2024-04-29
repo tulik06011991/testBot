@@ -1,20 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 
 const adminPanel = () => {
 
 const [Users, setUsers] = useState([])
   const [sidebar, setSidebar] = useState(false)
+  const navigate = useNavigate()
 
-
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      window.location.href = '/'; // Foydalanuvchi Login sahifasiga yo'naltiriladi
-    }
-  }, []);
   
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -33,20 +27,26 @@ const [Users, setUsers] = useState([])
         setUsers(response);
         console.log(response)
       } catch (error) {
+        if (error) {
+         navigate('/menu')
+       }
         console.log(error);
       }
     };
   
     getUser();
   }, []);
-  
-
+   // If error state is not null, render an error message
+  //  if (error) {
+  //   return <div>Serverdan ma'lumotlarni yuklashda xatolik yuz berdi</div>;
+  // }
+ // If error state is not null, render an error message
   return (
     <>
       <br />
       <br />
-      {!localStorage.getItem('token') && <div></div>}
-      {localStorage.getItem('token') && (
+    
+      {localStorage.getItem('token') || !error ? (
         <div className="bg-gray-200 -ml-3">
           <nav className="bg-white border-b border-gray-300">
             <div className="flex justify-between items-center px-9">
@@ -113,7 +113,7 @@ const [Users, setUsers] = useState([])
             </div>
           </div>
         </div>
-      )}
+          ) :(  navigate('/menu') )}
     </>
   )
 }
