@@ -21,7 +21,7 @@ const [Users, setUsers] = useState([])
     const getUser = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/foydalanuvchi/users',
+          'http://localhost:3000/questions/adminInfoUser',
           {
             headers: {
               'Content-Type': 'application/json',

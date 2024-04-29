@@ -1,6 +1,8 @@
 // routes/questions.js
 
 const Question = require('../Model/TestModel');
+ // UserResult modelini import qilish
+const User = require('../Model/AuthModel'); 
 
 // Savollarni qaytarish
 const adminSavollarGet =  async (req, res) => {
@@ -27,10 +29,45 @@ const adminSavollarPost =  async (req, res) => {
   }
 };
 
+// User modelini import qilish
+
+// GET so'rovi uchun router
+const getUsersInfo = async (req, res) => {
+  try {
+    // Barcha foydalanuvchilarni olish
+    const users = await User.find();
+
+    // Agar foydalanuvchilar topilmagan bo'lsa, 404 qaytariladi
+    if (!users || users.length === 0) {
+      return res.status(404).json({ message: "Foydalanuvchilar topilmadi" });
+    }
+
+    // Foydalanuvchilarning ma'lumotlarini va ballarini qaytarish
+    const usersInfo = [];
+    for (const user of users) {
+      const userId = user._id;
+      const userResults = await Question.find({ userId }).populate('questionId');
+      usersInfo.push({
+        userId: userId,
+        username: user.username,
+        email: user.email,
+        results: userResults
+      });
+    }
+
+    return res.status(200).json(usersInfo);
+  } catch (error) {
+    // Xatolikni qaytarish
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
 
 
 
 module.exports = {
     adminSavollarGet,
-    adminSavollarPost
+    adminSavollarPost,
+    getUsersInfo
 };

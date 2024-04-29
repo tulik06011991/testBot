@@ -15,15 +15,10 @@ const userResultSchema = new mongoose.Schema({
   },
   userAnswer: String, // Foydalanuvchi javobi
   correct: Boolean // To'g'ri javobni tekshirish
-});
+}, );
 
 
 
 const TestModel  = mongoose.model('UserResult', userResultSchema);
 
 module.exports = TestModel
-// module.exports ={ TestModel, getUserResultsByUserId}
-
-// const getUserResultsByUserId = async (userId) => {
-//   return await TestModel.find({ userId }).populate('questionId');
-// };
