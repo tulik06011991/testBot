@@ -40,8 +40,7 @@ const Login = () => {
        }
 
     } catch (error) {
-      toast.error(`login yoki parol xato`)
-    //  alert('login yoki parol xato')
+     toast.error(`login yoki parol xato`)
       }
     }
   
