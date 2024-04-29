@@ -9,7 +9,13 @@ const [Users, setUsers] = useState([])
   const [sidebar, setSidebar] = useState(false)
   const navigate = useNavigate()
 
-  
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/'; // Foydalanuvchi Login sahifasiga yo'naltiriladi
+    }
+  }, []);
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     const getUser = async () => {
@@ -46,7 +52,7 @@ const [Users, setUsers] = useState([])
       <br />
       <br />
     
-      {localStorage.getItem('token') || !error ? (
+      {localStorage.getItem('token')  ? (
         <div className="bg-gray-200 -ml-3">
           <nav className="bg-white border-b border-gray-300">
             <div className="flex justify-between items-center px-9">
@@ -113,7 +119,7 @@ const [Users, setUsers] = useState([])
             </div>
           </div>
         </div>
-          ) :(  navigate('/menu') )}
+          ) :(  navigate('/') )}
     </>
   )
 }
