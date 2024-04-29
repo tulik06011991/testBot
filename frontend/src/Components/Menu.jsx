@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 
 const Menu = () => {
 
-  // useEffect(() =>{
-
-
-  // },[])
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/'; // Foydalanuvchi Login sahifasiga yo'naltiriladi
+    }
+  }, []);
   return (
     <div>
 
