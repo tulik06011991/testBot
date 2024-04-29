@@ -11,7 +11,8 @@ const Menu = () => {
   }, []);
   return (
     <div>
-
+{!localStorage.getItem('token') && <div></div>}
+   {localStorage.getItem('token') && (
 
       <div className="flex items-center min-h-screen bg-gray-200 text-gray-800">
         <div className="p-4 w-full">
@@ -75,8 +76,9 @@ const Menu = () => {
           </div>
         </div>
       </div>
-
+ )}
     </div>
+    
   )
 }
 
