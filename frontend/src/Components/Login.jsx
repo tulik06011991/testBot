@@ -29,7 +29,9 @@ const Login = () => {
           withCredentials: true
         },
       );
-      
+
+      localStorage.setItem('token', response.data.token);
+      console.log(response.data)
       setUser(response.data._id)
       if (response.data.isAdmin) {
 

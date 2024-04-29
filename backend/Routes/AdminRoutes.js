@@ -5,9 +5,10 @@ const {
     adminSavollarGet,
     adminSavollarPost
 } = require('../Controller/AdminController');
+const { verifyAdmin} = require('../VerifyToken/verifyToken')
 
 
-router.get("/adminGet", adminSavollarGet);
-router.post('/adminPost', adminSavollarPost);
+router.get("/adminGet",  adminSavollarGet);
+router.post('/adminPost', verifyAdmin,  adminSavollarPost);
 
 module.exports = router

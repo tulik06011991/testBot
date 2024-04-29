@@ -19,11 +19,21 @@ const AddQuestionForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      const token = localStorage.getItem('token')
+
       const response = await axios.post('http://localhost:3000/questions/adminPost', {
         title,
         options,
         correctAnswer
-      });
+      },  
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'access_token': token
+        },
+        withCredentials: true
+      }
+    );
       if (response) {
         // Input qiymatlari va to'g'ri javobni tozalash
         setTitle('');
