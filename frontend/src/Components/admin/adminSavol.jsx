@@ -71,8 +71,9 @@ const AddQuestionForm = () => {
     }
   };
 
-  return (
-    <>adminRole ? (
+  return   adminRole ? ( 
+    <>
+  
    {localStorage.getItem('token') && (
     <div className='bg-gray-300 w-full h-screen'>
       <br /><br /> <br /><br />
@@ -108,9 +109,9 @@ const AddQuestionForm = () => {
       {message && <p>{message}</p>}
     </div>
      )}
-     ) : null;
     </>
-  );
+     ) : null;
+  
 };
 
 export default AddQuestionForm;
