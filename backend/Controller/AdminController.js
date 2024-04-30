@@ -3,6 +3,7 @@
 const Question = require('../Model/TestModel');
  // UserResult modelini import qilish
 const User = require('../Model/AuthModel'); 
+const UsersBall = require('../Model/UserModel')
 
 // Savollarni qaytarish
 const adminSavollarGet =  async (req, res) => {
@@ -46,19 +47,21 @@ const getUsersInfo = async (req, res) => {
     const usersInfo = [];
     for (const user of users) {
       const userId = user._id;
-      const userResults = await Question.find({ userId }).populate('questionId');
+      const userResults = await UsersBall.find({ userId }).populate('questionId');
       
       // Har bir foydalanuvchining bergan javoblari uchun to'g'ri yoki noto'g'ri javoblarini hisoblash
       const resultsWithCorrectness = userResults.map(result => ({
         ...result.toObject(),
         correct: result.userAnswer === result.questionId.correct // Berilgan javob to'g'ri bo'lsa true, aks holda false
       }));
+      const totalCorrectAnswers = await UsersBall.countDocuments({ userId, correct: true });
       
       usersInfo.push({
         userId: userId,
         username: user.username,
         email: user.email,
-        results: resultsWithCorrectness // Berilgan javoblar bilan birgalikda to'g'ri yoki noto'g'ri javoblarni qo'shamiz
+        results: resultsWithCorrectness,
+        userball: totalCorrectAnswers // Berilgan javoblar bilan birgalikda to'g'ri yoki noto'g'ri javoblarni qo'shamiz
       });
     }
 
