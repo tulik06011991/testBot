@@ -7,6 +7,7 @@ const AddQuestionForm = () => {
   const [options, setOptions] = useState(['', '', '', '']);
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [message, setMessage] = useState('');
+  const [adminRole, setAdminRole] = useState(false)
   const navigate= useNavigate()
   useEffect(() => {
     
@@ -22,9 +23,9 @@ const AddQuestionForm = () => {
           },
           withCredentials: true
         }
-      
-      
+        
       )
+      setAdminRole(response.data._isAdmin)
      
       } catch (error) {
         navigate('/menu');
@@ -71,7 +72,7 @@ const AddQuestionForm = () => {
   };
 
   return (
-    <>
+    <>adminRole ? (
    {localStorage.getItem('token') && (
     <div className='bg-gray-300 w-full h-screen'>
       <br /><br /> <br /><br />
@@ -107,6 +108,7 @@ const AddQuestionForm = () => {
       {message && <p>{message}</p>}
     </div>
      )}
+     ) : null;
     </>
   );
 };
