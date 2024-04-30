@@ -31,7 +31,7 @@ const [Users, setUsers] = useState([])
           }
         );
         setUsers(response);
-        console.log(response)
+        // console.log(response)
       } catch (error) {
         if (error) {
          navigate('/menu')
