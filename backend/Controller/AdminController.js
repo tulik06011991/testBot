@@ -60,7 +60,7 @@ const getUsersInfo = async (req, res) => {
         userId: userId,
         username: user.username,
         email: user.email,
-        results: resultsWithCorrectness,
+        savollar: resultsWithCorrectness,
         userball: totalCorrectAnswers // Berilgan javoblar bilan birgalikda to'g'ri yoki noto'g'ri javoblarni qo'shamiz
       });
     }
