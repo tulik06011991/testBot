@@ -14,7 +14,7 @@ const Navbar = () => {
 
 
   const tokenlar =  () =>{
-    const token  = localStorage.getItem('token')
+    const token  = localStorage.getItem('id')
 setToken(token)
   }
   useEffect(() =>{
@@ -28,7 +28,8 @@ setToken(token)
 
 const handleLogout = () => {
   // Chiqish tugmasi bosilganda amalni bajarish
-  localStorage.removeItem('token'); // Tokenni o'chirish
+  localStorage.removeItem('token');
+  localStorage.removeItem('id'); // Tokenni o'chirish
   navigate('/logout'); 
   tokenlar()// Logout yo'lini boshlash
 };
@@ -45,10 +46,11 @@ const handleLogout = () => {
           <ul className='hidden md:flex items-center pr-10  text-base font-semibold cursor-pointer'>
           <Link to={'/'}><li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Login</li></Link>
             <Link to={'/register'}><li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Register</li></Link>
+            <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Contact</li>
             {tokena && (
               <>
                 <Link to={'/adminsavol'}><li className='hover:bg-gray-400 rounded py-3 px-6 my-2 mr-3'>Admin</li></Link>
-                <li className='hover:bg-gray-400 rounded py-3 px-6 my-2'>Contact</li>
+               
               </>                              
             )}
           </ul>

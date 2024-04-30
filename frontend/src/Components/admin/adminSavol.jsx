@@ -13,12 +13,14 @@ const AddQuestionForm = () => {
   const navigate= useNavigate()
 
   useEffect(() => {
+   
+     const token = localStorage.getItem('token');
+     const id = localStorage.getItem('id');
     
     const admin = async () =>{
       try {
-         const token = localStorage.getItem('token');
         
-        const response = await axios.get(`http://localhost:3000/foydalanuvchi/user/${user}`,
+        const response = await axios.get(`http://localhost:3000/foydalanuvchi/user/${id}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -31,6 +33,7 @@ const AddQuestionForm = () => {
       setAdminRole(response.data.isAdmin)
      
       } catch (error) {
+        console.log(error)
         navigate('/menu');
       }
 

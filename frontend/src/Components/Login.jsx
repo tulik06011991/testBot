@@ -33,6 +33,7 @@ const Login = () => {
       localStorage.setItem('token', response.data.token);
       // console.log(response.data)
       setUser(response.data._id)
+      localStorage.setItem('id', response.data._id)
      
       if (response.data.isAdmin) {
         navigate('/adminpanel');
