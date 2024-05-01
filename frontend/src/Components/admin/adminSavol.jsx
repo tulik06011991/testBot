@@ -5,6 +5,7 @@ import UserContext from '../userContext';
 
 const AddQuestionForm = () => {
   const { user } = useContext(UserContext);
+  localStorage.setItem('userId', user)
   const [title, setTitle] = useState('');
   const [options, setOptions] = useState(['', '', '', '']);
   const [correctAnswer, setCorrectAnswer] = useState('');
@@ -15,7 +16,7 @@ const AddQuestionForm = () => {
   useEffect(() => {
    
      const token = localStorage.getItem('token');
-     const id = localStorage.getItem('id');
+     const id = localStorage.getItem('userId');
     
     const admin = async () =>{
       try {

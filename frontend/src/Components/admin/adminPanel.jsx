@@ -1,18 +1,18 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 
 const adminPanel = () => {
 
-const [Users, setUsers] = useState([])
+  const [Users, setUsers] = useState([])
   const [sidebar, setSidebar] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      window.location.href = '/'; // Foydalanuvchi Login sahifasiga yo'naltiriladi
+      window.location.to = '/'; // Foydalanuvchi Login sahifasiga yo'naltiriladi
     }
   }, []);
 
@@ -30,24 +30,25 @@ const [Users, setUsers] = useState([])
             withCredentials: true
           }
         );
-        setUsers(response);
-        // console.log(response)
+        setUsers(response.data);
+        console.log(response)
       } catch (error) {
         if (error) {
-         navigate('/menu')
-       }
+          navigate('/menu')
+        }
         console.log(error);
       }
     };
-  
+
     getUser();
   }, []);
- 
+
   return (
     <>
       <br />
       <br />
-      {localStorage.getItem('token')  ? (
+      <br /><br />
+      {localStorage.getItem('token') ? (
         <div className="bg-gray-200 -ml-3">
           <nav className="bg-white border-b border-gray-300">
             <div className="flex justify-between items-center px-9">
@@ -69,26 +70,26 @@ const [Users, setUsers] = useState([])
           </nav>
           <div id="sideNav" className={`${sidebar ? 'lg:block' : 'hidden'} lg:block bg-white w-64 h-screen fixed rounded-none border-none`}>
             <div className="p-4 space-y-4">
-              <a href="#" aria-label="dashboard" className="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400">
+              <Link to="/adminsavol" aria-label="dashboard" className="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400">
                 <i className="fas fa-home text-white"></i>
-                <span className="-mr-1 font-medium">Inicio</span>
-              </a>
-              <a href="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <span className="-mr-1 font-medium">AdminSavol</span>
+              </Link>
+              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-wallet"></i>
                 <span>Billetera</span>
-              </a>
-              <a href="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              </Link>
+              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
                 <span>Transacciones</span>
-              </a>
-              <a href="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              </Link>
+              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-user"></i>
                 <span>Mi cuenta</span>
-              </a>
-              <a href="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              </Link>
+              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-sign-out-alt"></i>
                 <span>Cerrar sesión</span>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% mt-5 mx-2">
@@ -108,13 +109,60 @@ const [Users, setUsers] = useState([])
                     <table className="min-w-full">
                       {/* Tablo içeriği */}
                     </table>
+                    {/* <!-- component --> */}
+
+                    <div class="flex flex-col">
+                      <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+                        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                          <div class="overflow-hidden">
+                            <table class="min-w-full">
+                              <thead class="bg-white border-b">
+                                <tr>
+                                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    #
+                                  </th>
+                                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Ism
+                                  </th>
+                                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                   to'plagan bali
+                                  </th>
+                                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    savollar soni
+                                  </th>
+                                </tr>
+                              </thead>
+                              {Users.map((userId, index) =>(
+
+                              
+                              <tbody>
+
+                                <tr class="bg-gray-100 border-b">
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {userId.username}
+                                  </td>
+                                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {userId.userball}
+                                  </td>
+                                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {userId.email}
+                                  </td>
+                                </tr>
+                              </tbody>
+                              ))}
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-          ) :(  navigate('/') )}
+      ) : (navigate('/'))}
     </>
   )
 }
