@@ -12,7 +12,7 @@ const adminPanel = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      window.location.to = '/'; // Foydalanuvchi Login sahifasiga yo'naltiriladi
+      navigate('/')// Foydalanuvchi Login sahifasiga yo'naltiriladi
     }
   }, []);
 
@@ -137,7 +137,7 @@ const adminPanel = () => {
                               
                               <tbody>
 
-                                <tr class="bg-gray-100 border-b">
+                                <tr key={index} class="bg-gray-100 border-b">
                                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
                                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     {userId.username}
@@ -146,7 +146,7 @@ const adminPanel = () => {
                                     {userId.userball}
                                   </td>
                                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {userId.email}
+                                    {userId.savollar}
                                   </td>
                                 </tr>
                               </tbody>
