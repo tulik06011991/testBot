@@ -74,9 +74,9 @@ const adminPanel = () => {
                 <i className="fas fa-home text-white"></i>
                 <span className="-mr-1 font-medium">AdminSavol</span>
               </Link>
-              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              <Link to="/deleteanswer" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-wallet"></i>
-                <span>Billetera</span>
+                <span>Jami javoblarni o'chirish</span>
               </Link>
               <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
@@ -132,6 +132,7 @@ const adminPanel = () => {
                                   </th>
                                 </tr>
                               </thead>
+                              
                               {Users.map((userId, index) =>(
 
                               
