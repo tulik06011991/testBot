@@ -29,26 +29,30 @@ const GetQuestions = () => {
         <table class="text-left w-full">
             <thead class="bg-black flex text-white w-full">
                 <tr class="flex w-full mb-4">
-                    <th class="p-4 w-1/4">T/r</th>
-                    <th class="p-4 w-1/4">Savol</th>
+                   
+                    <th class="p-4 w-2/4">Savol</th>
+                    <th class="p-4 w-1/4">variant</th>
                     <th class="p-4 w-1/4">variant</th>
                     <th class="p-4 w-1/4">variant</th>
                     <th class="p-4 w-1/4">variant</th>
                     <th class="p-4 w-1/4">To'g'ri javob</th>
                 </tr>
             </thead>
-        
-            <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style={{"height": 50}}>
-                <tr class="flex w-full mb-4">
-                    <td class="p-4 w-1/4">Dogs</td>
-                    <td class="p-4 w-1/4">Cats</td>
+        {data.map((d, index) =>(
+
+            <tbody key={index} class="bg-grey-light flex flex-col items-center justify-between " style={{"height": 50}}>
+                <tr class="flex  mb-4 overflow-y-scroll w-full">
+                    
+                    <td class="p-4 w-2/4 "> {d.title} </td>
                     <td class="p-4 w-1/4">Birds</td>
                     <td class="p-4 w-1/4">Fish</td>
                     <td class="p-4 w-1/4">Fish</td>
                     <td class="p-4 w-1/4">Fish</td>
+                    <td class="p-4 w-1/4"> {d.correctAnswer} </td>
                 </tr>
                 
             </tbody>
+        ))}
         </table>
     </div></div>
   )
