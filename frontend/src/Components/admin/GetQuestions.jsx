@@ -37,19 +37,19 @@ const GetQuestions = () => {
                                 <th className="p-4 w-1/4">To'g'ri javob</th>
                             </tr>
                         </thead>
-                        <tbody>
                             {data.map((question, index) => (
-                                <tr key={index} className="flex mb-4 w-full">
+                        <tbody style={{ maxHeight: '200px' }} className='overflow-y-scroll'>
+                                <tr key={index} className="flex mb-4 w-full " >
                                     <td className="p-4 w-2/4">{question.title}</td>
-                                    <td className="p-4 w-1/4" style={{ maxHeight: '200px', overflowY: 'scroll' }}>
+                                    <td className="p-4 w-1/4" >
                                         {question.options.map((variant, i) => (
                                             <h4 key={i}>{variant}</h4>
                                         ))}
                                     </td>
                                     <td className="p-4 w-1/4">{question.correctAnswer}</td>
                                 </tr>
-                            ))}
                         </tbody>
+                            ))}
                     </table>
                 </div>
             </div>
