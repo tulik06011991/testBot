@@ -7,13 +7,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userData, setUserData] = useState(null)
-
+  
   const {setUser} = useContext(UserContext)
+  const {setId} = useContext(UserContext)
 
   const handleSubmitt = async (e) => {
     e.preventDefault();
@@ -32,7 +34,8 @@ const Login = () => {
       localStorage.setItem('token', response.data.token);
       // console.log(response.data)
       setUser(response.data._id)
-      // console.log(response.data._id)
+      setId(response.data._id)
+     console.log(response)
       if (response.data.isAdmin) {
         navigate('/adminpanel');
        } else {

@@ -49,7 +49,7 @@ const Biologiya = () => {
       }
     } catch (error) {
       console.error('Javobni yuborishda xatolik:', error);
-      setMessage('Javobni yuborishda xatolik yuz berdi');
+      setMessage('Javobni yuborishda xatolik yuz berdi Iltimos variantlardan birini tanlang');
     }
   };
 

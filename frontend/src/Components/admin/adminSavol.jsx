@@ -1,21 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
+import UserContext from '../userContext';
 
 const AddQuestionForm = () => {
+  const { user } = useContext(UserContext);
+  localStorage.setItem('userId', user)
   const [title, setTitle] = useState('');
   const [options, setOptions] = useState(['', '', '', '']);
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [message, setMessage] = useState('');
   const [adminRole, setAdminRole] = useState(false)
   const navigate= useNavigate()
+
   useEffect(() => {
+   
+     const token = localStorage.getItem('token');
+     const id = localStorage.getItem('userId');
     
     const admin = async () =>{
       try {
-         const token = localStorage.getItem('token');
         
-        const response = await axios.get(`http://localhost:3000/questions/adminGet`,
+        const response = await axios.get(`http://localhost:3000/foydalanuvchi/user/${id}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -25,9 +31,10 @@ const AddQuestionForm = () => {
         }
         
       )
-      setAdminRole(response.data._isAdmin)
+      setAdminRole(response.data.isAdmin)
      
       } catch (error) {
+        console.log(error)
         navigate('/menu');
       }
 
