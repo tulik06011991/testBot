@@ -50,10 +50,10 @@ const getUsersInfo = async (req, res) => {
       const userResults = await UsersBall.find({ userId }).populate('questionId');
       
       // Har bir foydalanuvchining bergan javoblari uchun to'g'ri yoki noto'g'ri javoblarini hisoblash
-      const resultsWithCorrectness = userResults.map(result => ({
-        ...result.toObject(),
-        correct: result.userAnswer === result.questionId.correct // Berilgan javob to'g'ri bo'lsa true, aks holda false
-      }));
+      // const resultsWithCorrectness = userResults.map(result => ({
+      //   ...result.toObject(),
+      //   correct: result.userAnswer === result.questionId.correct // Berilgan javob to'g'ri bo'lsa true, aks holda false
+      // }));
       const totalCorrectAnswers = await UsersBall.countDocuments({ userId, correct: true });
       
       usersInfo.push({

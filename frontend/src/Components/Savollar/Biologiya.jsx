@@ -17,6 +17,7 @@ const Biologiya = () => {
       try {
         const response = await axios.get('http://localhost:3000/test/answer/get');
         setQuestions(response.data);
+        console.log(response.data)
         setUserAnswers(Array(response.data.length).fill(''));
       } catch (error) {
         console.error('Savollarni yuklashda xatolik:', error);

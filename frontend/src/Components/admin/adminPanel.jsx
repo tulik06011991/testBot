@@ -33,9 +33,9 @@ const adminPanel = () => {
         setUsers(response.data);
         console.log(response)
       } catch (error) {
-        if (error) {
-          navigate('/menu')
-        }
+        // if (error) {
+        //   navigate('/menu')
+        // }
         console.log(error);
       }
     };
@@ -78,9 +78,9 @@ const adminPanel = () => {
                 <i className="fas fa-wallet"></i>
                 <span>Billetera</span>
               </Link>
-              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              <Link to="/javob" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
-                <span>Transacciones</span>
+                <span>Javoblarni o'chirish</span>
               </Link>
               <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-user"></i>
