@@ -12,10 +12,9 @@ import Javob from './Components/Savollar/Javob'
 import Logout from './Components/Logout'
 import AdminSavol from './Components/admin/AdminSavol'
 import AdminPanel from './Components/admin/AdminPanel'
-
-
 import UserContextProvider from './Components/userContextProvider'
 import DeleteAnswer from './Components/admin/DeleteAnswer'
+import GetQuestions from './Components/admin/GetQuestions'
 
 
 function App() {
@@ -39,6 +38,7 @@ function App() {
       <Route path='/adminsavol' element = {<AdminSavol/>}/> 
       <Route path='/adminpanel' element = {<AdminPanel/>}/>
       <Route path='/deleteanswer' element = {<DeleteAnswer/>}/>
+      <Route path='/getquestions' element = {<GetQuestions/>}/>
     </Routes>  
     </UserContextProvider>
        
