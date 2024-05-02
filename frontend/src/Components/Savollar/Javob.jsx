@@ -34,7 +34,7 @@ const Javob = () => {
 
   useEffect(() => {
     // This effect will execute only when the component mounts
-    navigate('/logout');
+    navigate('/javob');
   }, []);
 
   return (
@@ -49,7 +49,7 @@ const Javob = () => {
         <br /><br />
         <h2 className='text-xl font-bold'> Umumiy balingiz: {data.userScore}</h2><br /><br /><br />
         <button className='bg-blue-300  py-2 px-4 hover:bg-blue-500 text-white' onClick={handleClearLocalStorage}>
-          <Link to={'/'}>Orqaga</Link>
+          <Link to={'/menu'}>Orqaga</Link>
         </button>
       </div>
     </>
