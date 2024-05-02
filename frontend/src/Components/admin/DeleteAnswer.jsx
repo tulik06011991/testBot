@@ -39,7 +39,7 @@ const DeleteAnswer = () => {
     )} </h1>
     
     
-    <button className='bg-blue-300  py-2 px-4 w-full hover:bg-blue-500 text-white' onClick={handleClearLocalStorage}>
+    <button className='bg-blue-300  py-2 px-4 w-6/12 hover:bg-blue-500 text-white' onClick={handleClearLocalStorage}>
     <Link to={'/adminpanel'}>Orqaga</Link>
   </button></div>
   )
