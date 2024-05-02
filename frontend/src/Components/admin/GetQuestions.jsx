@@ -53,7 +53,7 @@ const GetQuestions = () => {
                     </table>
                 </div>
             </div>
-            <button className='d-flex  text-center items-end bg-blue-500 py-2 px-4 rounded'><Link to={'/adminpanel'}>Orqaga</Link></button>
+            <button className='d-flex  text-center items-end bg-blue-500 py-2 px-4 ml-12 rounded'><Link to={'/adminpanel'}>Orqaga</Link></button>
         </div>
     );
 };
