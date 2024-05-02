@@ -29,42 +29,17 @@ function App() {
     <Navbar/>
     <Routes>
       <Route path='/' element = {<Login/>}/>
-    
-
-    
-      <Route path='/register' element = {<Register/>}/>
-  
-   
-      <Route path='/menu' element = {<Menu/>}/>
-  
-   
-      <Route path='/tarix' element = {<Tarix/>}/>
-  
-    
-      <Route path='/inglizTili' element = {<Ingliz_tili/>}/>
-  
-    
-      <Route path='/biologiya' element = {<Biologiya/>}/>
-  
-   
-      <Route path='/javob' element = {<Javob/>}/>
-  
-    
+      <Route path='/register' element = {<Register/>}/> 
+      <Route path='/menu' element = {<Menu/>}/>  
+      <Route path='/tarix' element = {<Tarix/>}/>    
+      <Route path='/inglizTili' element = {<Ingliz_tili/>}/>   
+      <Route path='/biologiya' element = {<Biologiya/>}/>  
+      <Route path='/javob' element = {<Javob/>}/>    
       <Route path='/logout' element = {<Logout/>}/>
-  
-    
-      <Route path='/adminsavol' element = {<AdminSavol/>}/>
-  
-    
+      <Route path='/adminsavol' element = {<AdminSavol/>}/> 
       <Route path='/adminpanel' element = {<AdminPanel/>}/>
       <Route path='/deleteanswer' element = {<DeleteAnswer/>}/>
-  
-   
-
-    
-    
-    </Routes>
-   
+    </Routes>  
     </UserContextProvider>
        
     </>
