@@ -9,7 +9,7 @@ const { verifyAdmin} = require('../VerifyToken/verifyToken')
 
 
 router.get("/adminGet", verifyAdmin,  adminSavollarGet);
-router.get("/adminInfoUser", verifyAdmin,  getUsersInfo);
+router.get("/adminInfoUser",  verifyAdmin,     getUsersInfo);
 router.post('/adminPost', verifyAdmin,  adminSavollarPost);
 
 module.exports = router

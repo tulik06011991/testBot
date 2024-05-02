@@ -74,9 +74,9 @@ const adminPanel = () => {
                 <i className="fas fa-home text-white"></i>
                 <span className="-mr-1 font-medium">AdminSavol</span>
               </Link>
-              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              <Link to="/deleteanswer" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-wallet"></i>
-                <span>Billetera</span>
+                <span>Jami javoblarni o'chirish</span>
               </Link>
               <Link to="/javob" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
@@ -111,41 +111,42 @@ const adminPanel = () => {
                     </table>
                     {/* <!-- component --> */}
 
-                    <div class="flex flex-col">
-                      <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
-                        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                          <div class="overflow-hidden">
-                            <table class="min-w-full">
-                              <thead class="bg-white border-b">
+                    <div className="flex flex-col">
+                      <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+                        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                          <div className="overflow-hidden">
+                            <table className="min-w-full">
+                              <thead className="bg-white border-b">
                                 <tr>
-                                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                     #
                                   </th>
-                                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                     Ism
                                   </th>
-                                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                    to'plagan bali
                                   </th>
-                                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                     savollar soni
                                   </th>
                                 </tr>
                               </thead>
+                              
                               {Users.map((userId, index) =>(
 
                               
-                              <tbody>
+                              <tbody key={index} >
 
-                                <tr key={index} class="bg-gray-100 border-b">
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                <tr className="bg-gray-100 border-b">
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     {userId.username}
                                   </td>
-                                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     {userId.userball}
                                   </td>
-                                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     {userId.savollar}
                                   </td>
                                 </tr>
