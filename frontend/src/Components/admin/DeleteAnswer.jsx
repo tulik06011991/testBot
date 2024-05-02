@@ -35,15 +35,11 @@ const DeleteAnswer = () => {
         <div className='mx-auto w-6/12'><br /><br /><br /><br /><br /><br /><br />
             <div className='d-flex justify-center items-center'>
                 <h1>  {message && (
-
                     <h2 className='text-xl mb-8'>Hamma javoblar o'chirildi</h2>
                 )} </h1>
-
-
                 <button className='bg-blue-300  py-2 px-8    rounded hover:bg-blue-500 text-white' onClick={handleClearLocalStorage}>
                     <Link to={'/adminpanel'}>Orqaga</Link>
                 </button></div>
-
         </div>
     )
 }
