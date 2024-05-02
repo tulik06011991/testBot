@@ -34,7 +34,7 @@ const Javob = () => {
 
   useEffect(() => {
     // This effect will execute only when the component mounts
-    navigate('/javob');
+    navigate('/logout');
   }, []);
 
   return (
