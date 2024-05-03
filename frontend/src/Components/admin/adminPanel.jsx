@@ -151,7 +151,7 @@ const adminPanel = () => {
                               </thead>
 
                               {Users.map((user, index) => (
-                                <tbody key={index}>
+                                <tbody key={index} >
                                   <tr className="bg-gray-100 border-b">
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
                                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
