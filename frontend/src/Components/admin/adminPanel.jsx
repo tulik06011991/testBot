@@ -163,9 +163,13 @@ const adminPanel = () => {
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
         {user.savollar}
       </td>
+     
+       
+
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-        <Link to={`/DeleteAnswerId/${user.userId}`} >O'chirish</Link>
-      </td>
+  <DeleteAnswerId userId={user.userId} />
+</td>
+      
     </tr>
   </tbody>
 ))}
