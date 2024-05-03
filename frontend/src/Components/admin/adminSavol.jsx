@@ -40,7 +40,7 @@ const adminSavol = () => {
      
       } catch (error) {
         console.log(error)
-        navigate('/menu');
+        
       }
 
     }
