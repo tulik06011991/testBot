@@ -42,7 +42,7 @@ function App() {
       <Route path='/adminpanel' element = {<AdminPanel/>}/>
       <Route path='/deleteanswer' element = {<DeleteAnswer/>}/>
       <Route path='/getquestions' element = {<GetQuestions/>}/>
-      <Route path='/DeleteAnswerId' element = {<DeleteAnswerId/>}/>
+      <Route path='/DeleteAnswerId/:id' element = {<DeleteAnswerId/>}/>
       <Route path='/DeleteQuestions' element = {<DeleteQuestions/>}/>
     </Routes>  
     </UserContextProvider>

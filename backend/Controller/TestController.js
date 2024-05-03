@@ -89,7 +89,7 @@ const deleteQuestions =  (req, res) => {
 };
 
 const deleteAnswersId = (req, res) => {
-  const userId = req.params.userId; // Foydalanuvchi identifikatori
+  const userId = req.params.id; // Foydalanuvchi identifikatori
   TestModel.deleteMany({ userId: userId }) // userId bo'yicha javoblarni o'chiramiz
     .then(() => {
       console.log(`Foydalanuvchi ${userId} javoblari muvaffaqiyatli o'chirildi`);
