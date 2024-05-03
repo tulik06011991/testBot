@@ -96,9 +96,9 @@ const adminPanel = () => {
                 <span>Savollarni o'chirish</span>
 
               </Link>
-              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              <Link to="/register" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-user"></i>
-                <span>Mi cuenta</span>
+                <span>Ro'yxatga olish</span>
               </Link>
               <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-sign-out-alt"></i>
