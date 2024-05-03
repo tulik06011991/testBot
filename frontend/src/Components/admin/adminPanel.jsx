@@ -16,6 +16,8 @@ const adminPanel = () => {
     }
   }, []);
 
+
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     const getUser = async () => {
@@ -33,15 +35,16 @@ const adminPanel = () => {
         setUsers(response.data);
         console.log(response)
       } catch (error) {
-        // if (error) {
-        //   navigate('/menu')
-        // }
+        if (error) {
+          navigate('/menu')
+        }
         console.log(error);
       }
     };
 
     getUser();
   }, []);
+  
 
   return (
     <>
@@ -78,9 +81,15 @@ const adminPanel = () => {
                 <i className="fas fa-wallet"></i>
                 <span>Jami javoblarni o'chirish</span>
               </Link>
-              <Link to="/javob" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+
+              <Link to="/getquestions" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
-                <span>Javoblarni o'chirish</span>
+                <span>Savollar ro'yxati</span></Link>
+
+              <Link to="/adminpanel" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <i className="fas fa-exchange-alt"></i>
+                <span>Toolqin</span>
+
               </Link>
               <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-user"></i>

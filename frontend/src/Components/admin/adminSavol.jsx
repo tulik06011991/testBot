@@ -4,7 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../userContext';
 
 
+<<<<<<< HEAD
 const adminSavol = () => {
+=======
+const AddQuestionForm = () => {
+>>>>>>> 7ae1c1914866b63ed5119fc84d1560cfb3c78ec5
   const { user } = useContext(UserContext);
   localStorage.setItem('userId', user)
   const [title, setTitle] = useState('');
@@ -111,9 +115,15 @@ const adminSavol = () => {
             ))}
           </select>
           <button type="submit" className='bg-blue-500 rounded py-2 px-4 hover:bg-gray-700 cursor-pointer text-white'>Saqlash</button>
+<<<<<<< HEAD
            <button className='d-flex  text-center items-end bg-blue-500 py-2 px-4 ml-12 rounded'><Link to={'/adminpanel'}>Orqaga</Link></button>
+=======
+          <button className='d-flex  text-center items-end bg-blue-500 py-2 px-4 ml-4 rounded'><Link to={'/adminpanel'}>Orqaga</Link></button>
+>>>>>>> 7ae1c1914866b63ed5119fc84d1560cfb3c78ec5
         </form>
+       
         {message && <p>{message}</p>}
+        
       </div>
     )
 ) : null;

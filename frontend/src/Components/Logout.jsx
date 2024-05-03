@@ -10,14 +10,14 @@ const Logout = () => {
     useEffect(() =>{
       
         const handleLogout = async () => {
-          localStorage.removeItem('token')
+          localStorage.removeItem('javobData')
             try {
               const response = await axios.get('http://localhost:3000/auth/logout', {
                 
               withCredentials: true // Cookie-larni so'rovga qo'shish
               });
               const token = response.headers.get('access_token')
-              if(!token){
+              if(!javobData){
                   navigate('/')
               }
               // Ekranga chiqaramiz

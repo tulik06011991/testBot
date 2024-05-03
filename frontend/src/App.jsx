@@ -10,7 +10,9 @@ import Tarix from './Components/Savollar/Tarix';
 import Ingliz_tili from './Components/Savollar/Ingliz_tili'
 import Javob from './Components/Savollar/Javob'
 import Logout from './Components/Logout'
+
 import AdminSavol from './Components/admin/adminSavol'
+
 import AdminPanel from './Components/admin/adminPanel'
 import UserContextProvider from './Components/userContextProvider'
 import DeleteAnswer from './Components/admin/DeleteAnswer'

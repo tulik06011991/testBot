@@ -12,12 +12,13 @@ console.log(TestModel)
 
 const QuestionGet = async (req, res) => {
   try {
-    const questions = await Question.find();
+    const questions = await Question.find().lean().limit(40); // Misol uchun, faqat 10ta savolni olish
     res.json(questions);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 
 
 
@@ -112,18 +113,18 @@ const deleteAnswersId = (req, res) => {
     });
 };
 
-const deleteQuestionsId = (req, res) => {
-  const userId = req.params.userId; // Foydalanuvchi identifikatori
-  Question.deleteMany({ userId: userId }) // userId bo'yicha savollarni o'chiramiz
-    .then(() => {
-      console.log(`Foydalanuvchi ${userId} savollari muvaffaqiyatli o'chirildi`);
-      res.status(200).json({ message: `Foydalanuvchi ${userId} savollari muvaffaqiyatli o'chirildi` });
-    })
-    .catch((err) => {
-      console.error('Savollarni o\'chirishda xatolik:', err);
-      res.status(500).json({ error: 'Server xatosi, savollarni o\'chirish muvaffaqiyatli o\'chirilmadi' });
-    });
-};
+// const deleteQuestionsId = (req, res) => {
+//   const userId = req.params.userId; // Foydalanuvchi identifikatori
+//   Question.deleteMany({ userId: userId }) // userId bo'yicha savollarni o'chiramiz
+//     .then(() => {
+//       console.log(`Foydalanuvchi ${userId} savollari muvaffaqiyatli o'chirildi`);
+//       res.status(200).json({ message: `Foydalanuvchi ${userId} savollari muvaffaqiyatli o'chirildi` });
+//     })
+//     .catch((err) => {
+//       console.error('Savollarni o\'chirishda xatolik:', err);
+//       res.status(500).json({ error: 'Server xatosi, savollarni o\'chirish muvaffaqiyatli o\'chirilmadi' });
+//     });
+// };
 
 
 

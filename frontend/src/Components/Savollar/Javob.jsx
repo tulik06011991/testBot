@@ -22,6 +22,10 @@ const Javob = () => {
     localStorage.removeItem('javobData');
     
     // Clear backend data
+
+
+
+
     axios.delete('http://localhost:3000/test/deleteSavollar')
       .then(response => {
         console.log(response.data); // Log the response from the server
@@ -30,6 +34,8 @@ const Javob = () => {
       .catch(error => {
         console.error('Xatolik:', error); // Log any errors
       });
+
+
   };
 
   useEffect(() => {
