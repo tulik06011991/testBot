@@ -61,35 +61,25 @@ const getUsersInfo = async (req, res) => {
       const userId = user._id;
       const userResults = await UsersBall.find({ userId }).populate('questionId');
       
-<<<<<<< HEAD
-      // Har bir foydalanuvchining bergan javoblari uchun to'g'ri yoki noto'g'ri javoblarini hisoblash
-      const resultsWithCorrectness = userResults.map(result => ({
-        ...result.toObject(),
-        correct: result.userAnswer === result.questionId.correct // Berilgan javob to'g'ri bo'lsa true, aks holda false
-      }));
-      const totalCorrectAnswers = await UsersBall.countDocuments({ userId, correct: true });
-=======
+
+     
+
    
       
 
 
       const totalCorrectAnswers = await UsersBall.countDocuments({ userId, correct: { $ne: null } });
   
->>>>>>> 7ae1c1914866b63ed5119fc84d1560cfb3c78ec5
+
       
       usersInfo.push({
         userId: userId,
         username: user.username,
         email: user.email,
-<<<<<<< HEAD
-        savollar: resultsWithCorrectness.length,
-        userball: totalCorrectAnswers 
-      });
-=======
         savollar: userResults.length,
         userball: totalCorrectAnswers 
        });
->>>>>>> 7ae1c1914866b63ed5119fc84d1560cfb3c78ec5
+
     }
 
     return res.status(200).json(usersInfo);

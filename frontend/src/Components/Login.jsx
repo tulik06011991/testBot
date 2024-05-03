@@ -32,11 +32,10 @@ const Login = () => {
       );
 
       localStorage.setItem('token', response.data.token);
-<<<<<<< HEAD
-      localStorage.setItem('userId', response.data._id )
-=======
+
+
       localStorage.setItem('ID', response.data._id);
->>>>>>> 7ae1c1914866b63ed5119fc84d1560cfb3c78ec5
+
       // console.log(response.data)
       setUser(response.data._id)
       setId(response.data._id)
