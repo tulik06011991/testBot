@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const DeleteAnswerId = () => {
+  const navigate= useNavigate()
   const { id } = useParams();
   console.log(id); // Ekranga `6621e9deb47fbf9082cee08c` qiymatini chiqaradi
 
@@ -22,7 +23,10 @@ const DeleteAnswerId = () => {
  },[])
   
 
-   
+   if(deleted){
+    navigate('/adminpanel')
+
+   }
  // id o'zgaruvchisidagi o'zgarishlar uchun useEffectni qayta ishga tushirish
 
  
