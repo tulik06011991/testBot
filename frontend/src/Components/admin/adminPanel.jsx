@@ -78,9 +78,9 @@ const adminPanel = () => {
                 <i className="fas fa-wallet"></i>
                 <span>Jami javoblarni o'chirish</span>
               </Link>
-              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              <Link to="/getquestions" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
-                <span>Transacciones</span>
+                <span>Savollar ro'yxati</span>
               </Link>
               <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-user"></i>
@@ -144,10 +144,10 @@ const adminPanel = () => {
                                     {userId.username}
                                   </td>
                                   <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {userId.userball}
+                                    {/* {userId.userball} */}
                                   </td>
                                   <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {userId.savollar}
+                                    {/* {userId.savollar} */}
                                   </td>
                                 </tr>
                               </tbody>

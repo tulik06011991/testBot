@@ -22,9 +22,12 @@ const Biologiya = () => {
         console.error('Savollarni yuklashda xatolik:', error);
         setMessage('Savollarni yuklashda xatolik yuz berdi');
       }
+      
     };
+    
     fetchQuestions();
   }, []);
+  console.log(questions)
 
   const handleAnswerChange = (e) => {
     const updatedUserAnswers = [...userAnswers];
