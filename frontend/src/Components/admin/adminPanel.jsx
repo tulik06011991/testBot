@@ -33,9 +33,9 @@ const adminPanel = () => {
         setUsers(response.data);
         console.log(response)
       } catch (error) {
-        if (error) {
-          navigate('/menu')
-        }
+        // if (error) {
+        //   navigate('/menu')
+        // }
         console.log(error);
       }
     };
@@ -78,9 +78,15 @@ const adminPanel = () => {
                 <i className="fas fa-wallet"></i>
                 <span>Jami javoblarni o'chirish</span>
               </Link>
+<<<<<<< HEAD
               <Link to="/getquestions" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
                 <span>Savollar ro'yxati</span>
+=======
+              <Link to="/javob" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <i className="fas fa-exchange-alt"></i>
+                <span>Javoblarni o'chirish</span>
+>>>>>>> 985a4f750cc0476d3ae4351c745f6d14a26af14b
               </Link>
               <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-user"></i>

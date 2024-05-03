@@ -99,6 +99,33 @@ const deleteQuestions =  (req, res) => {
     });
 };
 
+const deleteAnswersId = (req, res) => {
+  const userId = req.params.userId; // Foydalanuvchi identifikatori
+  TestModel.deleteMany({ userId: userId }) // userId bo'yicha javoblarni o'chiramiz
+    .then(() => {
+      console.log(`Foydalanuvchi ${userId} javoblari muvaffaqiyatli o'chirildi`);
+      res.status(200).json({ message: `Foydalanuvchi ${userId} javoblari muvaffaqiyatli o'chirildi` });
+    })
+    .catch((err) => {
+      console.error('Javoblarni o\'chirishda xatolik:', err);
+      res.status(500).json({ error: 'Server xatosi, javoblarni o\'chirish muvaffaqiyatli o\'chirilmadi' });
+    });
+};
+
+const deleteQuestionsId = (req, res) => {
+  const userId = req.params.userId; // Foydalanuvchi identifikatori
+  Question.deleteMany({ userId: userId }) // userId bo'yicha savollarni o'chiramiz
+    .then(() => {
+      console.log(`Foydalanuvchi ${userId} savollari muvaffaqiyatli o'chirildi`);
+      res.status(200).json({ message: `Foydalanuvchi ${userId} savollari muvaffaqiyatli o'chirildi` });
+    })
+    .catch((err) => {
+      console.error('Savollarni o\'chirishda xatolik:', err);
+      res.status(500).json({ error: 'Server xatosi, savollarni o\'chirish muvaffaqiyatli o\'chirilmadi' });
+    });
+};
+
+
 
 
 
@@ -109,5 +136,6 @@ module.exports = {
   QuestionGet,
   UserAnswerPost,
   deleteAnswers,
-  deleteQuestions
+  deleteQuestions,
+  deleteAnswersId
 };
