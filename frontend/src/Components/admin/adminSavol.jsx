@@ -1,9 +1,10 @@
 import React, {  useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../userContext';
 
-const AddQuestionForm = () => {
+
+const adminSavol = () => {
   const { user } = useContext(UserContext);
   localStorage.setItem('userId', user)
   const [title, setTitle] = useState('');
@@ -110,6 +111,7 @@ const AddQuestionForm = () => {
             ))}
           </select>
           <button type="submit" className='bg-blue-500 rounded py-2 px-4 hover:bg-gray-700 cursor-pointer text-white'>Saqlash</button>
+           <button className='d-flex  text-center items-end bg-blue-500 py-2 px-4 ml-12 rounded'><Link to={'/adminpanel'}>Orqaga</Link></button>
         </form>
         {message && <p>{message}</p>}
       </div>
@@ -119,4 +121,4 @@ const AddQuestionForm = () => {
 };
 
 
-export default AddQuestionForm;
+export default adminSavol;
