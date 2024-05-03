@@ -16,6 +16,8 @@ const adminPanel = () => {
     }
   }, []);
 
+
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     const getUser = async () => {
@@ -33,15 +35,16 @@ const adminPanel = () => {
         setUsers(response.data);
         console.log(response)
       } catch (error) {
-        // if (error) {
-        //   navigate('/menu')
-        // }
+        if (error) {
+          navigate('/menu')
+        }
         console.log(error);
       }
     };
 
     getUser();
   }, []);
+  
 
   return (
     <>
@@ -78,15 +81,15 @@ const adminPanel = () => {
                 <i className="fas fa-wallet"></i>
                 <span>Jami javoblarni o'chirish</span>
               </Link>
-<<<<<<< HEAD
+
               <Link to="/getquestions" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
-                <span>Savollar ro'yxati</span>
-=======
-              <Link to="/javob" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <span>Savollar ro'yxati</span></Link>
+
+              <Link to="/adminpanel" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
-                <span>Javoblarni o'chirish</span>
->>>>>>> 985a4f750cc0476d3ae4351c745f6d14a26af14b
+                <span>Toolqin</span>
+
               </Link>
               <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-user"></i>
@@ -150,10 +153,10 @@ const adminPanel = () => {
                                     {userId.username}
                                   </td>
                                   <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {/* {userId.userball} */}
+                                    {userId.userball}
                                   </td>
                                   <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {/* {userId.savollar} */}
+                                    {userId.savollar}
                                   </td>
                                 </tr>
                               </tbody>

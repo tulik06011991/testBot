@@ -112,18 +112,18 @@ const deleteAnswersId = (req, res) => {
     });
 };
 
-const deleteQuestionsId = (req, res) => {
-  const userId = req.params.userId; // Foydalanuvchi identifikatori
-  Question.deleteMany({ userId: userId }) // userId bo'yicha savollarni o'chiramiz
-    .then(() => {
-      console.log(`Foydalanuvchi ${userId} savollari muvaffaqiyatli o'chirildi`);
-      res.status(200).json({ message: `Foydalanuvchi ${userId} savollari muvaffaqiyatli o'chirildi` });
-    })
-    .catch((err) => {
-      console.error('Savollarni o\'chirishda xatolik:', err);
-      res.status(500).json({ error: 'Server xatosi, savollarni o\'chirish muvaffaqiyatli o\'chirilmadi' });
-    });
-};
+// const deleteQuestionsId = (req, res) => {
+//   const userId = req.params.userId; // Foydalanuvchi identifikatori
+//   Question.deleteMany({ userId: userId }) // userId bo'yicha savollarni o'chiramiz
+//     .then(() => {
+//       console.log(`Foydalanuvchi ${userId} savollari muvaffaqiyatli o'chirildi`);
+//       res.status(200).json({ message: `Foydalanuvchi ${userId} savollari muvaffaqiyatli o'chirildi` });
+//     })
+//     .catch((err) => {
+//       console.error('Savollarni o\'chirishda xatolik:', err);
+//       res.status(500).json({ error: 'Server xatosi, savollarni o\'chirish muvaffaqiyatli o\'chirilmadi' });
+//     });
+// };
 
 
 

@@ -22,10 +22,7 @@ const Javob = () => {
     localStorage.removeItem('javobData');
     
     // Clear backend data
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 985a4f750cc0476d3ae4351c745f6d14a26af14b
+
     axios.delete('http://localhost:3000/test/deleteSavollar')
       .then(response => {
         console.log(response.data); // Log the response from the server
@@ -34,19 +31,7 @@ const Javob = () => {
       .catch(error => {
         console.error('Xatolik:', error); // Log any errors
       });
-<<<<<<< HEAD
-=======
-=======
-    // axios.delete('http://localhost:3000/test/deleteJavoblar')
-    //   .then(response => {
-    //     console.log(response.data); // Log the response from the server
-    //     // Additional logic if needed
-    //   })
-    //   .catch(error => {
-    //     console.error('Xatolik:', error); // Log any errors
-    //   });
->>>>>>> bb29fbfe95269947c37d6ffb7625d672a0c6bb59
->>>>>>> 985a4f750cc0476d3ae4351c745f6d14a26af14b
+
   };
 
   useEffect(() => {
