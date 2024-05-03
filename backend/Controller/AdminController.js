@@ -68,7 +68,7 @@ const getUsersInfo = async (req, res) => {
       
 
 
-      const totalCorrectAnswers = await UsersBall.countDocuments({ userId, correct: { $ne: null } });
+      const totalCorrectAnswers = await UsersBall.countDocuments({ userId, correct: true });
   
 
       
