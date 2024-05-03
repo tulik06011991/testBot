@@ -151,24 +151,24 @@ const adminPanel = () => {
                               </thead>
 
                               {Users.map((user, index) => (
-  <tbody key={index}>
-    <tr className="bg-gray-100 border-b">
-      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-        {user.username}
-      </td>
-      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-        {user.userball}
-      </td>
-      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-        {user.savollar}
-      </td>
-      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-        <Link to={`/DeleteAnswerId/${user.userId}`} className='px-4 py-2 bg-gray-600 text-white cursor-pointer rounded hover:bg-blue-500' >O'chirish</Link>
-      </td>
-    </tr>
-  </tbody>
-))}
+                                <tbody key={index}>
+                                  <tr className="bg-gray-100 border-b">
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      {user.username}
+                                    </td>
+                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      {user.userball}
+                                    </td>
+                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      {user.savollar}
+                                    </td>
+                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      <Link to={`/DeleteAnswerId/${user.userId}`} className='px-4 py-2 bg-gray-600 text-white cursor-pointer rounded hover:bg-blue-500' >O'chirish</Link>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              ))}
 
                             </table>
                           </div>
