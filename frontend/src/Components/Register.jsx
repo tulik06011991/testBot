@@ -1,6 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+import {Link, useNavigate } from 'react-router-dom';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
+const navigate =useNavigate()
+
+  const handleSubmitt = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/auth/register',
+        { username: username, email: email, password: password },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          withCredentials: true
+        },
+      );
+     
+     console.log(response)
+      if (response.data) {
+        navigate('/login');
+       } else {
+         toast.error()
+       }
+
+    } catch (error) {
+      console.log(error)
+     toast.error(`login yoki parol xato`)
+      }
+    }
+
   return (
     <div>
 
@@ -24,6 +58,7 @@ const Register = () => {
             <button type="submit" class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Register</button>
             
           </form>
+          <ToastContainer position="top-center"  />
         </div>
       </div></div>
   )
