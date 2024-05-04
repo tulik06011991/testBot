@@ -1,148 +1,81 @@
 import axios from 'axios';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 
-const adminFoydalanuvchilar = () => {
+const AdminFoydalanuvchilar = () => {
+    const [data, setData] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('token');
         const getUser = async () => {
-          try {
-            const response = await axios.get(
-              'http://localhost:3000/foydalanuvchi/users',
-              {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'access_token': token
-                },
-                withCredentials: true
-              }
-            );
-            localStorage.setItem('userIds', JSON.stringify(response.data.map(user => user.userId)))
-           
-            console.log(response.data)
-          } catch (error) {
-            if (error) {
-              navigate('/adminpanel')
+            try {
+                const response = await axios.get(
+                    'http://localhost:3000/foydalanuvchi/users',
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'access_token': token
+                        },
+                        withCredentials: true
+                    }
+                );
+                setData(response.data); // Update state with fetched user data
+                localStorage.setItem('userIds', JSON.stringify(response.data.map(user => user.userId)));
+            } catch (error) {
+                console.log(error);
+                // Handle error here if needed
             }
-            console.log(error);
-          }
         };
-    
-        getUser();
-      }, []);
-    
-  return (
-    <div><br /><br /><br /><br /><br />
-    <div class="text-gray-900 bg-gray-200">
-        <div class="p-4 flex">
-            <h1 class="text-3xl">
-                Users
-            </h1>
-        </div>
-        <div class="px-3 py-4 flex justify-center">
-            <table class="w-full text-md bg-white shadow-md rounded mb-4">
-                <tbody>
-                    <tr class="border-b">
-                        <th class="text-left p-3 px-5">Name</th>
-                        <th class="text-left p-3 px-5">Email</th>
-                        <th class="text-left p-3 px-5">Role</th>
-                        <th></th>
+
+        getUser(); // Invoke the getUser function
+    }, []);
+
+
+
+    const deleteUser = async () =>{
+        
+    }
+
+    return (
+        <div>
+            <br /><br /><br /><br /><br />
+            <table className="min-w-full border-collapse block md:table">
+                <thead className="block md:table-header-group">
+                    <tr className="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative text-center ">
+                        <th className="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Name</th>
+                        <th className="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">User Name</th>
+                        <th className="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Email Address</th>
+                        <th className="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Actions</th>
                     </tr>
-                    <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent"/></td>
-                        <td class="p-3 px-5"><input type="text" value="user.email" class="bg-transparent"/></td>
-                        <td class="p-3 px-5">
-                            <select value="user.role" class="bg-transparent">
-                                <option value="user">user</option>
-                                <option value="admin">admin</option>
-                            </select>
-                        </td>
-                        <td class="p-3 px-5 flex justify-end"><button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button></td>
-                    </tr>
-                    <tr class="border-b hover:bg-orange-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent"/></td>
-                        <td class="p-3 px-5"><input type="text" value="user.email" class="bg-transparent"/></td>
-                        <td class="p-3 px-5">
-                            <select value="user.role" class="bg-transparent">
-                                <option value="user">user</option>
-                                <option value="admin">admin</option>
-                            </select>
-                        </td>
-                        <td class="p-3 px-5 flex justify-end"><button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button></td>
-                    </tr>
-                    
-                    <tr class="border-b hover:bg-orange-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent"/></td>
-                        <td class="p-3 px-5"><input type="text" value="user.email" class="bg-transparent"/></td>
-                        <td class="p-3 px-5">
-                            <select value="user.role" class="bg-transparent">
-                                <option value="user">user</option>
-                                <option value="admin">admin</option>
-                            </select>
-                        </td>
-                        <td class="p-3 px-5 flex justify-end"><button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button></td>
-                    </tr>
-                    <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent"/></td>
-                        <td class="p-3 px-5"><input type="text" value="user.email" class="bg-transparent"/></td>
-                        <td class="p-3 px-5">
-                            <select value="user.role" class="bg-transparent">
-                                <option value="user">user</option>
-                                <option value="admin">admin</option>
-                            </select>
-                        </td>
-                        <td class="p-3 px-5 flex justify-end"><button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button></td>
-                    </tr>
-                    <tr class="border-b hover:bg-orange-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent"/></td>
-                        <td class="p-3 px-5"><input type="text" value="user.email" class="bg-transparent"/></td>
-                        <td class="p-3 px-5">
-                            <select value="user.role" class="bg-transparent">
-                                <option value="user">user</option>
-                                <option value="admin">admin</option>
-                            </select>
-                        </td>
-                        <td class="p-3 px-5 flex justify-end"><button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button></td>
-                    </tr>
-                    <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent"/></td>
-                        <td class="p-3 px-5"><input type="text" value="user.email" class="bg-transparent"/></td>
-                        <td class="p-3 px-5">
-                            <select value="user.role" class="bg-transparent">
-                                <option value="user">user</option>
-                                <option value="admin">admin</option>
-                            </select>
-                        </td>
-                        <td class="p-3 px-5 flex justify-end"><button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button></td>
-                    </tr>
-                    <tr class="border-b hover:bg-orange-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent"/></td>
-                        <td class="p-3 px-5"><input type="text" value="user.email" class="bg-transparent"/></td>
-                        <td class="p-3 px-5">
-                            <select value="user.role" class="bg-transparent">
-                                <option value="user">user</option>
-                                <option value="admin">admin</option>
-                            </select>
-                        </td>
-                        <td class="p-3 px-5 flex justify-end"><button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button></td>
-                    </tr>
-                    <tr class="border-b hover:bg-orange-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent"/></td>
-                        <td class="p-3 px-5"><input type="text" value="user.email" class="bg-transparent"/></td>
-                        <td class="p-3 px-5">
-                            <select value="user.role" class="bg-transparent">
-                                <option value="user">user</option>
-                                <option value="admin">admin</option>
-                            </select>
-                        </td>
-                        <td class="p-3 px-5 flex justify-end"><button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button></td>
-                    </tr>
+                </thead>
+
+                <tbody className="block md:table-row-group ">
+                    {data.map((user, index) => (
+                        <tr key={index} className="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
+                            <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell "><span className="inline-block w-1/3 md:hidden font-bold ">Name</span> {user.username} </td>
+                            <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span className="inline-block w-1/3 md:hidden font-bold">User Name</span>{user.userName}</td>
+                            <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span className="inline-block w-1/3 md:hidden font-bold">Email Address</span>{user.email}</td>
+                            <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+                                <span className="inline-block w-1/3 md:hidden font-bold">Actions</span>
+                                <form action="">
+
+                                
+                                <button type='submit' onClick={updateUser} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border mr-4 border-blue-500 rounded">Edit</button>
+                                <button type='submit' onClick={deleteUser} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
-        </div>
-    </div></div>
-  )
-}
+            <div className='flex justify-center w-full '>
 
-export default adminFoydalanuvchilar
+            <Link to={'/adminpanel'} ><button className=' text-center px-4 py-2  w-3/8 bg-gray-800 text-white font-bold items-end rounded mr-8 mt-12 '>Orqaga </button></Link>
+            </div>
+        </div>
+    );
+};
+
+export default AdminFoydalanuvchilar;
