@@ -1,8 +1,7 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const DeleteUser = () => {
@@ -21,32 +20,23 @@ const DeleteUser = () => {
                 },
                 withCredentials: true
             }
-            
         )
         setData(response.data)
         console.log(response.data)
       
         } catch (error) {
             console.log(error)
-            
+            }
         }
-    }
-
  const ishla = async () =>{
     if(data.status ===204){
-        navigate('/adminfoydalanuvchilar')
-    }
-    else{
-        
-        navigate('/adminfoydalanuvchilar')
-    }
+        navigate('/adminfoydalanuvchilar')}
+    else{     
+        navigate('/adminfoydalanuvchilar')}
  }
   
-
   return (
     <div> <br /><br /><br /><br />
-    
-
     <form onSubmit={handleDelete}>
         <h1 className='text-center text-xl mx-auto font-bold'>Foydalanuvchi o'chirilsinmi </h1>
         <br /><br /><br /><br />
@@ -54,9 +44,6 @@ const DeleteUser = () => {
             <div><button type='submit' onClick={ishla} className='bg-blue-300 rounded py-2 px-4 '>o'chirilsin</button></div>
             <Link to={'/adminfoydalanuvchilar'} className='bg-blue-300 rounded py-2 px-4  '><button> Orqaga </button></Link>
         </div>
-
-
-        <ToastContainer position="top-center"  />
     </form>
    
     </div>

@@ -85,7 +85,6 @@ const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
     const isAdmin = '66368c1c67274a7f25ec046f';
-    console.log(isAdmin);
     
     // Check if the user is attempting to delete the admin user
     if (!id || id === isAdmin) {
