@@ -6,7 +6,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
-const navigate =useNavigate()
+const navigate =useNavigate();
+const [username, setUsername] = useState('')
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
 
   const handleSubmitt = async (e) => {
     e.preventDefault();
@@ -24,7 +27,8 @@ const navigate =useNavigate()
      
      console.log(response)
       if (response.data) {
-        navigate('/login');
+        toast.success(`muvaffaqiyatli o'tdingiz`)
+        
        } else {
          toast.error()
        }
@@ -44,18 +48,18 @@ const navigate =useNavigate()
             <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Formregister</h1>
             <div>
               <label class="text-gray-800 font-semibold block my-3 text-md" for="username">Username</label>
-              <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="username" id="username" placeholder="username" />
+              <input  onChange={(e) => setUsername(e.target.value)} class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"  type="text" name="username" id="username" placeholder="username" />
             </div>
             <div>
               <label class="text-gray-800 font-semibold block my-3 text-md" for="email">Email</label>
-              <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="email" id="email" placeholder="@email" />
+              <input  onChange={(e) => setEmail(e.target.value)} class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="email" id="email" placeholder="@email" />
             </div>
             <div>
               <label class="text-gray-800 font-semibold block my-3 text-md" for="password">Password</label>
-              <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="password" id="password" placeholder="password" />
+              <input  onChange={(e) => setPassword(e.target.value)} class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="password" id="password" placeholder="password" />
             </div>
            
-            <button type="submit" class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Register</button>
+            <button onClick={handleSubmitt} type="submit" class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Register</button>
             
           </form>
           <ToastContainer position="top-center"  />
