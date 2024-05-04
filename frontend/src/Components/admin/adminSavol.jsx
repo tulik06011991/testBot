@@ -17,7 +17,7 @@ const AddQuestionForm = () => {
   useEffect(() => {
    
      const token = localStorage.getItem('token');
-     const id = localStorage.getItem('userId');
+     const id = localStorage.getItem('ID');
     
     const admin = async () =>{
       try {
