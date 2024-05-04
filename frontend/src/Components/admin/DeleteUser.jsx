@@ -1,13 +1,15 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const DeleteUser = () => {
     const {id} = useParams()
     const [data, setData] = useState('')
+    const navigate = useNavigate()
     
-    console.log(id)
     const handleDelete = async () =>{
         const token = localStorage.getItem('token');
         try {
@@ -23,31 +25,40 @@ const DeleteUser = () => {
         )
         setData(response.data)
         console.log(response.data)
+      
         } catch (error) {
             console.log(error)
             
         }
     }
 
+ const ishla = async () =>{
+    if(data.status ===204){
+        navigate('/adminfoydalanuvchilar')
+    }
+    else{
+        
+        navigate('/adminfoydalanuvchilar')
+    }
+ }
+  
 
   return (
     <div> <br /><br /><br /><br />
-    {data ? (
+    
 
     <form onSubmit={handleDelete}>
         <h1 className='text-center text-xl mx-auto font-bold'>Foydalanuvchi o'chirilsinmi </h1>
         <br /><br /><br /><br />
         <div className='flex justify-evenly items-center m-12'>
-            <div><button type='submit' className='bg-blue-300 rounded py-2 px-4 '>o'chirilsin</button></div>
+            <div><button type='submit' onClick={ishla} className='bg-blue-300 rounded py-2 px-4 '>o'chirilsin</button></div>
             <Link to={'/adminfoydalanuvchilar'} className='bg-blue-300 rounded py-2 px-4  '><button> Orqaga </button></Link>
         </div>
 
 
+        <ToastContainer position="top-center"  />
     </form>
-
-    ):(
-        <><span>Xatolik yuz berdi</span></>
-    )}
+   
     </div>
   )
 }
