@@ -32,17 +32,6 @@ const AdminFoydalanuvchilar = () => {
         getUser(); // Invoke the getUser function
     }, []);
 
-
-
-    const deleteUser = async () =>{
-
-    }
-
-    const updateUser = async () =>{
-        
-    }
-
-
     return (
         <div>
             <br /><br /><br /><br /><br />
@@ -67,8 +56,8 @@ const AdminFoydalanuvchilar = () => {
                                 <form action="">
 
                                 
-                                <button type='submit' onClick={updateUser} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border mr-4 border-blue-500 rounded">Edit</button>
-                                <button type='submit' onClick={deleteUser} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
+                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border mr-4 border-blue-500 rounded">Edit</button>
+                                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
                                 </form>
                             </td>
                         </tr>
