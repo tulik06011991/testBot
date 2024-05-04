@@ -35,8 +35,13 @@ const AdminFoydalanuvchilar = () => {
 
 
     const deleteUser = async () =>{
+
+    }
+
+    const updateUser = async () =>{
         
     }
+
 
     return (
         <div>
