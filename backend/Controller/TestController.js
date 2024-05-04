@@ -6,10 +6,6 @@ const TestModel = require('../Model/UserModel');
 console.log(TestModel)
 
 
-
-
-
-
 const QuestionGet = async (req, res) => {
   try {
     const questions = await Question.find().lean().limit(40); // Misol uchun, faqat 10ta savolni olish
@@ -18,12 +14,6 @@ const QuestionGet = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
-
-
-
-
-
 
 // Foydalanuvchi savolga javob berish va natijalarni hisoblash
 const UserAnswerPost = async (req, res) => {
@@ -72,8 +62,6 @@ const UserAnswerPost = async (req, res) => {
 };
 
 
-
-
 // Barcha ma'lumotlarni o'chirish
 const deleteAnswers =  (req, res) => {
   TestModel.deleteMany({})
@@ -101,7 +89,7 @@ const deleteQuestions =  (req, res) => {
 };
 
 const deleteAnswersId = (req, res) => {
-  const userId = req.params.userId; // Foydalanuvchi identifikatori
+  const userId = req.params.id; // Foydalanuvchi identifikatori
   TestModel.deleteMany({ userId: userId }) // userId bo'yicha javoblarni o'chiramiz
     .then(() => {
       console.log(`Foydalanuvchi ${userId} javoblari muvaffaqiyatli o'chirildi`);

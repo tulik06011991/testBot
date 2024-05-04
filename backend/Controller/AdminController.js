@@ -61,12 +61,16 @@ const getUsersInfo = async (req, res) => {
       const userId = user._id;
       const userResults = await UsersBall.find({ userId }).populate('questionId');
       
+
+     
+
    
       
 
 
-      const totalCorrectAnswers = await UsersBall.countDocuments({ userId, correct: { $ne: null } });
+      const totalCorrectAnswers = await UsersBall.countDocuments({ userId, correct: true });
   
+
       
       usersInfo.push({
         userId: userId,
@@ -75,6 +79,7 @@ const getUsersInfo = async (req, res) => {
         savollar: userResults.length,
         userball: totalCorrectAnswers 
        });
+
     }
 
     return res.status(200).json(usersInfo);

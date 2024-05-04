@@ -20,17 +20,6 @@ const Javob = () => {
   const handleClearLocalStorage = () => {
     // Clear localStorage data
     localStorage.removeItem('javobData');
-    
-    // Clear backend data
-
-    axios.delete('http://localhost:3000/test/deleteSavollar')
-      .then(response => {
-        console.log(response.data); // Log the response from the server
-        // Additional logic if needed
-      })
-      .catch(error => {
-        console.error('Xatolik:', error); // Log any errors
-      });
 
   };
 
@@ -51,7 +40,7 @@ const Javob = () => {
         <br /><br />
         <h2 className='text-xl font-bold'> Umumiy balingiz: {data.userScore}</h2><br /><br /><br />
         <button className='bg-blue-300  py-2 px-4 hover:bg-blue-500 text-white' onClick={handleClearLocalStorage}>
-          <Link to={'/menu'}>Orqaga</Link>
+          <Link to={'/'}>Orqaga</Link>
         </button>
       </div>
     </>

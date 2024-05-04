@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import DeleteAnswerId from './DeleteAnswerId';
+
 
 
 const adminPanel = () => {
@@ -32,8 +34,9 @@ const adminPanel = () => {
             withCredentials: true
           }
         );
+        localStorage.setItem('userIds', JSON.stringify(response.data.map(user => user.userId)))
         setUsers(response.data);
-        console.log(response)
+        console.log(response.data)
       } catch (error) {
         if (error) {
           navigate('/menu')
@@ -44,7 +47,9 @@ const adminPanel = () => {
 
     getUser();
   }, []);
-  
+
+
+
 
   return (
     <>
@@ -79,21 +84,21 @@ const adminPanel = () => {
               </Link>
               <Link to="/deleteanswer" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-wallet"></i>
-                <span>Jami javoblarni o'chirish</span>
+                <span>Barchasini o'chirish</span>
               </Link>
 
               <Link to="/getquestions" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
                 <span>Savollar ro'yxati</span></Link>
 
-              <Link to="/adminpanel" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              <Link to="/DeleteQuestions" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-exchange-alt"></i>
-                <span>Toolqin</span>
+                <span>Savollarni o'chirish</span>
 
               </Link>
-              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              <Link to="/register" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-user"></i>
-                <span>Mi cuenta</span>
+                <span>Ro'yxatga olish</span>
               </Link>
               <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-sign-out-alt"></i>
@@ -134,33 +139,37 @@ const adminPanel = () => {
                                     Ism
                                   </th>
                                   <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                   to'plagan bali
+                                    to'plagan bali
                                   </th>
                                   <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                     savollar soni
                                   </th>
+                                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    O'chirish
+                                  </th>
                                 </tr>
                               </thead>
-                              
-                              {Users.map((userId, index) =>(
 
-                              
-                              <tbody key={index} >
-
-                                <tr className="bg-gray-100 border-b">
-                                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {userId.username}
-                                  </td>
-                                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {userId.userball}
-                                  </td>
-                                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {userId.savollar}
-                                  </td>
-                                </tr>
-                              </tbody>
+                              {Users.map((user, index) => (
+                                <tbody key={index} >
+                                  <tr className="bg-gray-100 border-b">
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      {user.username}
+                                    </td>
+                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      {user.userball}
+                                    </td>
+                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      {user.savollar}
+                                    </td>
+                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                      <Link to={`/DeleteAnswerId/${user.userId}`} className='px-4 py-2 bg-gray-600 text-white cursor-pointer rounded hover:bg-blue-500' >O'chirish</Link>
+                                    </td>
+                                  </tr>
+                                </tbody>
                               ))}
+
                             </table>
                           </div>
                         </div>

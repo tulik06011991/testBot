@@ -10,16 +10,24 @@ const Logout = () => {
     useEffect(() =>{
       
         const handleLogout = async () => {
-          localStorage.removeItem('javobData')
+          
+          const javobDATA = localStorage.getItem('javobData')
+          if(!javobDATA){
+            localStorage.removeItem('ID')
+            navigate('/')
+
+          }else{
+
+            localStorage.removeItem('javobData');
+            localStorage.removeItem('ID')
+          }
             try {
               const response = await axios.get('http://localhost:3000/auth/logout', {
                 
               withCredentials: true // Cookie-larni so'rovga qo'shish
               });
               const token = response.headers.get('access_token')
-              if(!javobData){
-                  navigate('/')
-              }
+             
               // Ekranga chiqaramiz
             } catch (error) {
               console.error('Xatolik yuz berdi:', error);
