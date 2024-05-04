@@ -32,6 +32,8 @@ const DeleteUser = () => {
 
   return (
     <div> <br /><br /><br /><br />
+    {data ? (
+
     <form onSubmit={handleDelete}>
         <h1 className='text-center text-xl mx-auto font-bold'>Foydalanuvchi o'chirilsinmi </h1>
         <br /><br /><br /><br />
@@ -42,6 +44,10 @@ const DeleteUser = () => {
 
 
     </form>
+
+    ):(
+        <><span>Xatolik yuz berdi</span></>
+    )}
     </div>
   )
 }
