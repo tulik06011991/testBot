@@ -18,6 +18,7 @@ import UserContextProvider from './Components/userContextProvider'
 import DeleteAnswer from './Components/admin/DeleteAnswer'
 import DeleteQuestions from './Components/admin/DeleteQuestions'
 import GetQuestions from './Components/admin/GetQuestions'
+import AdminFoydalanuvchilar from './Components/admin/adminFoydalanuvchilar'
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
       <Route path='/getquestions' element = {<GetQuestions/>}/>
       <Route path='/DeleteAnswerId/:id' element = {<DeleteAnswerId/>}/>
       <Route path='/DeleteQuestions' element = {<DeleteQuestions/>}/>
+      <Route path='/adminfoydalanuvchilar' element = {<AdminFoydalanuvchilar/>}/>
     </Routes>  
     </UserContextProvider>
        

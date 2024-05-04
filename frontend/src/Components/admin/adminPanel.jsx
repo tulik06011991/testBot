@@ -100,9 +100,9 @@ const adminPanel = () => {
                 <i className="fas fa-user"></i>
                 <span>Ro'yxatga olish</span>
               </Link>
-              <Link to="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+              <Link to="/adminfoydalanuvchilar" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i className="fas fa-sign-out-alt"></i>
-                <span>Cerrar sesión</span>
+                <span>Foydalanuvchilar ro'yxati</span>
               </Link>
             </div>
           </div>
