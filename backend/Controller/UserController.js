@@ -88,7 +88,7 @@ const deleteUser = async (req, res) => {
         res.status(404).send(` bunday ${id} foydalanuvchilar topilmadi`)
     }
     await AuthModel.findByIdAndDelete(id);
-    res.status(204).send();
+    res.status(204).send('foydalanuvchi o`chirildi');
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
