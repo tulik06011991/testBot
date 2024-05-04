@@ -33,7 +33,7 @@ const [password, setPassword] = useState('')
         setPassword('');
         
        } else {
-         toast.error()
+         toast.error('xatolik yuz berdi')
        }
 
     } catch (error) {
