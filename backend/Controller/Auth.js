@@ -55,10 +55,19 @@ const loginUser = async (req, res) => {
 
         const token = jwt.sign(payload, process.env.JWT_SECRET,{expiresIn: "1h"});
 
+
+ 
+       
+
+
+
         // Set token as a cookie
         res.cookie('access_token', token, {
             httpOnly: true,
             
+            //  secure: true, // Uncomment this line in production (for HTTPS)
+            //  sameSite: 'None', // Uncomment this line in production (for cross-site requests)
+            //  'Access-Control-Allow-Origin': 'http://localhost:5173',
         });
 
 
@@ -66,12 +75,18 @@ const loginUser = async (req, res) => {
         const { password,  ...others } = user._doc;
         return res.status(200).json({ token,  ...others }); // Foydalanuvchi muvaffaqiyatli kirish qildi
 
+       
+
+  
+
+
 
     } catch (error) {
         console.error('Login error:', error);
         return res.status(500).json({ message: "Server xatosi" });
     }
 };
+
 
 const logout = async(req, res) =>{
     res.clearCookie('access_token');
