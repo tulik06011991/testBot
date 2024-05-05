@@ -21,10 +21,7 @@ const DeleteUser = () => {
                 withCredentials: true
             }
         )
-        if(data){
-            navigate('/adminfoydalanuvchilar')}
-        else{     
-            navigate('/adminfoydalanuvchilar')}
+       
         setData(response.data)
         console.log(response.data)
       
