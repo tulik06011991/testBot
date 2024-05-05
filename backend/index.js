@@ -27,12 +27,6 @@ mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log('MongoDBga muvaffaqiyatli ulanish'))
   .catch((error) => console.error('MongoDBga ulanishda xatolik:', error));
 
-
-
-
-
-
 PORT = process.env.PORT
-
 
 app.listen(PORT, () => console.log('Server 3000 portda eshitishni boshladi'));
