@@ -116,11 +116,6 @@ const deleteAnswersId = (req, res) => {
 
 
 
-
-
-
-
-
 module.exports = {
   QuestionGet,
   UserAnswerPost,
