@@ -21,7 +21,7 @@ const DeleteUser = () => {
                 withCredentials: true
             }
         )
-        if(data.status ===204){
+        if(data){
             navigate('/adminfoydalanuvchilar')}
         else{     
             navigate('/adminfoydalanuvchilar')}
