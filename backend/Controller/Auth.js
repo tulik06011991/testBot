@@ -18,7 +18,7 @@ const registerUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-        const newUser = await AuthModel.create({ ...req.body});
+        const newUser = await AuthModel.create({ ...req.body, password: hashedPassword});
 
         const payload = { id: newUser._id, username: newUser.username };
         const token = jwt.sign(payload, process.env.JWT_SECRET);
