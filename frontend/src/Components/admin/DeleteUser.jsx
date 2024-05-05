@@ -21,6 +21,10 @@ const DeleteUser = () => {
                 withCredentials: true
             }
         )
+        if(data.status ===204){
+            navigate('/adminfoydalanuvchilar')}
+        else{     
+            navigate('/adminfoydalanuvchilar')}
         setData(response.data)
         console.log(response.data)
       
@@ -28,12 +32,7 @@ const DeleteUser = () => {
             console.log(error)
             }
         }
- const ishla = async () =>{
-    if(data.status ===204){
-        navigate('/adminfoydalanuvchilar')}
-    else{     
-        navigate('/adminfoydalanuvchilar')}
- }
+
   
   return (
     <div> <br /><br /><br /><br />
@@ -41,7 +40,7 @@ const DeleteUser = () => {
         <h1 className='text-center text-xl mx-auto font-bold'>Foydalanuvchi o'chirilsinmi </h1>
         <br /><br /><br /><br />
         <div className='flex justify-evenly items-center m-12'>
-            <div><button type='submit' onClick={ishla} className='bg-blue-300 rounded py-2 px-4 '>o'chirilsin</button></div>
+            <div><button type='submit'className='bg-blue-300 rounded py-2 px-4 '>o'chirilsin</button></div>
             <Link to={'/adminfoydalanuvchilar'} className='bg-blue-300 rounded py-2 px-4  '><button> Orqaga </button></Link>
         </div>
     </form>
