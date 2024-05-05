@@ -22,7 +22,7 @@ const AdminFoydalanuvchilar = () => {
                     }
                 );
                 setData(response.data); // Update state with fetched user data
-                console.log(response.data)
+               
                 localStorage.setItem('userIds', JSON.stringify(response.data.map(user => user.userId)));
             } catch (error) {
                 console.log(error);
