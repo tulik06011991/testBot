@@ -28,9 +28,12 @@ const [password, setPassword] = useState('')
      console.log(response)
       if (response.data) {
         toast.success(`muvaffaqiyatli o'tdingiz`)
+        setUsername('');
+        setEmail('');
+        setPassword('');
         
        } else {
-         toast.error()
+         toast.error('xatolik yuz berdi')
        }
 
     } catch (error) {

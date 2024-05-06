@@ -10,7 +10,6 @@ import Tarix from './Components/Savollar/Tarix';
 import Ingliz_tili from './Components/Savollar/Ingliz_tili'
 import Javob from './Components/Savollar/Javob'
 import Logout from './Components/Logout'
-
 import AdminSavol from './Components/admin/adminSavol'
 import DeleteAnswerId from './Components/admin/DeleteAnswerId'
 import AdminPanel from './Components/admin/adminPanel'
@@ -19,16 +18,12 @@ import DeleteAnswer from './Components/admin/DeleteAnswer'
 import DeleteQuestions from './Components/admin/DeleteQuestions'
 import GetQuestions from './Components/admin/GetQuestions'
 import AdminFoydalanuvchilar from './Components/admin/adminFoydalanuvchilar'
-
+import DeleteUser from './Components/admin/DeleteUser'
 
 function App() {
-
-  return (
-    
+  return ( 
     <>
     <UserContextProvider>
-
-
     <Navbar/>
     <Routes>
       <Route path='/' element = {<Login/>}/>
@@ -46,11 +41,10 @@ function App() {
       <Route path='/DeleteAnswerId/:id' element = {<DeleteAnswerId/>}/>
       <Route path='/DeleteQuestions' element = {<DeleteQuestions/>}/>
       <Route path='/adminfoydalanuvchilar' element = {<AdminFoydalanuvchilar/>}/>
+      <Route path='/DeleteUser/:id' element = {<DeleteUser/>}/>
     </Routes>  
-    </UserContextProvider>
-       
+    </UserContextProvider>       
     </>
   )
 }
-
 export default App

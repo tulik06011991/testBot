@@ -16,9 +16,9 @@ const registerUser = async (req, res) => {
         }
         const salt = bcrypt.genSaltSync(10);
 
-        const hashedPassword = await bcrypt.hash(req.body.password, salt);
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-        const newUser = await AuthModel.create({ ...req.body, password: hashedPassword });
+        const newUser = await AuthModel.create({ ...req.body, password: hashedPassword});
 
         const payload = { id: newUser._id, username: newUser.username };
         const token = jwt.sign(payload, process.env.JWT_SECRET);
@@ -43,6 +43,7 @@ const loginUser = async (req, res) => {
         const user = await AuthModel.findOne({ email: req.body.email });
         if (!user) {
             return res.status(401).json({ message: "Login yoki parol xato" });
+           
         }
 
         const isPassword = await bcrypt.compare(req.body.password, user.password);
@@ -54,11 +55,6 @@ const loginUser = async (req, res) => {
         const payload = { id: user._id, isAdmin: user.isAdmin };
 
         const token = jwt.sign(payload, process.env.JWT_SECRET,{expiresIn: "1h"});
-
-
- 
-       
-
 
 
         // Set token as a cookie

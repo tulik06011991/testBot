@@ -84,15 +84,22 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
-    if(!id){
-        res.status(404).send(` bunday ${id} foydalanuvchilar topilmadi`)
+    const isAdmin = '66368c1c67274a7f25ec046f';
+    
+    // Check if the user is attempting to delete the admin user
+    if (!id || id === isAdmin) {
+        return res.status(403).send(`Admin foydalanuvchini o'chirish mumkin emas.`);
+        // You can use 403 Forbidden status code to indicate that the action is forbidden
     }
+
+    // Otherwise, proceed with user deletion
     await AuthModel.findByIdAndDelete(id);
-    res.status(204).send();
+    res.status(204).send('foydalanuvchi o`chirildi');
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 
 module.exports = {
   createUser,

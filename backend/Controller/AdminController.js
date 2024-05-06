@@ -4,8 +4,6 @@ const User = require('../Model/AuthModel');
 const UsersBall = require('../Model/UserModel')
 
 
-
-
 const adminSavollarGet =  async (req, res) => {
   try {
     const questions = await Question.find();
@@ -14,7 +12,6 @@ const adminSavollarGet =  async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
 
 
 // Savol qo'shish
@@ -42,36 +39,21 @@ const adminSavollarPost = async (req, res) => {
 };
 
 
-
-
-
 const getUsersInfo = async (req, res) => {
   try {
     // Barcha foydalanuvchilarni olish
     const users = await User.find();
-
     // Agar foydalanuvchilar topilmagan bo'lsa, 404 qaytariladi
     if (!users || users.length === 0) {
       return res.status(404).json({ message: "Foydalanuvchilar topilmadi" });
     }
-
     // Foydalanuvchilarning ma'lumotlarini va ballarini qaytarish
     const usersInfo = [];
     for (const user of users) {
       const userId = user._id;
       const userResults = await UsersBall.find({ userId }).populate('questionId');
-      
-
-     
-
-   
-      
-
-
       const totalCorrectAnswers = await UsersBall.countDocuments({ userId, correct: true });
-  
 
-      
       usersInfo.push({
         userId: userId,
         username: user.username,
@@ -88,11 +70,6 @@ const getUsersInfo = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
-
-
-
-
 
 module.exports = {
     adminSavollarGet,

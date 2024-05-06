@@ -28,9 +28,6 @@ const DeleteAnswerId = () => {
     
 
    }
- // id o'zgaruvchisidagi o'zgarishlar uchun useEffectni qayta ishga tushirish
-
- 
 
   return (
     <>
