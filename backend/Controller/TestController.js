@@ -20,6 +20,14 @@ const UserAnswerPost = async (req, res) => {
   try {
     const { userId, questionId, userAnswer } = req.body;
 
+    // Foydalanuvchi test ishlaganini tekshirish
+    const userResults = await TestModel.find({ userId });
+
+    // Agar foydalanuvchi allaqachon 30 ta savolga javob berib bo'lsa, 403 HTTP status kodi bilan foydalanuvchiga xabar berish
+    if (userResults.length >=4) {
+      return res.status(403).json({ error: 'Siz allaqachon 30 ta savolga javob berdingiz' });
+    }
+
     // Savolni ma'lumotlar bazasidan olish
     const question = await Question.findById(questionId);
 
@@ -36,7 +44,6 @@ const UserAnswerPost = async (req, res) => {
 
     const isCorrect = userAnswer === question.correctAnswer;
 
-
     // Natijani saqlash
     await TestModel.create({
       userId,
@@ -46,15 +53,13 @@ const UserAnswerPost = async (req, res) => {
     });
 
     // Barcha savollarga to'g'ri javob berilganda, tekshirish natijasini qaytarish
-    const userResults = await TestModel.find({ userId });
     const correctCount = userResults.filter(result => result.correct).length;
 
-    // Foydalanuvchi barcha savollarga to'g'ri javob berib bo'lsa, umumiy ballar hisoblash
-    const totalQuestions = userResults.length;
-    const userScore = (correctCount / totalQuestions) * 100;
+    // Foydalanuvchi umumiy ballarini hisoblash
+    const userScore = (correctCount / userResults.length) * 100;
 
     // Natijalarni qaytarish
-    res.json({ totalQuestions, correctCount, userScore });
+    res.json({ totalQuestions: userResults.length, correctCount, userScore });
   } catch (error) {
     console.error('Xatolik:', error);
     res.status(500).json({ error: error.message });
