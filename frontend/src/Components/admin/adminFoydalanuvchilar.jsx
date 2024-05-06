@@ -37,11 +37,11 @@ const AdminFoydalanuvchilar = () => {
                     withCredentials: true
                 });
                 setData(response.data); // Update state with fetched user data
-<<<<<<< HEAD
-=======
+
+
                
                 localStorage.setItem('userIds', JSON.stringify(response.data.map(user => user.userId)));
->>>>>>> 0474a76973c1d18fc54a400c958c2d07c7e0d4e3
+
             } catch (error) {
                 console.log(error);
                 // Handle error here if needed
@@ -71,15 +71,15 @@ const AdminFoydalanuvchilar = () => {
                             <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span className="inline-block w-1/3 md:hidden font-bold">User Name</span>{user.userName}</td>
                             <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span className="inline-block w-1/3 md:hidden font-bold">Email Address</span>{user.email}</td>
                             <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
-<<<<<<< HEAD
+
                                 <span className="inline-block w-1/3 md:hidden font-bold">Actions</span>
                                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border mr-4 border-blue-500 rounded">Edit</button>
                                 <button type='button' onClick={() => handleDelete(  localStorage.setItem('del', user.userId)   )} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
-=======
+
                                 <span className="inline-block w-1/3 md:hidden font-bold">Actions</span>                               
                                 {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border mr-4 border-blue-500 rounded">Edit</button> */}
                                 <Link to={`/DeleteUser/${user._id}`} ><button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button></Link>
->>>>>>> 0474a76973c1d18fc54a400c958c2d07c7e0d4e3
+
                             </td>
                         </tr>
                     ))}
