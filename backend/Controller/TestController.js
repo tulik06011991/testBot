@@ -24,7 +24,7 @@ const UserAnswerPost = async (req, res) => {
     const userResults = await TestModel.find({ userId });
 
     // Agar foydalanuvchi allaqachon 30 ta savolga javob berib bo'lsa, 403 HTTP status kodi bilan foydalanuvchiga xabar berish
-    if (userResults.length >=4) {
+    if (userResults.length >=30) {
       return res.status(403).json({ error: 'Siz allaqachon 30 ta savolga javob berdingiz' });
     }
 
