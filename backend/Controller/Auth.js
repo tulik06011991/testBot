@@ -18,7 +18,7 @@ const registerUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-        const newUser = await AuthModel.create( ...req.body);
+        const newUser = await AuthModel.create({ ...req.body, password: hashedPassword});
 
         const payload = { id: newUser._id, username: newUser.username };
         const token = jwt.sign(payload, process.env.JWT_SECRET);
@@ -46,7 +46,7 @@ const loginUser = async (req, res) => {
            
         }
 
-        const isPassword = await (req.body.password ===user.password);
+        const isPassword = await bcrypt.compare(req.body.password, user.password);
 
         if (!isPassword) {
             return res.status(401).json({ message: "Login yoki parol xato" });
