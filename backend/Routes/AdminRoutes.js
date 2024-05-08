@@ -8,8 +8,8 @@ const {
 const { verifyAdmin} = require('../VerifyToken/verifyToken')
 
 
-router.get("/adminGet", verifyAdmin,  adminSavollarGet);
-router.get("/adminInfoUser",  verifyAdmin,     getUsersInfo);
+router.get("/adminGet",   adminSavollarGet);
+router.get("/adminInfoUser",       getUsersInfo);
 router.post('/adminPost',   adminSavollarPost);
 
 module.exports = router
