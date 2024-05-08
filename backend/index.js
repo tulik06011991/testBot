@@ -7,6 +7,7 @@ const auth = require('./Routes/AuthRoutes');
 const adminQueistion = require('./Routes/AdminRoutes');
 const testUser = require('./Routes/TestRoutes')
 const users = require('./Routes/UserRoutes')
+const path = require('path')
 
 
 const app = express();
@@ -17,10 +18,14 @@ app.use(cors(
       credentials: true
   }
 ))
+
+
+
 app.use('/auth', auth);
 app.use('/questions', adminQueistion)
 app.use('/test', testUser);
 app.use('/foydalanuvchi', users);
+
 
 
 mongoose.connect(process.env.MONGO_URL)
