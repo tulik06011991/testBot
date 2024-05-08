@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  mongodb:
+    image: "mongo"
+    environment:
+    
+        
+    - MONGO_URL=${MONGO_URL}
+    ports:
+      - "27017:27017"
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./path/on/host:/path/in/container
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/src/:/app/src
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+volumes:
+  data:
