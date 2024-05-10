@@ -39,4 +39,4 @@ mongoose.connect(process.env.MONGO_URL)
 
 PORT = process.env.PORT
 
-app.listen(3000, () => console.log('Server 3000 portda eshitishni boshladi'));
+app.listen(PORT, () => console.log('Server 3000 portda eshitishni boshladi'));
