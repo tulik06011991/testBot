@@ -21,7 +21,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:3000/auth/login',
+        'https://localhost:3000/auth/login',
         { email: email, password: password },
         {
           headers: {
